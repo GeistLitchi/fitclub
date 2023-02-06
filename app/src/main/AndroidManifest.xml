@@ -12,6 +12,11 @@
         android:theme="@style/Theme.Fitclub"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.MuscleGroupPage"
+            android:exported="false"
+            android:label="Find by Muscle Group"
+            android:parentActivityName=".presentation.MainActivity"/>
+        <activity
             android:name=".presentation.MainActivity"
             android:exported="true">
             <intent-filter>
@@ -20,7 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.ExercisesActivity" />
+        <activity android:name=".presentation.ExercisesActivity"
+            android:label="Sort By Difficulty Page"
+            android:parentActivityName=".presentation.MainActivity"/>
     </application>
 
 </manifest>

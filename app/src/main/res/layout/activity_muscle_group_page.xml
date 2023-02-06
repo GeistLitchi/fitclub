@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.MuscleGroupPage">
+
+    <Button
+        android:id="@+id/bicep_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="163dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginBottom="50dp"
+        android:text="BICEPS"
+        app:layout_constraintBottom_toTopOf="@+id/abs_btn"
+        app:layout_constraintEnd_toStartOf="@+id/legs_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/legs_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="162dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="51dp"
+        android:onClick="openActivity"
+        android:text="LEGS"
+        app:layout_constraintBottom_toTopOf="@+id/back_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bicep_btn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/abs_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginBottom="65dp"
+        android:onClick="openActivity"
+        android:text="ABS"
+        app:layout_constraintBottom_toTopOf="@+id/chest_btn"
+        app:layout_constraintEnd_toStartOf="@+id/back_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bicep_btn" />
+
+    <Button
+        android:id="@+id/back_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="65dp"
+        android:onClick="openActivity"
+        android:text="BACK"
+        app:layout_constraintBottom_toTopOf="@+id/shoulder_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/abs_btn"
+        app:layout_constraintTop_toBottomOf="@+id/legs_btn" />
+
+    <Button
+        android:id="@+id/shoulder_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="198dp"
+        android:onClick="openActivity"
+        android:text="SHOULDER"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/chest_btn"
+        app:layout_constraintTop_toBottomOf="@+id/back_btn" />
+
+    <Button
+        android:id="@+id/chest_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="198dp"
+        android:onClick="openActivity"
+        android:text="CHEST"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/shoulder_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/abs_btn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
