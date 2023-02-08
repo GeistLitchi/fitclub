@@ -6,57 +6,64 @@
     android:layout_height="match_parent"
     tools:context=".presentation.MainActivity">
 
+    <!--    <Button-->
+    <!--        android:id="@+id/btn_go_to_exercises_activity"-->
+    <!--        android:layout_width="175dp"-->
+    <!--        android:layout_height="101dp"-->
+    <!--        android:layout_marginTop="76dp"-->
+    <!--        android:text="@string/exercises"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/textView4"-->
+    <!--        tools:ignore="MissingConstraints" />-->
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/home_page"
+        android:layout_marginTop="72dp"
+        android:text="@string/app_name"
+        android:textAllCaps="true"
+        android:textSize="48sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_go_to_exercises_activity"
-        android:layout_width="175dp"
-        android:layout_height="101dp"
-        android:layout_marginTop="76dp"
-        android:text="@string/exercises"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        tools:ignore="MissingConstraints" />
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
-        android:text="Find Excersice by Muscle Group"
+        android:layout_marginTop="92dp"
+        android:text="EXPLORE MORE"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_go_to_exercises_activity" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
         android:id="@+id/btn_go_to_muscle_group"
-        android:layout_width="132dp"
-        android:layout_height="91dp"
-        android:layout_marginTop="72dp"
-        android:text="Click Me"
+        android:layout_width="209dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="108dp"
+        android:text="FInd Excersice"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
         android:id="@+id/btn_go_to_find_workout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="search workout"
+        android:layout_width="209dp"
+        android:layout_height="87dp"
+        android:layout_marginBottom="196dp"
+        android:text="find workout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_go_to_muscle_group" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_go_to_muscle_group"
+        app:layout_constraintVertical_bias="0.569" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,16 +26,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button goToMuscleGroupBtn = (Button) findViewById(R.id.btn_go_to_muscle_group);
-        Button goToExercisesBtn = (Button) findViewById(R.id.btn_go_to_exercises_activity);
+//        Button goToExercisesBtn = (Button) findViewById(R.id.btn_go_to_exercises_activity);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button goToWorkout = findViewById(R.id.btn_go_to_find_workout);
-        goToExercisesBtn.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View view)
-            {
-                Intent intent = new Intent(MainActivity.this, ExercisesActivity.class);
-                startActivity(intent);
-            }
-        });
+//        goToExercisesBtn.setOnClickListener(new View.OnClickListener()
+//        {
+//            public void onClick(View view)
+//            {
+//                Intent intent = new Intent(MainActivity.this, ExercisesActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         goToMuscleGroupBtn.setOnClickListener(new View.OnClickListener()
         {
