@@ -1,3 +1,30 @@
 # FitClub Architecture - Iteration 1
 
-[![](https://mermaid.ink/img/pako:eNptks1ugzAQhF_F2jNE_ARIrKqXprdGqtSqlSouFmwTK2BHtlGTRrx7XRMSSOBkzex-s158gkKWCBSKimm94myjWJ0LYr8VM4ysrVsR3yevCjUKwwyXYsp_kRteTDai0lwbFAXe2ZQ8H1AVXE9Zn1LtZGMmnPfGSMVZ1Vlu8tF8p84gZM24WKNoPjj-9NrTVkqNZ_jIUMjMlNHHXbV2mOxufok89w_WQS6XHIk9dSCOsIO93cL_l3HLHmo9-qpZcndwaeTB9x_vf8xwhV2JqwYPalQ146V9Jm6UHMwWa8yB2mPJ1C6HXLS2jtngt6MogBrVoAfNvrQrPb8qoN-s0lbdMwH0BAegcZDMoiCOwjRJoiyezz04AvXjxSyI02ixjMIkWGSLZevBr5SWEM6iJEvDZWa7siybp6nDfTnT4ds_9BzjIQ?type=png)](https://mermaid.live/edit#pako:eNptks1ugzAQhF_F2jNE_ARIrKqXprdGqtSqlSouFmwTK2BHtlGTRrx7XRMSSOBkzex-s158gkKWCBSKimm94myjWJ0LYr8VM4ysrVsR3yevCjUKwwyXYsp_kRteTDai0lwbFAXe2ZQ8H1AVXE9Zn1LtZGMmnPfGSMVZ1Vlu8tF8p84gZM24WKNoPjj-9NrTVkqNZ_jIUMjMlNHHXbV2mOxufok89w_WQS6XHIk9dSCOsIO93cL_l3HLHmo9-qpZcndwaeTB9x_vf8xwhV2JqwYPalQ146V9Jm6UHMwWa8yB2mPJ1C6HXLS2jtngt6MogBrVoAfNvrQrPb8qoN-s0lbdMwH0BAegcZDMoiCOwjRJoiyezz04AvXjxSyI02ixjMIkWGSLZevBr5SWEM6iJEvDZWa7siybp6nDfTnT4ds_9BzjIQ)
+```mermaid
+classDiagram
+    Data Model -- Presentation
+    Data Model -- Logic
+    Data Model -- Persistence
+    Data Model : Exercise
+    Data Model : Workout
+    Data Model : Tutorial
+    class Presentation{
+      MainMenuView
+      ChooseWorkoutView
+      CreateWorkoutView
+      TutorialView
+    }
+    class Logic{
+      WorkoutLogic
+      ExerciseLogic
+      TutorialLogic
+    }
+    class Persistence{
+      WorkoutData
+      ExerciseData
+      TutorialData
+    }
+
+    Logic <--> Persistence
+    Presentation <--> Logic
+```
