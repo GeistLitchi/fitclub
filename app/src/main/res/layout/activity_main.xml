@@ -32,7 +32,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="84dp"
         android:text="Find Excersice by Muscle Group"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,10 +42,21 @@
         android:id="@+id/btn_go_to_muscle_group"
         android:layout_width="132dp"
         android:layout_height="91dp"
+        android:layout_marginTop="72dp"
         android:text="Click Me"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/btn_go_to_find_workout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="search workout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_go_to_muscle_group" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

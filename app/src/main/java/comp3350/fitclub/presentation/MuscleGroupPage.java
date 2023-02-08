@@ -2,6 +2,7 @@ package comp3350.fitclub.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,8 @@ import android.widget.Toast;
 import comp3350.fitclub.R;
 
 public class MuscleGroupPage extends AppCompatActivity implements View.OnClickListener{
+
+    public static final String EXTRA_NAME_MUSCLE = "comp3350.fitclub.presentation.extar.NAME_MUSCLE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,36 +42,49 @@ public class MuscleGroupPage extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         String muscleName;                      // name of the muscle group you clicked
         Button buttonClicked;                   // to store id of the button you clicked
+        Intent intent = new Intent(this, listView.class);
         switch(view.getId()){
             case R.id.bicep_btn:
                 buttonClicked = findViewById(R.id.bicep_btn);
                 muscleName = buttonClicked.getText().toString();                            //getting the name of the text stored in buttonClicked
-                Toast.makeText(this, muscleName, Toast.LENGTH_SHORT).show();        //test output
+                intent.putExtra(EXTRA_NAME_MUSCLE,muscleName);
+                startActivity(intent);
+                //Toast.makeText(this, muscleName, Toast.LENGTH_SHORT).show();        //test output
                 break;
             case R.id.legs_btn:
                 buttonClicked = findViewById(R.id.legs_btn);
                 muscleName = buttonClicked.getText().toString();                            //getting the name of the text stored in buttonClicked
-                Toast.makeText(this, muscleName, Toast.LENGTH_SHORT).show();        //test output
+                intent.putExtra(EXTRA_NAME_MUSCLE,muscleName);
+                startActivity(intent);
+                //Toast.makeText(this, muscleName, Toast.LENGTH_SHORT).show();        //test output
                 break;
             case R.id.abs_btn:
                 buttonClicked = findViewById(R.id.abs_btn);
                 muscleName = buttonClicked.getText().toString();                            //getting the name of the text stored in buttonClicked
-                Toast.makeText(this, muscleName, Toast.LENGTH_SHORT).show();        //test output
+                intent.putExtra(EXTRA_NAME_MUSCLE,muscleName);
+                startActivity(intent);
+                //Toast.makeText(this, muscleName, Toast.LENGTH_SHORT).show();        //test output
                 break;
             case R.id.back_btn:
                 buttonClicked = findViewById(R.id.back_btn);
                 muscleName = buttonClicked.getText().toString();                            //getting the name of the text stored in buttonClicked
-                Toast.makeText(this, muscleName, Toast.LENGTH_SHORT).show();        //test output
+                intent.putExtra(EXTRA_NAME_MUSCLE,muscleName);
+                startActivity(intent);
+                //Toast.makeText(this, muscleName, Toast.LENGTH_SHORT).show();        //test output
                 break;
             case R.id.chest_btn:
                 buttonClicked = findViewById(R.id.chest_btn);
                 muscleName = buttonClicked.getText().toString();                            //getting the name of the text stored in buttonClicked
-                Toast.makeText(this, muscleName, Toast.LENGTH_SHORT).show();        //test output
+                intent.putExtra(EXTRA_NAME_MUSCLE,muscleName);
+                startActivity(intent);
+                //Toast.makeText(this, muscleName, Toast.LENGTH_SHORT).show();        //test output
                 break;
             case R.id.shoulder_btn:
                 buttonClicked = findViewById(R.id.shoulder_btn);
                 muscleName = buttonClicked.getText().toString();                            //getting the name of the text stored in buttonClicked
-                Toast.makeText(this, muscleName, Toast.LENGTH_SHORT).show();        //test output
+                intent.putExtra(EXTRA_NAME_MUSCLE,muscleName);
+                startActivity(intent);
+                //Toast.makeText(this, muscleName, Toast.LENGTH_SHORT).show();        //test output
                 break;
 
 

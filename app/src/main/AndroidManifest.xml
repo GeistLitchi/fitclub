@@ -12,10 +12,20 @@
         android:theme="@style/Theme.Fitclub"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.listView"
+            android:exported="false"
+            android:label="Workout"
+            android:parentActivityName=".presentation.WorkoutPage" />
+        <activity
+            android:name=".presentation.WorkoutPage"
+            android:exported="false"
+            android:label="Find Workouts"
+            android:parentActivityName=".presentation.MainActivity" />
+        <activity
             android:name=".presentation.MuscleGroupPage"
             android:exported="false"
             android:label="Find by Muscle Group"
-            android:parentActivityName=".presentation.MainActivity"/>
+            android:parentActivityName=".presentation.MainActivity" />
         <activity
             android:name=".presentation.MainActivity"
             android:exported="true">
@@ -25,9 +35,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.ExercisesActivity"
+        <activity
+            android:name=".presentation.ExercisesActivity"
             android:label="Sort By Difficulty Page"
-            android:parentActivityName=".presentation.MainActivity"/>
+            android:parentActivityName=".presentation.MainActivity" />
     </application>
 
 </manifest>
