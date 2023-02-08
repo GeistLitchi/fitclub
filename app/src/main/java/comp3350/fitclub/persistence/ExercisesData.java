@@ -6,7 +6,7 @@ import java.util.List;
 
 import comp3350.fitclub.objects.Exercise;
 
-public class ExercisesData
+public class ExercisesData implements ExercisesPersistence
 {
     private List<Exercise> exercises;
 
@@ -20,8 +20,27 @@ public class ExercisesData
         exercises.add(new Exercise("dumbbell lateral raises", "shoulder",2, "Description of dumbbell lateral raises"));
     }
 
+    @Override
     public List<Exercise> getExercises()
     {
         return Collections.unmodifiableList(exercises);
+    }
+
+    @Override
+    public Exercise insertExercise(Exercise currentExercise)
+    {
+        exercises.add(currentExercise);
+        return currentExercise;
+    }
+
+    @Override
+    public void deleteExercise(Exercise currentExercise)
+    {
+        int index;
+        index = exercises.indexOf(currentExercise);
+        if(index >= 0)
+        {
+            exercises.remove(index);
+        }
     }
 }

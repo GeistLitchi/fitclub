@@ -6,13 +6,18 @@ import java.util.Comparator;
 
 import comp3350.fitclub.objects.Exercise;
 
+/**
+ * ExerciseList class
+ * contains an ArrayList called exercises.
+ * this class provides search and sort by difficulty functions
+ */
 public class ExerciseList
 {
-    private ArrayList<Exercise> exercises;
+    private final ArrayList<Exercise> exercises;
 
     public ExerciseList()
     {
-        exercises = new ArrayList<Exercise>();
+        exercises = new ArrayList<>();
     }
 
     public ArrayList<Exercise> getExercises()
@@ -25,10 +30,16 @@ public class ExerciseList
         exercises.add(exercise);
     }
 
+    /**
+     * This method returns a result Arraylist of all exercises
+     * that have keyword in name or description.
+     * @parm string the keyword
+     * @return list of search result
+     * */
     //Search for exercises if name and description of exercise contains key word;
     public ArrayList<Exercise> searchExercise(String keyword)
     {
-        ArrayList<Exercise> results = new ArrayList<Exercise>();
+        ArrayList<Exercise> results = new ArrayList<>();
         for (Exercise exercise : exercises) {
             if (exercise.getExerciseName().toLowerCase().contains(keyword.toLowerCase())
                     || exercise.getDescription().toLowerCase().contains(keyword.toLowerCase())) {
@@ -63,6 +74,9 @@ public class ExerciseList
         return sb.toString();
     }
 
+    /**
+     * this method directly sort the exercises list based on difficulty number(1 - 3)
+     * */
     public void sortByDifficulty()
     {
         Collections.sort(exercises,new DifficultyLevelComparator());
