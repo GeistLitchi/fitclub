@@ -30,7 +30,7 @@ public class WorkoutPage extends AppCompatActivity implements View.OnClickListen
     public void onClick(View view) {
         String workoutName;
         Button btnClicked;
-        Intent intent = new Intent(this, listView.class);
+        Intent intent = new Intent(this, listView2.class);
 
         switch (view.getId()){
             case R.id.upper_body:

@@ -42,7 +42,7 @@ public class MuscleGroupPage extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         String muscleName;                      // name of the muscle group you clicked
         Button buttonClicked;                   // to store id of the button you clicked
-        Intent intent = new Intent(this, listView.class);
+        Intent intent = new Intent(this, listView2.class);
         switch(view.getId()){
             case R.id.bicep_btn:
                 buttonClicked = findViewById(R.id.bicep_btn);
