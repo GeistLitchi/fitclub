@@ -17,11 +17,6 @@
             android:label="Workout"
             android:parentActivityName=".presentation.WorkoutPage" />
         <activity
-            android:name=".presentation.listView"
-            android:exported="false"
-            android:label="Workout"
-            android:parentActivityName=".presentation.WorkoutPage" />
-        <activity
             android:name=".presentation.WorkoutPage"
             android:exported="false"
             android:label="Find Workouts"

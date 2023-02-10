@@ -1,24 +1,31 @@
 package comp3350.fitclub.presentation;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.lang.reflect.Executable;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import comp3350.fitclub.R;
 import comp3350.fitclub.logic.ExerciseList;
 import comp3350.fitclub.objects.Exercise;
 import comp3350.fitclub.persistence.STUBdatabase;
 
-public class listView2 extends AppCompatActivity {
+public class listView2 extends AppCompatActivity implements RecyclerViewInterface {
 
     TextView textView;
     ListView listView;
+    RecyclerView recycleView;
     private STUBdatabase stub = new STUBdatabase();
 
 //    private ExerciseList bicep_exe = stub.getBiceps_exe();
@@ -30,6 +37,8 @@ public class listView2 extends AppCompatActivity {
     private ExerciseList back_exe = stub.getBack_exe();
     private ExerciseList chest_exe = stub.getChest_exe();
     private ExerciseList shoulder_exe = stub.getShoulder_exe();
+
+    ArrayList<Exercise> doing = null;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -45,9 +54,13 @@ public class listView2 extends AppCompatActivity {
         textView = findViewById(R.id.workout_name);
 
 
-        listView = findViewById(R.id.listView2);
+//        listView = findViewById(R.id.listView2);
+        recycleView = findViewById(R.id.recycleView);
+        recycleView.setLayoutManager(new LinearLayoutManager(this));
 
-        CustomAdapter2 ad = null;
+//        CustomAdapter2 ad = null;
+        CustomAdapter ad = null;
+
 
         if(workoutTitle != null){
             textView.setText(workoutTitle);
@@ -55,11 +68,13 @@ public class listView2 extends AppCompatActivity {
             switch (workoutTitle){
 
                 case "UPPER BODY":
-                    ad = new CustomAdapter2(this, R.layout.custom_layout2, upperbody_workout.getExercises());
+                    doing = upperbody_workout.getExercises();
+                    //ad = new CustomAdapter2(this, R.layout.custom_layout2, upperbody_workout.getExercises());
                     //listView.setAdapter(ad);
                     break;
                 case "LOWER BODY":
-                    ad = new CustomAdapter2(this, R.layout.custom_layout2, lowerbody_workout.getExercises());
+                    doing = lowerbody_workout.getExercises();
+                    //ad = new CustomAdapter2(this, R.layout.custom_layout2, lowerbody_workout.getExercises());
                     //listView.setAdapter(ad);
                     break;
             }
@@ -70,34 +85,50 @@ public class listView2 extends AppCompatActivity {
 
             switch (muscleGroupTitle){
                 case "BICEPS":
-                    ad = new CustomAdapter2(this, R.layout.custom_layout2, bicep_exe.getExercises());
+                    doing = bicep_exe.getExercises();
+                    //ad = new CustomAdapter2(this, R.layout.custom_layout2, bicep_exe.getExercises());
                     //listView.setAdapter(ad);
                     break;
                 case "LEGS":
-                    ad = new CustomAdapter2(this, R.layout.custom_layout2, legs_exe.getExercises());
+                    doing = legs_exe.getExercises();
+                    //ad = new CustomAdapter2(this, R.layout.custom_layout2, legs_exe.getExercises());
                     //listView.setAdapter(ad);
                     break;
                 case "ABS":
-                    ad = new CustomAdapter2(this, R.layout.custom_layout2, abs_exe.getExercises());
+                    doing = abs_exe.getExercises();
+                    //ad = new CustomAdapter2(this, R.layout.custom_layout2, abs_exe.getExercises());
                     //listView.setAdapter(ad);
                     break;
                 case "BACK":
-                    ad = new CustomAdapter2(this, R.layout.custom_layout2, back_exe.getExercises());
+                    doing = back_exe.getExercises();
+                    //ad = new CustomAdapter2(this, R.layout.custom_layout2, back_exe.getExercises());
                     //listView.setAdapter(ad);
                     break;
                 case "CHEST":
-                    ad = new CustomAdapter2(this, R.layout.custom_layout2, chest_exe.getExercises());
+                    doing = chest_exe.getExercises();
+                    //ad = new CustomAdapter2(this, R.layout.custom_layout2, chest_exe.getExercises());
                     //listView.setAdapter(ad);
                     break;
                 case "SHOULDER":
-                    ad = new CustomAdapter2(this, R.layout.custom_layout2, shoulder_exe.getExercises());
+                    doing = shoulder_exe.getExercises();
+//                    ad = new CustomAdapter2(this, R.layout.custom_layout2, shoulder_exe.getExercises());
                     //listView.setAdapter(ad);
                     break;
             }
 
         }
-        if (ad != null){
-            listView.setAdapter(ad);
+        if (doing != null){
+//            ad = new CustomAdapter2(this, R.layout.custom_layout2, doing);
+//            listView.setAdapter(ad);
+            ad = new CustomAdapter(this, doing, this);
+            recycleView.setAdapter(ad);
+
+
+            //for darging item but not sving yet
+            ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+            itemTouchHelper.attachToRecyclerView(recycleView);
+
+
         }else{
             System.out.println("ad is null");
         }
@@ -105,4 +136,36 @@ public class listView2 extends AppCompatActivity {
 
 
     }
+
+
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP | ItemTouchHelper.DOWN | ItemTouchHelper.START | ItemTouchHelper.END, 0) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+
+            int fromPosition = viewHolder.getAdapterPosition();
+            int toPosition = target.getAdapterPosition();
+
+            Collections.swap(doing, fromPosition, toPosition);
+
+            recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
+
+
+
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+        }
+    };
+
+
+    @Override
+    public void onItemClick(int position) {
+
+        Toast.makeText(this, doing.get(position).getExerciseName(), Toast.LENGTH_SHORT).show();
+
+    }
 }
+

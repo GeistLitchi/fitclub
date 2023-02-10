@@ -4,38 +4,80 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 import comp3350.fitclub.R;
+import comp3350.fitclub.objects.Exercise;
 
-public class CustomAdapter extends ArrayAdapter<String> {
+public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
-    private String[] arr;               // variable to store the list of strings
+    private final RecyclerViewInterface recyclerViewInterface;
+    private Context context;
+    private ArrayList<Exercise> list;
 
-
-    public CustomAdapter(@NonNull Context context, int resource, @NonNull String[] arr) {
-        super(context, resource, arr);
-        this.arr = arr;             // assignment of this arr
-    }
-
-    @Nullable
-    @Override
-    public String getItem(int position) {
-        return arr[position];           // return the item from arr at position
+    CustomAdapter(Context context, ArrayList<Exercise> arr, RecyclerViewInterface recyclerViewInterface){
+        RecyclerViewInterface recyclerViewInterface1;
+        this.context = context;
+        list = arr;
+        this.recyclerViewInterface = recyclerViewInterface;
     }
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        convertView = LayoutInflater.from(getContext()).inflate(R.layout.custom_layout2, parent,false); //inflating the layout so that we can use findViewById and passing in our new custom adapter layout
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        TextView name = convertView.findViewById(R.id.exeName);         // getting the object by id which we want to edit
-        name.setText(getItem(position));                                // putting the name of the excresice
-
-        return convertView;
+        View view = LayoutInflater.from(context).inflate(R.layout.custom_layout, parent, false);
+        ViewHolder viewHolder = new ViewHolder(view, recyclerViewInterface);
+        return viewHolder;
     }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+        holder.exercise_name.setText(list.get(position).getExerciseName());
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return list.size();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+        TextView exercise_name;
+        ImageView imgView;
+
+        public ViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
+            super(itemView);
+
+            exercise_name = itemView.findViewById(R.id.exercise_name);
+            imgView = itemView.findViewById(R.id.image_exe);
+
+
+
+
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(recyclerViewInterface != null){
+                        int pos = getAdapterPosition();
+
+                        if(pos != RecyclerView.NO_POSITION){
+                            recyclerViewInterface.onItemClick(pos);
+                        }
+                    }
+                }
+            });
+
+        }
+    }
+
 }
