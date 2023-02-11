@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,25 +12,29 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import comp3350.fitclub.R;
 import comp3350.fitclub.objects.Exercise;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
-    private final RecyclerViewInterface recyclerViewInterface;          // refrence to recyclerViewInterface
-    private Context context;                                            // context to use from
-    private ArrayList<Exercise> list;                                   // list of all exercise
+    private RecyclerViewInterface recyclerViewInterface;
+    private Context context;
+    private ArrayList<Exercise> list;
+    private ArrayList<Exercise> listFull;
 
-    //constructor
     CustomAdapter(Context context, ArrayList<Exercise> arr, RecyclerViewInterface recyclerViewInterface){
         RecyclerViewInterface recyclerViewInterface1;
         this.context = context;
         list = arr;
         this.recyclerViewInterface = recyclerViewInterface;
+
+        listFull = new ArrayList<>(list); // keep a list with full content of exercises
     }
 
-    // this method creates the view
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -39,7 +44,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         return viewHolder;
     }
 
-    //this method put in text from our data into layout
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
@@ -47,13 +51,68 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     }
 
-    // this method returns length/ size of list
     @Override
     public int getItemCount() {
         return list.size();
     }
 
-    // this method hold our view which we need to get reference to elements from the layout
+
+    public Filter getFilter()
+    {
+        return exerciseFilter;
+    }
+
+    private Filter exerciseFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            ArrayList<Exercise> filteredList = new ArrayList<>();
+
+            if(constraint == null || constraint.length() == 0)
+            {
+                filteredList.addAll(listFull);
+            }else
+            {
+                Map<String,Integer> difficultyMap = new HashMap<>(); //create a map with spinner ("Easy") to int difficulty (1)
+                difficultyMap.put("All",0);
+                difficultyMap.put("Easy",1);
+                difficultyMap.put("Medium",2);
+                difficultyMap.put("Hard",3);
+                int difficulty = difficultyMap.get(constraint.toString());
+
+                if(difficulty != 0)
+                {
+                    for(Exercise exercise : listFull)
+                    {
+                        if(exercise.getDifficulty() == difficulty)
+                        {
+                            filteredList.add(exercise);
+                        }
+                    }
+                }else
+                {
+                    filteredList.addAll(listFull);
+                }
+
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results)
+        {
+            list.clear();
+            list.addAll((Collection<? extends Exercise>) results.values);
+            notifyDataSetChanged();
+
+
+        }
+    };
+
+
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView exercise_name;
@@ -68,7 +127,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
 
 
-            // creating onClickListner for future use
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
