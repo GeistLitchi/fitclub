@@ -92,7 +92,7 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                //do nothing
+                //do nothing.
             }
         });
 
