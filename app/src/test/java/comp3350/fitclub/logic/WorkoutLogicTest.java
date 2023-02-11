@@ -38,4 +38,37 @@ public class WorkoutLogicTest {
 
         assertEquals(1, logicTest.calcDifficulty(w1));
     }
+
+    @Test
+    public void testSearchWorkoutType() {
+        //test correct number of Workouts identified by type
+
+        ArrayList<Workout> testArray = logicTest.searchWorkoutType("UPPER");
+        assertEquals(2, testArray.size());
+    }
+
+    @Test
+    public void testSearchWorkoutTypeReturn() {
+        //test correct number of workouts with String type that isn't same case
+
+        ArrayList<Workout> testArray = logicTest.searchWorkoutType("UPPER");
+
+        assertTrue(testArray.get(0).getType().equals("UPPER") && testArray.get(1).getType().equals("UPPER"));
+    }
+
+    @Test
+    public void testSearchWorkoutType2() {
+        //test correct number of workouts with String type that isn't same case
+
+        ArrayList<Workout> testArray = logicTest.searchWorkoutType("UpPeR");
+        assertEquals(2, testArray.size());
+    }
+
+    @Test
+    public void testSearchWorkoutType3() {
+        //test for type not in the database;
+
+        ArrayList<Workout> testArray = logicTest.searchWorkoutType("CORE");
+        assertEquals(0, testArray.size());
+    }
 }
