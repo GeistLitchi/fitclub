@@ -2,7 +2,7 @@ package comp3350.fitclub.objects;
 
 import java.util.ArrayList;
 
-public class Workout {
+public class Workout implements Comparable{
     /*--------- instance variables ------------*/
     private String name;    //name of the workout
     private String type;    //the type of workout
@@ -67,5 +67,17 @@ public class Workout {
         }
 
         return isEqual;
+    }
+
+    public int compareTo(Object other) {
+        int compare = 0;
+
+        if(other instanceof Workout) {
+            final Workout otherWorkout = (Workout) other;
+
+            compare = this.difficulty - otherWorkout.getDifficulty();
+        }
+
+        return compare;
     }
 }
