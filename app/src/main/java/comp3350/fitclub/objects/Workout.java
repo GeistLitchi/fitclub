@@ -45,6 +45,10 @@ public class Workout {
         return workoutExercises;
     }
 
+    public void addExercise(Exercise toAdd) {
+        workoutExercises.add(toAdd);
+    }
+
     public void setDifficulty(int newDifficulty) {
         this.difficulty = newDifficulty;
     }

@@ -62,7 +62,7 @@ public class WorkoutDataStub implements WorkoutData {
         } else if(workouts.size()-1 == 2) {
             toFill.addExercise(new Exercise("e7", "legs", 3));
             toFill.addExercise(new Exercise("e8", "legs", 3));
-            toFill.addExercise(new Exercise("e9", "legs", 2));
+            toFill.addExercise(new Exercise("e9", "legs", 3));
         } else {
             toFill.addExercise(new Exercise("e10", "legs", 3));
             toFill.addExercise(new Exercise("e11", "legs", 1));
