@@ -9,6 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +42,8 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
 
     ArrayList<Exercise> doing = null;
 
+    Spinner difficultySpinner;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +60,7 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
         recycleView = findViewById(R.id.recycleView);
         recycleView.setLayoutManager(new LinearLayoutManager(this));                        // layout manager
 
-        CustomAdapter ad;
+        CustomAdapter ad = null;
 
 
         if(workoutTitle != null){                                               //checking for either we clicked on find Workout
@@ -107,7 +113,24 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
             System.out.println("ad is null");
         }
 
+        //event of difficulty filter spinner
+        difficultySpinner = findViewById(R.id.difficultySpinner);
+        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.difficulty_levels, android.R.layout.simple_spinner_dropdown_item);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        difficultySpinner.setAdapter(spinnerAdapter);
+        CustomAdapter finalAd = ad;
+        difficultySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String difficulty = adapterView.getItemAtPosition(i).toString();
+                finalAd.getFilter().filter(difficulty);
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                //do nothing
+            }
+        });
 
     }
 

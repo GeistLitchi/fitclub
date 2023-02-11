@@ -4,4 +4,10 @@
     <string name="exercises">Exercises</string>
     <string name="exercises_page">Exercises page</string>
     <string name="sort_by_difficulty">Sort By Difficulty</string>
+    <string-array name="difficulty_levels">
+        <item>All</item>
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
 </resources>
