@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <application
         android:allowBackup="true"
@@ -10,16 +10,35 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fitclub"
-        tools:targetApi="31">
+        tools:targetApi="31" >
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".presentation.listView2"
+            android:exported="false"
+            android:label="Workout"
+            android:parentActivityName=".presentation.WorkoutPage" />
+        <activity
+            android:name=".presentation.WorkoutPage"
+            android:exported="false"
+            android:label="Find Workouts"
+            android:parentActivityName=".presentation.MainActivity" />
+        <activity
+            android:name=".presentation.MuscleGroupPage"
+            android:exported="false"
+            android:label="Find by Muscle Group"
+            android:parentActivityName=".presentation.MainActivity" />
+        <activity
+            android:name=".presentation.MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".presentation.ExercisesActivity"
+            android:label="Sort By Difficulty Page"
+            android:parentActivityName=".presentation.MainActivity" />
     </application>
 
 </manifest>
