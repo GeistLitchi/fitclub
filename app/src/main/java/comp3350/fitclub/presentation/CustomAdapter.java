@@ -17,10 +17,11 @@ import comp3350.fitclub.objects.Exercise;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
-    private final RecyclerViewInterface recyclerViewInterface;
-    private Context context;
-    private ArrayList<Exercise> list;
+    private final RecyclerViewInterface recyclerViewInterface;          // refrence to recyclerViewInterface
+    private Context context;                                            // context to use from
+    private ArrayList<Exercise> list;                                   // list of all exercise
 
+    //constructor
     CustomAdapter(Context context, ArrayList<Exercise> arr, RecyclerViewInterface recyclerViewInterface){
         RecyclerViewInterface recyclerViewInterface1;
         this.context = context;
@@ -28,6 +29,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         this.recyclerViewInterface = recyclerViewInterface;
     }
 
+    // this method creates the view
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -37,6 +39,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         return viewHolder;
     }
 
+    //this method put in text from our data into layout
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
@@ -44,11 +47,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     }
 
+    // this method returns length/ size of list
     @Override
     public int getItemCount() {
         return list.size();
     }
 
+    // this method hold our view which we need to get reference to elements from the layout
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView exercise_name;
@@ -63,7 +68,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
 
 
-
+            // creating onClickListner for future use
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

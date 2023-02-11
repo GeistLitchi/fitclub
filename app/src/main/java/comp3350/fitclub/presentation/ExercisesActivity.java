@@ -30,7 +30,7 @@ public class ExercisesActivity extends AppCompatActivity
         setContentView(R.layout.activity_exercises);
 
         difficultySortButton = findViewById(R.id.DifficultySortButton);
-        ExercisesData data = new ExercisesData();
+        ExercisesData data = new ExercisesData();                           //creating new Exercise data class variable
 
         exerciseData.getExercises().addAll(data.getExercises());
 

@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Fitclub"
         tools:targetApi="31" >
         <activity
-            android:name=".presentation.listView2"
+            android:name=".presentation.RecycleView"
             android:exported="false"
             android:label="Workout"
             android:parentActivityName=".presentation.WorkoutPage" />
