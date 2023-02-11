@@ -57,6 +57,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     }
 
 
+    //A filter of difficulty
     public Filter getFilter()
     {
         return exerciseFilter;
