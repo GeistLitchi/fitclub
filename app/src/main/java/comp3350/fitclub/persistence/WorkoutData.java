@@ -1,10 +1,10 @@
 package comp3350.fitclub.persistence;
 
 import comp3350.fitclub.objects.Workout;
-import java.util.ArrayList;
+import java.util.List;
 
 public interface WorkoutData {
-    ArrayList<Workout> getWorkoutMuscleGroup(String workoutType);
+    List<Workout> getWorkoutType(String workoutType);
 
     Workout insertWorkout(Workout current);
 

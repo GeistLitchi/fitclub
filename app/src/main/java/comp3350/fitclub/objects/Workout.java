@@ -17,11 +17,11 @@ public class Workout {
         difficulty = 0;
     }
 
-    public Workout(String name, String type, int difficulty) {
+    public Workout(String name, String type) {
         workoutExercises = new ArrayList<Exercise>();
         this.name = name;
         this.type = type;
-        this.difficulty = difficulty;
+        difficulty = 0;
     }
 
     /*---------- instance methods ------------*/
@@ -39,6 +39,14 @@ public class Workout {
 
     public int getSize() {
         return workoutExercises.size();
+    }
+
+    public ArrayList<Exercise> getWorkoutExercises() {
+        return workoutExercises;
+    }
+
+    public void setDifficulty(int newDifficulty) {
+        this.difficulty = newDifficulty;
     }
 
     public String toString() {
