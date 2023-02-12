@@ -26,7 +26,7 @@ public class ExerciseTest
 
 
 
-        System.out.println("\nFinished testCourse");
+        System.out.println("\nFinished testExercise");
     }
 
 }
