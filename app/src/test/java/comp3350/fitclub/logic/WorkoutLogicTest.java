@@ -71,4 +71,22 @@ public class WorkoutLogicTest {
         ArrayList<Workout> testArray = logicTest.searchWorkoutType("CORE");
         assertEquals(0, testArray.size());
     }
+
+    @Test
+    public void testSearchWorkoutDifficulty() {
+        ArrayList<Workout> testArray = logicTest.searchByDifficulty(2);
+
+        assertEquals(2, testArray.size());
+
+        testArray = logicTest.searchByDifficulty(3);
+        assertEquals(1, testArray.size());
+    }
+
+    @Test
+    public void testSortByDifficulty() {
+        ArrayList<Workout> testArray = logicTest.sortByDifficulty();
+
+        assertEquals(3, testArray.get(0).getDifficulty());
+        assertEquals(1, testArray.get(3).getDifficulty());
+    }
 }

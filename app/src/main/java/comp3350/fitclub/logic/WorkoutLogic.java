@@ -1,5 +1,7 @@
 package comp3350.fitclub.logic;
 
+import androidx.annotation.NonNull;
+
 import comp3350.fitclub.objects.Workout;
 import comp3350.fitclub.objects.Exercise;
 import comp3350.fitclub.persistence.stubs.WorkoutDataStub;
@@ -26,6 +28,9 @@ public class WorkoutLogic {
                 difficulty += currentExercises.get(i).getDifficulty();
             }
             difficulty /= current.getSize();
+        }
+        if(difficulty != current.getDifficulty()) {
+            callWorkoutUpdate(current, difficulty);
         }
 
         return difficulty;
@@ -76,5 +81,10 @@ public class WorkoutLogic {
         Collections.sort(workouts);
 
         return workouts;
+    }
+
+    private void callWorkoutUpdate(@NonNull Workout toUpdate, int newDifficulty) {
+        toUpdate.setDifficulty(newDifficulty);
+        workoutDB.updateWorkout(toUpdate);
     }
 }

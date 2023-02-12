@@ -40,8 +40,14 @@ public class WorkoutDataStub implements WorkoutData {
 
     @Override
     public Workout updateWorkout(Workout current) {
+        int index;
+        index = workouts.indexOf(current);
+        if (index >= 0)
+        {
+            workouts.set(index, current);
+        }
 
-        return null;
+        return current;
     }
 
     @Override
@@ -55,18 +61,22 @@ public class WorkoutDataStub implements WorkoutData {
             toFill.addExercise(new Exercise("e1", "arms", 2));
             toFill.addExercise(new Exercise("e2", "arms", 2));
             toFill.addExercise(new Exercise("e3", "arms", 2));
+            toFill.setDifficulty(2);
         } else if(workouts.size()-1 == 1) {
             toFill.addExercise(new Exercise("e4", "back", 1));
             toFill.addExercise(new Exercise("e5", "back", 2));
             toFill.addExercise(new Exercise("e6", "back", 3));
+            toFill.setDifficulty(2);
         } else if(workouts.size()-1 == 2) {
             toFill.addExercise(new Exercise("e7", "legs", 3));
             toFill.addExercise(new Exercise("e8", "legs", 3));
             toFill.addExercise(new Exercise("e9", "legs", 3));
+            toFill.setDifficulty(3);
         } else {
             toFill.addExercise(new Exercise("e10", "legs", 3));
             toFill.addExercise(new Exercise("e11", "legs", 1));
             toFill.addExercise(new Exercise("e12", "legs", 1));
+            toFill.setDifficulty(1);
         }
     }
 }

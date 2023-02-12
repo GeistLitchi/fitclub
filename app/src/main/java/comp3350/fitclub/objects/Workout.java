@@ -75,7 +75,7 @@ public class Workout implements Comparable{
         if(other instanceof Workout) {
             final Workout otherWorkout = (Workout) other;
 
-            compare = this.difficulty - otherWorkout.getDifficulty();
+            compare = otherWorkout.getDifficulty() - this.difficulty;
         }
 
         return compare;
