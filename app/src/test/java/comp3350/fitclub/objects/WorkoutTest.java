@@ -47,6 +47,6 @@ public class WorkoutTest {
         assertEquals(0, w1.compareTo(w2));
 
         w2.setDifficulty(2);
-        assertEquals(1, w1.compareTo(w2));
+        assertEquals(-1, w1.compareTo(w2));
     }
 }
