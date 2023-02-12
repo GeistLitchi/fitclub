@@ -119,6 +119,13 @@ public class ExerciseList
         Collections.sort(exercises,new DifficultyLevelComparator());
     }
 
+    /*
+    Used for testing
+     */
+    public void clearList() {
+        exercises.clear();
+    }
+
     private static class DifficultyLevelComparator implements Comparator<Exercise> {
         @Override
         public int compare(Exercise exercise1, Exercise exercise2) {
