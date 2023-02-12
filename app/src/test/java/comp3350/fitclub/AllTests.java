@@ -4,7 +4,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 import comp3350.fitclub.objects.ExerciseTest;
-import comp3350.fitclub.logic.ExerciseListTest;
+import comp3350.fitclub.logic.ExerciseLogicTest;
 import comp3350.fitclub.objects.ExerciseTutorialTest;
 
 @RunWith(Suite.class)
@@ -12,7 +12,7 @@ import comp3350.fitclub.objects.ExerciseTutorialTest;
         {
                 ExerciseTest.class,
                 ExerciseTutorialTest.class,
-                ExerciseListTest.class
+                ExerciseLogicTest.class
         })
 public class AllTests {
 }

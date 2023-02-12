@@ -7,7 +7,6 @@ import java.util.Comparator;
 
 import comp3350.fitclub.application.InitializePersistence;
 import comp3350.fitclub.objects.Exercise;
-import comp3350.fitclub.persistence.ExerciseTutorialPersistence;
 import comp3350.fitclub.persistence.ExercisesPersistence;
 
 /**
@@ -15,12 +14,12 @@ import comp3350.fitclub.persistence.ExercisesPersistence;
  * contains an ArrayList called exercises.
  * this class provides search and sort by difficulty functions
  */
-public class ExerciseList
+public class ExerciseLogic
 {
     private final List<Exercise> exercises;
     private ExercisesPersistence exercisesPersistence;
 
-    public ExerciseList()
+    public ExerciseLogic()
     {
         exercisesPersistence = InitializePersistence.getExercisesPersistence();
         exercises = exercisesPersistence.getExercises();
