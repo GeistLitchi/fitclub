@@ -43,7 +43,7 @@ public class ExerciseTutorial {
     {
         if (body == null) {
             return "The instructions for this exercise will be coming in a future release." +
-                    "Please check one of the back exercises to view an exercise that has instructions.";
+                    "Please check the deadlift tutorial to view an exercise that has instructions.";
         }
         return (body);
     }

@@ -19,9 +19,9 @@ public class MuscleGroupPage extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_muscle_group_page);
 
         //colleting all the button in java file
-        Button btn_1 = findViewById(R.id.bicep_btn);
+        Button btn_1 = findViewById(R.id.arms_btn);
         Button btn_2 = findViewById(R.id.legs_btn);
-        Button btn_3 = findViewById(R.id.abs_btn);
+        Button btn_3 = findViewById(R.id.core_btn);
         Button btn_4 = findViewById(R.id.back_btn);
         Button btn_5 = findViewById(R.id.chest_btn);
         Button btn_6 = findViewById(R.id.shoulder_btn);
@@ -43,16 +43,16 @@ public class MuscleGroupPage extends AppCompatActivity implements View.OnClickLi
         Button buttonClicked;                   // to store id of the button you clicked
         Intent intent = new Intent(this, RecycleView.class);
         switch(view.getId()){
-            case R.id.bicep_btn:
-                buttonClicked = findViewById(R.id.bicep_btn);
+            case R.id.arms_btn:
+                buttonClicked = findViewById(R.id.arms_btn);
                 muscleName = buttonClicked.getText().toString();                            //getting the name of the text stored in buttonClicked
                 break;
             case R.id.legs_btn:
                 buttonClicked = findViewById(R.id.legs_btn);
                 muscleName = buttonClicked.getText().toString();                            //getting the name of the text stored in buttonClicked
                 break;
-            case R.id.abs_btn:
-                buttonClicked = findViewById(R.id.abs_btn);
+            case R.id.core_btn:
+                buttonClicked = findViewById(R.id.core_btn);
                 muscleName = buttonClicked.getText().toString();                            //getting the name of the text stored in buttonClicked
                 break;
             case R.id.back_btn:

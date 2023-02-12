@@ -5,20 +5,18 @@ import java.util.Collections;
 import java.util.List;
 
 import comp3350.fitclub.objects.Exercise;
-import comp3350.fitclub.persistence.STUBdatabase;
 
 import comp3350.fitclub.objects.ExerciseTutorial;
 import comp3350.fitclub.logic.ExerciseList;
-import comp3350.fitclub.persistence.ExerciseTutorialPersistence;
 
 public class ExerciseTutorialStub implements ExerciseTutorialPersistence {
 
-    private STUBdatabase stubDatabase; //this will be used so we can iterate over all the exercises and add them
+    private ExercisesPersistence exerciseDB; //this will be used so we can iterate over all the exercises and add them
     private List<ExerciseTutorial> tutorials;
 
     public ExerciseTutorialStub() {
         tutorials = new ArrayList<ExerciseTutorial>();
-        stubDatabase = new STUBdatabase();
+        exerciseDB = new ExercisesData();
 
         /*
         Manually adding the back exercises so we have an idea of what the pages will look like when the
@@ -34,32 +32,9 @@ public class ExerciseTutorialStub implements ExerciseTutorialPersistence {
                         "Lower the weight by performing the steps above in reverse order.",
                 "https://exrx.net/WeightExercises/ErectorSpinae/BBDeadlift"));
 
+        List<Exercise> list = exerciseDB.getExercises();
 
-        tutorials.add(new ExerciseTutorial("incline dumbell row"));
-        tutorials.add(new ExerciseTutorial("back extention"));
-        tutorials.add(new ExerciseTutorial("reverse fly"));
-        tutorials.add(new ExerciseTutorial("superman"));
-
-        ExerciseList list = stubDatabase.getAbs_exe();
-        addExercisesFromList(list.getExercises());
-
-        list = stubDatabase.getBiceps_exe();
-        addExercisesFromList(list.getExercises());
-
-        list = stubDatabase.getChest_exe();
-        addExercisesFromList(list.getExercises());
-
-        list = stubDatabase.getLegs_exe();
-        addExercisesFromList(list.getExercises());
-
-        list = stubDatabase.getShoulder_exe();
-        addExercisesFromList(list.getExercises());
-
-        list = stubDatabase.getLowerbody_workout();
-        addExercisesFromList(list.getExercises());
-
-        list = stubDatabase.getUpperbody_workout();
-        addExercisesFromList(list.getExercises());
+        addExercisesFromList(list);
     }
 
     /*
@@ -80,9 +55,11 @@ public class ExerciseTutorialStub implements ExerciseTutorialPersistence {
     }
 
     //helper function for stub
-    private void addExercisesFromList(ArrayList<Exercise> toAdd) {
+    private void addExercisesFromList(List<Exercise> toAdd) {
         for (int i=0; i<toAdd.size(); i++) {
-            tutorials.add(new ExerciseTutorial(toAdd.get(i).getExerciseName()));
+            if (!toAdd.get(i).getExerciseName().equalsIgnoreCase("Deadlift")) { //manual override for now so our custom deadlift tutorial shows
+                tutorials.add(new ExerciseTutorial(toAdd.get(i).getExerciseName()));
+            }
         }
     }
 }
