@@ -1,12 +1,12 @@
-package comp3350.fitclub.persistence.stubs;
+package comp3350.fitclub.persistence;
 
 import java.util.ArrayList;
 
 import comp3350.fitclub.objects.Workout;
 import comp3350.fitclub.objects.Exercise;
-import comp3350.fitclub.persistence.WorkoutData;
+import comp3350.fitclub.persistence.WorkoutPersistence;
 
-public class WorkoutDataStub implements WorkoutData {
+public class WorkoutDataStub implements WorkoutPersistence {
 
     private ArrayList<Workout> workouts;
 

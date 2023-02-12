@@ -2,7 +2,7 @@ package comp3350.fitclub.logic;
 
 import comp3350.fitclub.objects.Workout;
 import comp3350.fitclub.objects.Exercise;
-import comp3350.fitclub.persistence.stubs.WorkoutDataStub;
+import comp3350.fitclub.persistence.WorkoutDataStub;
 import java.util.ArrayList;
 import java.util.Collections;
 
