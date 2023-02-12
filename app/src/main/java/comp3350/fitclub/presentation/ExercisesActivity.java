@@ -16,7 +16,6 @@ import java.util.List;
 import comp3350.fitclub.R;
 import comp3350.fitclub.logic.ExerciseList;
 import comp3350.fitclub.objects.Exercise;
-import comp3350.fitclub.persistence.ExercisesData;
 
 public class ExercisesActivity extends AppCompatActivity
 {
@@ -30,9 +29,6 @@ public class ExercisesActivity extends AppCompatActivity
         setContentView(R.layout.activity_exercises);
 
         difficultySortButton = findViewById(R.id.DifficultySortButton);
-        ExercisesData data = new ExercisesData();                           //creating new Exercise data class variable
-
-        exerciseData.getExercises().addAll(data.getExercises());
 
         adapter = new ArrayAdapter<Exercise>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, exerciseData.getExercises())
         {
