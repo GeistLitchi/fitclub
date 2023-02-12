@@ -10,18 +10,15 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import comp3350.fitclub.R;
-import comp3350.fitclub.logic.ExerciseList;
+import comp3350.fitclub.logic.ExerciseLogic;
 import comp3350.fitclub.objects.Exercise;
 
 public class ExercisesActivity extends AppCompatActivity
 {
     ListView listView;
     ArrayAdapter<Exercise> adapter;
-    ExerciseList exerciseData = new ExerciseList();
+    ExerciseLogic exerciseData = new ExerciseLogic();
     Button difficultySortButton;
 
     protected void onCreate(Bundle savedInstanceState) {

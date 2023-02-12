@@ -3,17 +3,17 @@ package comp3350.fitclub.logic;
 import org.junit.Test;
 
 import comp3350.fitclub.objects.Exercise;
-import comp3350.fitclub.logic.ExerciseList;
+
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
-public class ExerciseListTest
+public class ExerciseLogicTest
 {
     @Test
     public void testExerciseList()
     {
-        ExerciseList l1;
+        ExerciseLogic l1;
 
         System.out.println("\nStarting testExerciseList");
 
@@ -21,7 +21,7 @@ public class ExerciseListTest
         Exercise e2 = new Exercise("squat","leg", 1,"Description of squat");
         Exercise e3 = new Exercise("plank","core",3,"Description of plank");
 
-        l1 = new ExerciseList();
+        l1 = new ExerciseLogic();
         l1.clearList();
         l1.addExercise(e1);
         l1.addExercise(e2);
@@ -38,11 +38,11 @@ public class ExerciseListTest
     @Test
     public void testExerciseListSort()
     {
-        ExerciseList list;
+        ExerciseLogic list;
         Exercise e1 = new Exercise("deadlift","back",2, "Deadlift is a weight training exercise that mainly uses the back muscles\ncan be performed using dumbbells, barbells, or kettlebells with one hand or two hands");
         Exercise e2 = new Exercise("squat","leg", 1,"Description of squat");
         Exercise e3 = new Exercise("plank","core",3,"Description of plank");
-        list = new ExerciseList();
+        list = new ExerciseLogic();
         list.clearList();
         list.addExercise(e1);
         list.addExercise(e2);
@@ -79,14 +79,14 @@ public class ExerciseListTest
     @Test
     public void testExerciseListSearch()
     {
-        ExerciseList list;
+        ExerciseLogic list;
         Exercise e1 = new Exercise("deadlift","back",2, "Deadlift is a weight training exercise that mainly uses the back muscles\ncan be performed using dumbbells, barbells, or kettlebells with one hand or two hands");
         Exercise e2 = new Exercise("squat","leg", 1,"Description of squat");
         Exercise e3 = new Exercise("plank","core",3,"Description of plank");
         Exercise e4 = new Exercise("dumbbell curls","arm",1,"Description of dumbbell curl");
         Exercise e5 = new Exercise("dumbbell lateral raises", "shoulder",2, "Description of dumbbell lateral raises");
 
-        list = new ExerciseList();
+        list = new ExerciseLogic();
         list.clearList();
         list.addExercise(e1);
         list.addExercise(e2);

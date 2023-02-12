@@ -1,13 +1,11 @@
 package comp3350.fitclub.persistence;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import comp3350.fitclub.objects.Exercise;
 
 import comp3350.fitclub.objects.ExerciseTutorial;
-import comp3350.fitclub.logic.ExerciseList;
 
 public class ExerciseTutorialStub implements ExerciseTutorialPersistence {
 
@@ -16,7 +14,7 @@ public class ExerciseTutorialStub implements ExerciseTutorialPersistence {
 
     public ExerciseTutorialStub() {
         tutorials = new ArrayList<ExerciseTutorial>();
-        exerciseDB = new ExercisesData();
+        exerciseDB = new ExercisesDataStub();
 
         /*
         Manually adding the back exercises so we have an idea of what the pages will look like when the
