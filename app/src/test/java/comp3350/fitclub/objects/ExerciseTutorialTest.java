@@ -18,7 +18,7 @@ public class ExerciseTutorialTest
 
         assertNotNull(exerciseTutorial);
         assertEquals("Deadlift", exerciseTutorial.getExerciseName());
-        assertEquals("his is how you deadlift",exerciseTutorial.getBody());
+        assertEquals("This is how you deadlift",exerciseTutorial.getBody());
         assertEquals("https://exrx.net/WeightExercises/ErectorSpinae/BBDeadlift",exerciseTutorial.getLink());
 
         System.out.println("\nFinished testExerciseTutorialAllParameters");
