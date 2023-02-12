@@ -1,7 +1,7 @@
 package comp3350.fitclub.application;
 
 import comp3350.fitclub.persistence.ExercisesPersistence;
-import comp3350.fitclub.persistence.ExercisesData;
+import comp3350.fitclub.persistence.ExercisesDataStub;
 import comp3350.fitclub.persistence.ExerciseTutorialPersistence;
 import comp3350.fitclub.persistence.ExerciseTutorialStub;
 import comp3350.fitclub.persistence.WorkoutPersistence;
@@ -23,7 +23,7 @@ public class InitializePersistence {
 
     public static synchronized ExercisesPersistence getExercisesPersistence() {
         if (exercisesPersistence == null) {
-            exercisesPersistence = new ExercisesData();
+            exercisesPersistence = new ExercisesDataStub();
         }
 
         return exercisesPersistence;

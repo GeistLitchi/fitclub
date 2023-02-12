@@ -16,14 +16,14 @@ import java.util.Collections;
 import java.util.Objects;
 
 import comp3350.fitclub.R;
-import comp3350.fitclub.logic.ExerciseList;
+import comp3350.fitclub.logic.ExerciseLogic;
 import comp3350.fitclub.objects.Exercise;
 
 public class RecycleView extends AppCompatActivity implements RecyclerViewInterface {
 
     TextView textView;
     RecyclerView recycleView;
-    private final ExerciseList exercises = new ExerciseList();
+    private final ExerciseLogic exercises = new ExerciseLogic();
 
     ArrayList<Exercise> doing = null;
 
