@@ -7,22 +7,23 @@ classDiagram
     Data Model -- Persistence
     Data Model : Exercise
     Data Model : Workout
-    Data Model : Tutorial
+    Data Model : ExerciseTutorial
     class Presentation{
-      MainMenuView
-      ChooseWorkoutView
-      CreateWorkoutView
-      TutorialView
+      MainActivity
+      MuscleGroupPage
+      ExercisesActivity
+      ExerciseTutorialActivity
+      WorkoutPage
     }
     class Logic{
       WorkoutLogic
       ExerciseLogic
-      TutorialLogic
+      ExerciseTutorialLogic
     }
     class Persistence{
-      WorkoutData
-      ExerciseData
-      TutorialData
+      WorkoutPersistence
+      ExercisePersistence
+      ExerciseTutorialPersistence
     }
 
     Logic <--> Persistence
