@@ -16,6 +16,7 @@ public class WorkoutLogicTest {
     @Test
     public void testCalcDifficultyEven() {
         //Test for easy divisible number
+        System.out.println("Beginning Workout Logic Tests...");
         Workout w1 = new Workout("Test", "UPPER");
         ArrayList<Exercise> list = w1.getWorkoutExercises();
 
@@ -88,5 +89,6 @@ public class WorkoutLogicTest {
 
         assertEquals(3, testArray.get(0).getDifficulty());
         assertEquals(1, testArray.get(3).getDifficulty());
+        System.out.println("Workout Logic Tests complete.");
     }
 }
