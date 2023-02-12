@@ -50,6 +50,9 @@ public class ExerciseTutorial {
 
     public String getLink()
     {
+        if (link == null) {
+            return "https://exrx.net/Lists/Directory"; //if no link is set, take them to the homepage
+        }
         return (link);
     }
 
