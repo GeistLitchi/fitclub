@@ -55,7 +55,7 @@ public class ExercisesData implements ExercisesPersistence
     @Override
     public List<Exercise> getExercises()
     {
-        return Collections.unmodifiableList(exercises);
+        return exercises;
     }
 
     @Override

@@ -24,6 +24,7 @@ public class ExerciseTutorialTest
         System.out.println("\nFinished testExerciseTutorialAllParameters");
     }
 
+    //Check that other 2 parameters get defaulted correctly
     @Test
     public void testExerciseTutorialJustNameParameter()
     {
@@ -35,10 +36,10 @@ public class ExerciseTutorialTest
 
         assertNotNull(exerciseTutorial);
         assertEquals("Deadlift", exerciseTutorial.getExerciseName());
-        assertEquals("The instructions for this exercise will be coming in a future release." +
-                "Please check one of the back exercises to view an exercise that has instructions.",
+        assertEquals("The instructions for this exercise will be coming in a future release. " +
+                        "Please check the deadlift tutorial to view an exercise that has instructions.",
                 exerciseTutorial.getBody());
-        assertEquals(null,exerciseTutorial.getLink());
+        assertEquals("https://exrx.net/Lists/Directory",exerciseTutorial.getLink());
 
         System.out.println("\nFinished testExerciseTutorialJustNameParameter");
     }
