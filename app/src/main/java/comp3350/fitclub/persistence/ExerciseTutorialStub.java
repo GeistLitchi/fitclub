@@ -79,6 +79,7 @@ public class ExerciseTutorialStub implements ExerciseTutorialPersistence {
         return result;
     }
 
+    //helper function for stub
     private void addExercisesFromList(ArrayList<Exercise> toAdd) {
         for (int i=0; i<toAdd.size(); i++) {
             tutorials.add(new ExerciseTutorial(toAdd.get(i).getExerciseName()));
