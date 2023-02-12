@@ -7,15 +7,15 @@
     tools:context=".presentation.MuscleGroupPage">
 
     <Button
-        android:id="@+id/bicep_btn"
+        android:id="@+id/arms_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="64dp"
         android:layout_marginTop="163dp"
         android:layout_marginEnd="61dp"
         android:layout_marginBottom="50dp"
-        android:text="BICEPS"
-        app:layout_constraintBottom_toTopOf="@+id/abs_btn"
+        android:text="ARMS"
+        app:layout_constraintBottom_toTopOf="@+id/core_btn"
         app:layout_constraintEnd_toStartOf="@+id/legs_btn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,22 +31,22 @@
         android:text="LEGS"
         app:layout_constraintBottom_toTopOf="@+id/back_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/bicep_btn"
+        app:layout_constraintStart_toEndOf="@+id/arms_btn"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/abs_btn"
+        android:id="@+id/core_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="64dp"
         android:layout_marginEnd="61dp"
         android:layout_marginBottom="65dp"
         android:onClick="openActivity"
-        android:text="ABS"
+        android:text="CORE"
         app:layout_constraintBottom_toTopOf="@+id/chest_btn"
         app:layout_constraintEnd_toStartOf="@+id/back_btn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bicep_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/arms_btn" />
 
     <Button
         android:id="@+id/back_btn"
@@ -58,7 +58,7 @@
         android:text="BACK"
         app:layout_constraintBottom_toTopOf="@+id/shoulder_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/abs_btn"
+        app:layout_constraintStart_toEndOf="@+id/core_btn"
         app:layout_constraintTop_toBottomOf="@+id/legs_btn" />
 
     <Button
@@ -86,6 +86,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/shoulder_btn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/abs_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/core_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -116,12 +116,22 @@ public class ExerciseListTest
         assertEquals(2,searchResult1.size());
         System.out.println(searchResult1.toString());
 
-        //search "pizza" and difficulty 9
+        //search muscle group back
+        //1 exercise should be found
+        searchResult1 = list.searchExerciseByMuscleGroup("back");
+        assertNotNull(searchResult1);
+        assertEquals(1,searchResult1.size());
+        System.out.println(searchResult1.toString());
+
+        //search "pizza", difficulty 9 and feet
         //there is no result expected
         searchResult1 = list.searchExercise("pizza");
         assertNotNull(searchResult1);
         assertEquals(0,searchResult1.size());
         searchResult1 = list.searchExerciseByDifficulty(9);
+        assertNotNull(searchResult1);
+        assertEquals(0,searchResult1.size());
+        searchResult1 = list.searchExerciseByMuscleGroup("feet");
         assertNotNull(searchResult1);
         assertEquals(0,searchResult1.size());
 

@@ -1,10 +1,14 @@
 package comp3350.fitclub.logic;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import comp3350.fitclub.application.InitializePersistence;
 import comp3350.fitclub.objects.Exercise;
+import comp3350.fitclub.persistence.ExerciseTutorialPersistence;
+import comp3350.fitclub.persistence.ExercisesPersistence;
 
 /**
  * ExerciseList class
@@ -13,14 +17,16 @@ import comp3350.fitclub.objects.Exercise;
  */
 public class ExerciseList
 {
-    private final ArrayList<Exercise> exercises;
+    private final List<Exercise> exercises;
+    private ExercisesPersistence exercisesPersistence;
 
     public ExerciseList()
     {
-        exercises = new ArrayList<>();
+        exercisesPersistence = InitializePersistence.getExercisesPersistence();
+        exercises = exercisesPersistence.getExercises();
     }
 
-    public ArrayList<Exercise> getExercises()
+    public List<Exercise> getExercises()
     {
         return exercises;
     }
@@ -57,6 +63,37 @@ public class ExerciseList
         {
             if(exercise.getDifficulty() == difficultyLevel)
                 result.add(exercise);
+        }
+        return result;
+    }
+
+    //Search for exercises by muscle group
+    public ArrayList<Exercise> searchExerciseByMuscleGroup(String muscleGroup)
+    {
+        ArrayList<Exercise> result = new ArrayList<>();
+        for(Exercise exercise : exercises)
+        {
+            if(exercise.getBodyPart().equalsIgnoreCase( muscleGroup))
+                result.add(exercise);
+        }
+        return result;
+    }
+
+    //This will search for exercises by upper or lower body
+    public ArrayList<Exercise> searchExerciseByBodyGroup(String bodyGroup) {
+        String[] validStrings;
+
+        if (bodyGroup.equalsIgnoreCase("upper body")) {
+            validStrings = new String[] {"Arms", "Chest", "Back", "Shoulders"};
+        } else if (bodyGroup.equalsIgnoreCase("lower body")) {
+            validStrings = new String[] {"Legs", "Core"};
+        } else {
+            validStrings = new String[] {};
+        }
+
+        ArrayList<Exercise> result = new ArrayList<>();
+        for (String group : validStrings) {
+            result.addAll(searchExerciseByMuscleGroup(group));
         }
         return result;
     }
