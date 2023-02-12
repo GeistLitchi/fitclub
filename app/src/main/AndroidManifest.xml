@@ -15,7 +15,7 @@
             android:name=".presentation.ExerciseTutorialActivity"
             android:exported="false"
             android:label="View Tutorial"
-            android:parentActivityName=".presentation.RecycleView" />
+            android:parentActivityName=".presentation.WorkoutPage" />
         <activity
             android:name=".presentation.RecycleView"
             android:exported="false"

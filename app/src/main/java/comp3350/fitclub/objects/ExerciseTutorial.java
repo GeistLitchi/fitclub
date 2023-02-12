@@ -42,8 +42,8 @@ public class ExerciseTutorial {
     public String getBody()
     {
         if (body == null) {
-            return "The instructions for this exercise has not been added yet. Please check one of " +
-                    "the back exercises to view an exercise that has instructions added.";
+            return "The instructions for this exercise will be coming in a future release." +
+                    "Please check one of the back exercises to view an exercise that has instructions.";
         }
         return (body);
     }
