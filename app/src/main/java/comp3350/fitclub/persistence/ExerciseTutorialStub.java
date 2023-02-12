@@ -14,7 +14,7 @@ public class ExerciseTutorialStub implements ExerciseTutorialPersistence {
 
     public ExerciseTutorialStub() {
         tutorials = new ArrayList<ExerciseTutorial>();
-        exerciseDB = new ExercisesData();
+        exerciseDB = new ExercisesDataStub();
 
         /*
         Manually adding the back exercises so we have an idea of what the pages will look like when the

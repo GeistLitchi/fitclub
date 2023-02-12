@@ -1,16 +1,15 @@
 package comp3350.fitclub.persistence;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import comp3350.fitclub.objects.Exercise;
 
-public class ExercisesData implements ExercisesPersistence
+public class ExercisesDataStub implements ExercisesPersistence
 {
     private List<Exercise> exercises;
 
-    public ExercisesData()
+    public ExercisesDataStub()
     {
         this.exercises =new ArrayList<>();
         exercises.add(new Exercise("Deadlift","back",3, "Deadlift is a weight training exercise that mainly uses the back muscles\ncan be performed using dumbbells, barbells, or kettlebells with one hand or two hands"));
