@@ -137,8 +137,9 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
     @Override
     public void onItemClick(int position) {
 
-        Toast.makeText(this, doing.get(position).getExerciseName(), Toast.LENGTH_SHORT).show();
-
+        Intent intent = new Intent(this, ExerciseTutorialActivity.class);
+        intent.putExtra("exerciseName", doing.get(position).getExerciseName() );
+        startActivity(intent);
     }
 }
 

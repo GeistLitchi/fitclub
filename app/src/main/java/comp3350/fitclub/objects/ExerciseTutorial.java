@@ -12,7 +12,7 @@ public class ExerciseTutorial {
     this will be the meat of the tutorial. A text tutorial (Likely a paragraph or 2) on how to
     perform the exercise
      */
-    private final String description;
+    private final String body;
 
     /*
     If more information is needed, this will be a link to a webpage with a more detailed description,
@@ -23,14 +23,14 @@ public class ExerciseTutorial {
     public ExerciseTutorial(final String newExerciseName)
     {
         exerciseName = newExerciseName;
-        description = null;
+        body = null;
         link = null;
     }
 
-    public ExerciseTutorial(final String newExerciseName, final String newDescription, final String newLink)
+    public ExerciseTutorial(final String newExerciseName, final String newBody, final String newLink)
     {
         exerciseName = newExerciseName;
-        description = newDescription;
+        body = newBody;
         link = newLink;
     }
 
@@ -39,9 +39,13 @@ public class ExerciseTutorial {
         return (exerciseName);
     }
 
-    public String getDescription()
+    public String getBody()
     {
-        return (description);
+        if (body == null) {
+            return "The instructions for this exercise has not been added yet. Please check one of " +
+                    "the back exercises to view an exercise that has instructions added.";
+        }
+        return (body);
     }
 
     public String getLink()
