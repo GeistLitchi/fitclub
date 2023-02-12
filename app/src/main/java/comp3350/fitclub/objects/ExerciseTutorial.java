@@ -42,7 +42,7 @@ public class ExerciseTutorial {
     public String getBody()
     {
         if (body == null) {
-            return "The instructions for this exercise will be coming in a future release." +
+            return "The instructions for this exercise will be coming in a future release. " +
                     "Please check the deadlift tutorial to view an exercise that has instructions.";
         }
         return (body);
