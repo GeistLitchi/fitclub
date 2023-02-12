@@ -5,11 +5,13 @@ import org.junit.runners.Suite;
 
 import comp3350.fitclub.objects.ExerciseTest;
 import comp3350.fitclub.logic.ExerciseListTest;
+import comp3350.fitclub.objects.ExerciseTutorialTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses(
         {
                 ExerciseTest.class,
+                ExerciseTutorialTest.class,
                 ExerciseListTest.class
         })
 public class AllTests {
