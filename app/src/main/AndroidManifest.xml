@@ -12,6 +12,11 @@
         android:theme="@style/Theme.Fitclub"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.CustomizableRecyclerView"
+            android:exported="false"
+            android:label="CustomWorkout"
+            android:parentActivityName=".presentation.WorkoutPage" />
+        <activity
             android:name=".presentation.ExerciseTutorialActivity"
             android:exported="false"
             android:label="View Tutorial"

@@ -21,9 +21,11 @@ public class WorkoutPage extends AppCompatActivity implements View.OnClickListen
 
         Button btn_upper = findViewById(R.id.upper_body);
         Button btn_lower = findViewById(R.id.lower_body);
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button btn_custom_1 = findViewById(R.id.custom_workout);
 
         btn_upper.setOnClickListener(this);
         btn_lower.setOnClickListener(this);
+        btn_custom_1.setOnClickListener(this);
     }
 
     // this method overrides the onClick method
@@ -32,15 +34,26 @@ public class WorkoutPage extends AppCompatActivity implements View.OnClickListen
     public void onClick(View view) {
         String workoutName;
         Button btnClicked;
-        Intent intent = new Intent(this, RecycleView.class);    // where we want to go from this activity
+        //Intent intent = new Intent(this, RecycleView.class);    // where we want to go from this activity
+        Intent intent;
 
         switch (view.getId()){
             case R.id.upper_body:
+                intent = new Intent(this, RecycleView.class);
+
                 btnClicked = findViewById(R.id.upper_body);
                 workoutName = btnClicked.getText().toString();                  //getting string from that button
                 break;
             case R.id.lower_body:
+                intent = new Intent(this, RecycleView.class);
+
                 btnClicked = findViewById(R.id.lower_body);
+                workoutName = btnClicked.getText().toString();                  // getting string from that button
+                break;
+            case R.id.custom_workout:
+                intent = new Intent(this, CustomizableRecyclerView.class);
+
+                btnClicked = findViewById(R.id.custom_workout);
                 workoutName = btnClicked.getText().toString();                  // getting string from that button
                 break;
             default:

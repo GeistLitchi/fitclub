@@ -58,6 +58,7 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
             doing = exercises.searchExerciseByMuscleGroup(muscleGroupTitle);    //this will return the exercises for a given muscle group
 
         }
+
         if (doing != null){
             ad = new CustomAdapter(this, doing, this);                 //creating new customAdapter
             recycleView.setAdapter(ad);                                                         //setting that adapter for recycler view

@@ -25,6 +25,10 @@ public class WorkoutDataStub implements WorkoutPersistence {
 
         workouts.add(new Workout("LOWER BODY 2", "LOWER"));
         fillWorkout(workouts.get(workouts.size()-1));
+
+        //for custom workout test
+        workouts.add(new Workout("CUSTOM WORKOUT", "CUSTOM"));
+        fillWorkout(workouts.get(workouts.size()-1));
     }
 
     @Override //'query the DB' of workouts by type
