@@ -27,6 +27,11 @@
             android:label="Find Workouts"
             android:parentActivityName=".presentation.MainActivity" />
         <activity
+            android:name=".presentation.WorkoutActivity"
+            android:exported="false"
+            android:label="Workouts"
+            android:parentActivityName=".presentation.WorkoutPage"/>
+        <activity
             android:name=".presentation.MuscleGroupPage"
             android:exported="false"
             android:label="Find by Muscle Group"
