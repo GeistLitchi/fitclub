@@ -12,9 +12,15 @@ import java.util.Collections;
 
 public class WorkoutLogic {
     private WorkoutPersistence workoutDB;
+    private ArrayList<Workout> workouts;
 
     public WorkoutLogic(){
         workoutDB = InitializePersistence.getWorkoutPersistence();
+        workouts = (ArrayList) workoutDB.getAllWorkouts();
+    }
+
+    public ArrayList<Workout> getWorkouts() {
+        return workouts;
     }
 
     //calculate the difficulty of the workout based on average difficulty of exercises
@@ -39,7 +45,7 @@ public class WorkoutLogic {
 
     //search workout DB for workouts of a given type (UPPER, LOWER etc)
     public ArrayList<Workout> searchWorkoutType(String workoutType) {
-        ArrayList<Workout> workouts = workoutDB.getAllWorkouts();
+//        ArrayList<Workout> workouts = (ArrayList) workoutDB.getAllWorkouts();
 
         ArrayList<Workout> list = new ArrayList<Workout>();
 
@@ -59,7 +65,7 @@ public class WorkoutLogic {
 
     //search the workout db for workouts of a given difficulty
     public ArrayList<Workout> searchByDifficulty(int workoutDifficulty) {
-        ArrayList<Workout> workouts = workoutDB.getAllWorkouts();
+//        ArrayList<Workout> workouts = (ArrayList) workoutDB.getAllWorkouts();
 
         ArrayList<Workout> list = new ArrayList<Workout>();
 
@@ -77,7 +83,7 @@ public class WorkoutLogic {
 
     //sort the workout by difficulty in ascending order
     public ArrayList<Workout> sortByDifficulty() {
-        ArrayList<Workout> workouts = workoutDB.getAllWorkouts();
+//        ArrayList<Workout> workouts = (ArrayList) workoutDB.getAllWorkouts();
 
         Collections.sort(workouts);
 

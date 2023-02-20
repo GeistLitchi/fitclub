@@ -46,7 +46,10 @@ public class Workout implements Comparable{
     }
 
     public void addExercise(Exercise toAdd) {
-        workoutExercises.add(toAdd);
+        if(null != toAdd) {
+            workoutExercises.add(toAdd);
+            calcDifficulty(toAdd);
+        }
     }
 
     public void setDifficulty(int newDifficulty) {
@@ -79,5 +82,10 @@ public class Workout implements Comparable{
         }
 
         return compare;
+    }
+
+    private void calcDifficulty(Exercise newExercise) {
+        difficulty += newExercise.getDifficulty();
+        difficulty /= this.getSize();
     }
 }
