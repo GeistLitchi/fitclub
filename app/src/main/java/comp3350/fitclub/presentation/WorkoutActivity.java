@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import comp3350.fitclub.R;
 import comp3350.fitclub.objects.Workout;
@@ -19,7 +20,7 @@ public class WorkoutActivity extends AppCompatActivity implements RecyclerViewIn
     RecyclerView workoutView;
 
     private final WorkoutLogic workoutLogic = new WorkoutLogic();
-    ArrayList<Workout> workoutList = new ArrayList<>();
+    List<Workout> workoutList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +52,7 @@ public class WorkoutActivity extends AppCompatActivity implements RecyclerViewIn
     public void onItemClick(int position) {
 
         Intent intent = new Intent(this, ExercisesActivity.class);
-        intent.putExtra("workoutName", workoutList.get(position).getWorkoutExercises());
+        intent.putExtra("workoutName", (ArrayList) workoutList.get(position).getWorkoutExercises());
         startActivity(intent);
     }
 }

@@ -6,22 +6,20 @@ import java.util.ArrayList;
 import comp3350.fitclub.objects.Workout;
 import comp3350.fitclub.objects.Exercise;
 import comp3350.fitclub.logic.ExerciseLogic;
-import comp3350.fitclub.logic.WorkoutLogic;
 
 public class WorkoutDataStub implements WorkoutPersistence {
 
     private List<Workout> workouts;
     private ExerciseLogic exerciseLogic;
-    private WorkoutLogic workoutLogic;
 
     //-------- constructor --------//
     public WorkoutDataStub() {
         this.workouts = new ArrayList<>();
         exerciseLogic = new ExerciseLogic();
-//        workoutLogic = new WorkoutLogic();
+
         /*
-            create and add workouts to the workout db, call helper method to fill with exercises
-         */
+        create and add workouts to the workout db, call helper method to fill with exercises
+        */
         workouts.add(new Workout("UPPER BODY 1", "UPPER"));
         fillWorkout(workouts.get(workouts.size()-1));
 
@@ -73,7 +71,7 @@ public class WorkoutDataStub implements WorkoutPersistence {
         } else if(workouts.size()-1 == 1) {
             temp = exerciseLogic.searchExerciseByMuscleGroup("back");
         } else if(workouts.size()-1 == 2) {
-            temp = exerciseLogic.searchExerciseByMuscleGroup("shoulders");
+            temp = exerciseLogic.searchExerciseByMuscleGroup("shoulder");
         } else if(workouts.size()-1 == 3) {
             temp = exerciseLogic.searchExerciseByMuscleGroup("chest");
         } else if(workouts.size()-1 == 4) {
@@ -85,6 +83,5 @@ public class WorkoutDataStub implements WorkoutPersistence {
         for(int i=0; i<temp.size(); i++) {
             toFill.addExercise(temp.get(i));
         }
-//        workoutLogic.calcDifficulty(toFill);
     }
 }
