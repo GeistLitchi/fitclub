@@ -16,23 +16,21 @@ import comp3350.fitclub.persistence.ExercisesPersistence;
  */
 public class ExerciseLogic
 {
-    private final List<Exercise> exercises;
     private ExercisesPersistence exercisesPersistence;
 
     public ExerciseLogic()
     {
         exercisesPersistence = InitializePersistence.getExercisesPersistence();
-        exercises = exercisesPersistence.getExercises();
     }
 
     public List<Exercise> getExercises()
     {
-        return exercises;
+        return exercisesPersistence.getExercises();
     }
 
     public void addExercise(Exercise exercise)
     {
-        exercises.add(exercise);
+        exercisesPersistence.insertExercise(exercise);
     }
 
     /**
@@ -44,6 +42,8 @@ public class ExerciseLogic
     //Search for exercises if name and description of exercise contains key word;
     public ArrayList<Exercise> searchExercise(String keyword)
     {
+        List<Exercise> exercises = exercisesPersistence.getExercises();
+
         ArrayList<Exercise> results = new ArrayList<>();
         for (Exercise exercise : exercises) {
             if (exercise.getExerciseName().toLowerCase().contains(keyword.toLowerCase())
@@ -57,6 +57,8 @@ public class ExerciseLogic
     //Search for exercises by difficulty level
     public ArrayList<Exercise> searchExerciseByDifficulty(int difficultyLevel)
     {
+        List<Exercise> exercises = exercisesPersistence.getExercises();
+
         ArrayList<Exercise> result = new ArrayList<>();
         for(Exercise exercise : exercises)
         {
@@ -69,6 +71,8 @@ public class ExerciseLogic
     //Search for exercises by muscle group
     public ArrayList<Exercise> searchExerciseByMuscleGroup(String muscleGroup)
     {
+        List<Exercise> exercises = exercisesPersistence.getExercises();
+
         ArrayList<Exercise> result = new ArrayList<>();
         for(Exercise exercise : exercises)
         {
@@ -99,6 +103,8 @@ public class ExerciseLogic
 
     public String toString()
     {
+        List<Exercise> exercises = exercisesPersistence.getExercises();
+
         StringBuilder sb = new StringBuilder();
         for(Exercise exercise : exercises)
         {
@@ -113,16 +119,13 @@ public class ExerciseLogic
     /**
      * this method directly sort the exercises list based on difficulty number(1 - 3)
      * */
-    public void sortByDifficulty()
+    public List<Exercise> sortByDifficulty()
     {
-        Collections.sort(exercises,new DifficultyLevelComparator());
-    }
+        List<Exercise> exercises = exercisesPersistence.getExercises();
 
-    /*
-    Used for testing
-     */
-    public void clearList() {
-        exercises.clear();
+        Collections.sort(exercises,new DifficultyLevelComparator());
+
+        return exercises;
     }
 
     private static class DifficultyLevelComparator implements Comparator<Exercise> {

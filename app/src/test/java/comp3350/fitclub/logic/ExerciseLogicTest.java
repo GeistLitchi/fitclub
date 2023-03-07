@@ -22,7 +22,6 @@ public class ExerciseLogicTest
         Exercise e3 = new Exercise("plank","core",3,"Description of plank");
 
         l1 = new ExerciseLogic();
-        l1.clearList();
         l1.addExercise(e1);
         l1.addExercise(e2);
         l1.addExercise(e3);
@@ -43,7 +42,7 @@ public class ExerciseLogicTest
         Exercise e2 = new Exercise("squat","leg", 1,"Description of squat");
         Exercise e3 = new Exercise("plank","core",3,"Description of plank");
         list = new ExerciseLogic();
-        list.clearList();
+
         list.addExercise(e1);
         list.addExercise(e2);
         list.addExercise(e3);
@@ -87,7 +86,7 @@ public class ExerciseLogicTest
         Exercise e5 = new Exercise("dumbbell lateral raises", "shoulder",2, "Description of dumbbell lateral raises");
 
         list = new ExerciseLogic();
-        list.clearList();
+
         list.addExercise(e1);
         list.addExercise(e2);
         list.addExercise(e3);
