@@ -11,7 +11,11 @@ public class ExercisesDataStub implements ExercisesPersistence
 
     public ExercisesDataStub()
     {
-        this.exercises =new ArrayList<>();
+        exercises =new ArrayList<>();
+    }
+
+    //test data for exercises stub
+    public void populateList() {
         exercises.add(new Exercise("Deadlift","back",3));
         exercises.add(new Exercise("Incline Dumbell Row","back", 1));
         exercises.add(new Exercise("Back Extension","back", 1));
@@ -48,7 +52,6 @@ public class ExercisesDataStub implements ExercisesPersistence
         exercises.add(new Exercise("Incline Bench Press","chest",3));
         exercises.add(new Exercise("Dumbell Flye","chest",2));
         exercises.add(new Exercise("Landmine Press","chest",3));
-
     }
 
     @Override
@@ -73,5 +76,9 @@ public class ExercisesDataStub implements ExercisesPersistence
         {
             exercises.remove(index);
         }
+    }
+
+    public void clearExercises() {
+        exercises = new ArrayList<Exercise>();
     }
 }

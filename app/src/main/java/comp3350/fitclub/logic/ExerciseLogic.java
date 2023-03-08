@@ -26,6 +26,11 @@ public class ExerciseLogic
         exerciseTutorialLogic = new ExerciseTutorialLogic();
     }
 
+    public ExerciseLogic(ExercisesPersistence exercisesPersistence, ExerciseTutorialPersistence exerciseTutorialPersistence) {
+        this.exercisesPersistence = exercisesPersistence;
+        exerciseTutorialLogic = new ExerciseTutorialLogic(exerciseTutorialPersistence);
+    }
+
     public List<Exercise> getExercises()
     {
         return exercisesPersistence.getExercises();
@@ -90,7 +95,7 @@ public class ExerciseLogic
         String[] validStrings;
 
         if (bodyGroup.equalsIgnoreCase("upper body")) {
-            validStrings = new String[] {"Arms", "Chest", "Back", "Shoulders"};
+            validStrings = new String[] {"Arms", "Chest", "Back", "Shoulder"};
         } else if (bodyGroup.equalsIgnoreCase("lower body")) {
             validStrings = new String[] {"Legs", "Core"};
         } else {

@@ -3,18 +3,23 @@ package comp3350.fitclub.logic;
 import comp3350.fitclub.application.InitializePersistence;
 import comp3350.fitclub.objects.Workout;
 import comp3350.fitclub.objects.Exercise;
-import comp3350.fitclub.persistence.WorkoutDataStub;
 import comp3350.fitclub.persistence.WorkoutPersistence;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 
 public class WorkoutLogic {
     private WorkoutPersistence workoutDB;
 
     public WorkoutLogic(){
+
         workoutDB = InitializePersistence.getWorkoutPersistence();
+    }
+
+    public WorkoutLogic(WorkoutPersistence workoutDB){
+        this.workoutDB = workoutDB;
     }
 
     //calculate the difficulty of the workout based on average difficulty of exercises

@@ -3,12 +3,17 @@ package comp3350.fitclub.logic;
 import comp3350.fitclub.persistence.ExerciseTutorialPersistence;
 import comp3350.fitclub.application.InitializePersistence;
 import comp3350.fitclub.objects.ExerciseTutorial;
+import comp3350.fitclub.persistence.ExercisesPersistence;
 
 public class ExerciseTutorialLogic {
     private ExerciseTutorialPersistence exerciseTutorialPersistence;
 
     public ExerciseTutorialLogic() {
         exerciseTutorialPersistence = InitializePersistence.getExerciseTutorialPersistence();
+    }
+
+    public ExerciseTutorialLogic(ExerciseTutorialPersistence exerciseTutorialPersistence) {
+        this.exerciseTutorialPersistence = exerciseTutorialPersistence;
     }
 
     public ExerciseTutorial getExerciseTutorial(String exerciseName) {

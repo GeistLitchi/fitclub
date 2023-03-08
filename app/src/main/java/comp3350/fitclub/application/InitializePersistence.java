@@ -5,7 +5,7 @@ import comp3350.fitclub.persistence.sql.ExerciseTutorialSQL;
 import comp3350.fitclub.persistence.sql.ExercisesSQL;
 import comp3350.fitclub.persistence.ExerciseTutorialPersistence;
 import comp3350.fitclub.persistence.WorkoutPersistence;
-import comp3350.fitclub.persistence.WorkoutDataStub;
+import comp3350.fitclub.persistence.sql.WorkoutSQL;
 
 public class InitializePersistence {
 
@@ -31,7 +31,7 @@ public class InitializePersistence {
 
     public static synchronized WorkoutPersistence getWorkoutPersistence() {
         if (workoutPersistence == null) {
-            workoutPersistence = new WorkoutDataStub();
+            workoutPersistence = new WorkoutSQL(Main.getDbName());
         }
 
         return workoutPersistence;
