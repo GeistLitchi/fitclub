@@ -21,9 +21,6 @@ public class ExerciseTest
 
         System.out.println(exercise1.toString());
 
-
-
-
         System.out.println("\nFinished testExercise");
     }
 

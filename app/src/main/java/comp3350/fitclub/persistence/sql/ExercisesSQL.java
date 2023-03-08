@@ -5,17 +5,16 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 import java.util.ArrayList;
 
 import comp3350.fitclub.persistence.ExercisesPersistence;
 import comp3350.fitclub.objects.Exercise;
 
-public class ExercisesPersistenceSQL implements ExercisesPersistence {
+public class ExercisesSQL implements ExercisesPersistence {
     private String path;
 
-    public ExercisesPersistenceSQL(String path) {
+    public ExercisesSQL(String path) {
         this.path = path;
     }
 
@@ -24,11 +23,11 @@ public class ExercisesPersistenceSQL implements ExercisesPersistence {
     }
 
     private Exercise extractData(ResultSet result) throws SQLException {
-        String name = result.getString("exerciseName");
+        String exerciseName = result.getString("exerciseName");
         String muscleGroup = result.getString("muscleGroup");
         int difficulty = result.getInt("difficulty");
 
-        return new Exercise(name, muscleGroup, difficulty);
+        return new Exercise(exerciseName, muscleGroup, difficulty);
     }
 
     @Override
@@ -38,8 +37,8 @@ public class ExercisesPersistenceSQL implements ExercisesPersistence {
 
         try (Connection c = connect()) {
 
-            Statement statement = c.createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM Exercises");
+            PreparedStatement statement = c.prepareStatement("SELECT * FROM Exercises");
+            ResultSet result = statement.executeQuery();
 
             while (result.next()) {
                 exercises.add(extractData(result));
@@ -66,6 +65,8 @@ public class ExercisesPersistenceSQL implements ExercisesPersistence {
             statement.setInt(3, currentExercise.getDifficulty());
 
             statement.executeUpdate();
+
+
 
             return currentExercise;
         } catch (SQLException e) {

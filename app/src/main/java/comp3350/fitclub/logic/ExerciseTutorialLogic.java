@@ -15,4 +15,12 @@ public class ExerciseTutorialLogic {
 
         return exerciseTutorialPersistence.getExerciseTutorial(exerciseName);
     }
+
+    //inserts an exerciseTutorial with default body
+    public void insertExerciseTutorial (String exerciseName) {
+        ExerciseTutorial exerciseTutorial = new ExerciseTutorial(exerciseName,
+                "This exercise is new and doesn't have a tutorial yet");
+
+        exerciseTutorialPersistence.insertExerciseTutorial(exerciseTutorial);
+    }
 }

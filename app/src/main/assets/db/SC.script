@@ -33,6 +33,7 @@ ALTER USER SA SET LOCAL TRUE
 CREATE SCHEMA PUBLIC AUTHORIZATION DBA
 SET SCHEMA PUBLIC
 CREATE MEMORY TABLE PUBLIC.EXERCISES(EXERCISENAME VARCHAR(64) NOT NULL PRIMARY KEY,MUSCLEGROUP VARCHAR(64),DIFFICULTY INTEGER)
+CREATE MEMORY TABLE PUBLIC.EXERCISETUTORIAL(EXERCISENAME VARCHAR(64) NOT NULL PRIMARY KEY,BODY VARCHAR(1024))
 ALTER SEQUENCE SYSTEM_LOBS.LOB_ID RESTART WITH 1
 SET DATABASE DEFAULT INITIAL SCHEMA PUBLIC
 GRANT USAGE ON DOMAIN INFORMATION_SCHEMA.SQL_IDENTIFIER TO PUBLIC
@@ -49,4 +50,10 @@ INSERT INTO EXERCISES VALUES('Dumbbell Curls','arms',1)
 INSERT INTO EXERCISES VALUES('Bench Press','chest',2)
 INSERT INTO EXERCISES VALUES('Squat','legs',3)
 INSERT INTO EXERCISES VALUES('Sit-ups','core',1)
-INSERT INTO EXERCISES VALUES('Shoulder Press','shoulders',1)
+INSERT INTO EXERCISES VALUES('Shoulder Press','shoulder',1)
+INSERT INTO EXERCISETUTORIAL VALUES('Deadlift','Deadlifts are performed by lifting a barbell off the ground and locking out your hips. Begin by standing behind the bar with it nearly touching your shins. Feet should be about shoulder width apart. Keep the back straight and bring the hips back, bending a at the knees. Make sure your knees do not come forward overtop of your toes. Grip the bar just outside the legs. Keep your back straight when lifting, driving through your legs, and bringing your hips forward. Lockout at the top by bringing your hips all the way forward to the bar. Lower the weight by performing the steps above in reverse order.')
+INSERT INTO EXERCISETUTORIAL VALUES('Dumbbell Curls','With elbows to sides, raise one dumbbell and rotate forearm until forearm is vertical and palm faces shoulder. Lower to original position and repeat with opposite arm. Continue to alternate between sides.')
+INSERT INTO EXERCISETUTORIAL VALUES('Bench Press','While lying on a bench, remove barbell from rack and hold it above chest. Lower weight to chest. Press bar upward until arms are extended.')
+INSERT INTO EXERCISETUTORIAL VALUES('Squat','Stand upright with barbell on shoulders. Squat down by bending hips back while allowing knees to bend forward slightly, keeping back straight and knees pointed same direction as feet. Descend until thighs are just past parallel to floor. Squat up by extending knees and hips until legs are straight.')
+INSERT INTO EXERCISETUTORIAL VALUES('Sit-ups','While laying down, hook feet under something. Raise torso from ground by bending waist. Return to ground.')
+INSERT INTO EXERCISETUTORIAL VALUES('Shoulder Press','While seated upright, hold 2 dumbbells beside shoulders with wrists directly above elbows. Press dumbbells upward until arms are fully extended. Lower to original position.')

@@ -8,6 +8,7 @@ import java.util.Comparator;
 import comp3350.fitclub.application.InitializePersistence;
 import comp3350.fitclub.objects.Exercise;
 import comp3350.fitclub.persistence.ExercisesPersistence;
+import comp3350.fitclub.persistence.ExerciseTutorialPersistence;
 
 /**
  * ExerciseList class
@@ -17,10 +18,12 @@ import comp3350.fitclub.persistence.ExercisesPersistence;
 public class ExerciseLogic
 {
     private ExercisesPersistence exercisesPersistence;
+    private ExerciseTutorialLogic exerciseTutorialLogic;
 
     public ExerciseLogic()
     {
         exercisesPersistence = InitializePersistence.getExercisesPersistence();
+        exerciseTutorialLogic = new ExerciseTutorialLogic();
     }
 
     public List<Exercise> getExercises()
@@ -31,6 +34,7 @@ public class ExerciseLogic
     public void addExercise(Exercise exercise)
     {
         exercisesPersistence.insertExercise(exercise);
+        exerciseTutorialLogic.insertExerciseTutorial(exercise.getExerciseName());
     }
 
     /**
