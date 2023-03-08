@@ -13,13 +13,11 @@ public class ExerciseTutorialTest
         System.out.println("\nStarting testExerciseTutorialAllParameters\n");
 
         //description copied from wikipedia
-        exerciseTutorial = new ExerciseTutorial("Deadlift","This is how you deadlift",
-                "https://exrx.net/WeightExercises/ErectorSpinae/BBDeadlift");
+        exerciseTutorial = new ExerciseTutorial("Deadlift","This is how you deadlift");
 
         assertNotNull(exerciseTutorial);
         assertEquals("Deadlift", exerciseTutorial.getExerciseName());
         assertEquals("This is how you deadlift",exerciseTutorial.getBody());
-        assertEquals("https://exrx.net/WeightExercises/ErectorSpinae/BBDeadlift",exerciseTutorial.getLink());
 
         System.out.println("\nFinished testExerciseTutorialAllParameters");
     }
@@ -39,7 +37,6 @@ public class ExerciseTutorialTest
         assertEquals("The instructions for this exercise will be coming in a future release. " +
                         "Please check the deadlift tutorial to view an exercise that has instructions.",
                 exerciseTutorial.getBody());
-        assertEquals("https://exrx.net/Lists/Directory",exerciseTutorial.getLink());
 
         System.out.println("\nFinished testExerciseTutorialJustNameParameter");
     }

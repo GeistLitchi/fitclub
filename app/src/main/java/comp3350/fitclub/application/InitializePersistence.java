@@ -1,9 +1,9 @@
 package comp3350.fitclub.application;
 
 import comp3350.fitclub.persistence.ExercisesPersistence;
-import comp3350.fitclub.persistence.sql.ExercisesPersistenceSQL;
+import comp3350.fitclub.persistence.sql.ExerciseTutorialSQL;
+import comp3350.fitclub.persistence.sql.ExercisesSQL;
 import comp3350.fitclub.persistence.ExerciseTutorialPersistence;
-import comp3350.fitclub.persistence.ExerciseTutorialStub;
 import comp3350.fitclub.persistence.WorkoutPersistence;
 import comp3350.fitclub.persistence.WorkoutDataStub;
 
@@ -15,7 +15,7 @@ public class InitializePersistence {
 
     public static synchronized ExerciseTutorialPersistence getExerciseTutorialPersistence() {
         if (exerciseTutorialPersistence == null) {
-            exerciseTutorialPersistence = new ExerciseTutorialStub();
+            exerciseTutorialPersistence = new ExerciseTutorialSQL(Main.getDbName());
         }
 
         return exerciseTutorialPersistence;
@@ -23,7 +23,7 @@ public class InitializePersistence {
 
     public static synchronized ExercisesPersistence getExercisesPersistence() {
         if (exercisesPersistence == null) {
-            exercisesPersistence = new ExercisesPersistenceSQL(Main.getDbName());
+            exercisesPersistence = new ExercisesSQL(Main.getDbName());
         }
 
         return exercisesPersistence;
