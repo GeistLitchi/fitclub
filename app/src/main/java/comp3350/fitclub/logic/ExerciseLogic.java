@@ -35,7 +35,7 @@ public class ExerciseLogic
 
     /**
      * This method returns a result Arraylist of all exercises
-     * that have keyword in name or description.
+     * that have keyword in name.
      * @parm string the keyword
      * @return list of search result
      * */
@@ -46,8 +46,7 @@ public class ExerciseLogic
 
         ArrayList<Exercise> results = new ArrayList<>();
         for (Exercise exercise : exercises) {
-            if (exercise.getExerciseName().toLowerCase().contains(keyword.toLowerCase())
-                    || exercise.getDescription().toLowerCase().contains(keyword.toLowerCase())) {
+            if (exercise.getExerciseName().toLowerCase().contains(keyword.toLowerCase())) {
                 results.add(exercise);
             }
         }
@@ -110,8 +109,7 @@ public class ExerciseLogic
         {
             sb.append(exercise.getExerciseName()).append(", ")
                     .append(exercise.getBodyPart()).append(", ")
-                    .append(exercise.getDifficulty()).append(".\n")
-                    .append(exercise.getDescription()).append("\n");
+                    .append(exercise.getDifficulty()).append(".\n");
         }
         return sb.toString();
     }
