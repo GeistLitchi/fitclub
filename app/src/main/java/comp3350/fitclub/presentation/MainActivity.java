@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //If the database doesn't exist on the device, copy it over
     private void copyDatabaseToDevice() {
         final String DB_PATH = "db";
 
@@ -84,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             Main.setDBPathName(dataDirectory.toString() + "/" + Main.getDbName());
 
         } catch (final IOException ioe) {
-            //Messages.warning(this, "Unable to access application data: " + ioe.getMessage());
+            Toast.makeText(this, "Unable to access application data: " + ioe.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -55,6 +55,7 @@ public class ExercisesPersistenceSQL implements ExercisesPersistence {
         return exercises;
     }
 
+    //inserts the new exercise into the database
     @Override
     public Exercise insertExercise(Exercise currentExercise) {
 
@@ -73,6 +74,7 @@ public class ExercisesPersistenceSQL implements ExercisesPersistence {
 
     }
 
+    //removes the selected exercise from the database
     @Override
     public void deleteExercise(Exercise currentExercise) {
 
