@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //If the database doesn't exist on the device, copy it over
+    //Iterate through the assets folder and add their path to an array to be copied to device files
     private void copyDatabaseToDevice() {
         final String DB_PATH = "db";
 
@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //iterate through the provided asset array and copy any file to the device that doesn't already exist there
     public void copyAssetsToDirectory(String[] assets, File directory) throws IOException {
         AssetManager assetManager = getAssets();
 
