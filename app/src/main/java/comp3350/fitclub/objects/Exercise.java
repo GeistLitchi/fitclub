@@ -35,7 +35,7 @@ public class Exercise
 
     public String toString()
     {
-        return String.format("Exercise: %s Muscle Group: %s Difficulty: %d\nDescription: %s",exerciseName,muscleGroup,difficulty);
+        return String.format("Exercise: %s Muscle Group: %s Difficulty: %d",exerciseName,muscleGroup,difficulty);
     }
 
     public boolean equals(Object other)
