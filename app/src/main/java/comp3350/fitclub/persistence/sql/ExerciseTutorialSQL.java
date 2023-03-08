@@ -5,13 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
-import java.util.ArrayList;
 
 import comp3350.fitclub.objects.ExerciseTutorial;
 import comp3350.fitclub.persistence.ExerciseTutorialPersistence;
-import comp3350.fitclub.objects.Exercise;
 
 public class ExerciseTutorialSQL implements ExerciseTutorialPersistence {
     private String path;
