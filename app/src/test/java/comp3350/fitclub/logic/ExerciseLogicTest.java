@@ -17,9 +17,9 @@ public class ExerciseLogicTest
 
         System.out.println("\nStarting testExerciseList");
 
-        Exercise e1 = new Exercise("deadlift","back",2, "Deadlift is a weight training exercise that mainly uses the back muscles\ncan be performed using dumbbells, barbells, or kettlebells with one hand or two hands");
-        Exercise e2 = new Exercise("squat","leg", 1,"Description of squat");
-        Exercise e3 = new Exercise("plank","core",3,"Description of plank");
+        Exercise e1 = new Exercise("deadlift","back",2);
+        Exercise e2 = new Exercise("squat","leg", 1);
+        Exercise e3 = new Exercise("plank","core",3);
 
         l1 = new ExerciseLogic();
         l1.clearList();
@@ -39,9 +39,9 @@ public class ExerciseLogicTest
     public void testExerciseListSort()
     {
         ExerciseLogic list;
-        Exercise e1 = new Exercise("deadlift","back",2, "Deadlift is a weight training exercise that mainly uses the back muscles\ncan be performed using dumbbells, barbells, or kettlebells with one hand or two hands");
-        Exercise e2 = new Exercise("squat","leg", 1,"Description of squat");
-        Exercise e3 = new Exercise("plank","core",3,"Description of plank");
+        Exercise e1 = new Exercise("deadlift","back",2);
+        Exercise e2 = new Exercise("squat","leg", 1);
+        Exercise e3 = new Exercise("plank","core",3);
         list = new ExerciseLogic();
         list.clearList();
         list.addExercise(e1);
@@ -58,8 +58,8 @@ public class ExerciseLogicTest
         assertEquals(3,list.getExercises().get(2).getDifficulty());
 
         //test case that there are multiple exercises with same difficulty
-        Exercise e4 = new Exercise("dumbbell curls","arm",1,"Description of dumbbell curl");
-        Exercise e5 = new Exercise("dumbbell lateral raises", "shoulder",2, "Description of dumbbell lateral raises");
+        Exercise e4 = new Exercise("dumbbell curls","arm",1);
+        Exercise e5 = new Exercise("dumbbell lateral raises", "shoulder",2);
         list.addExercise(e4);
         list.addExercise(e5);
 
@@ -80,11 +80,11 @@ public class ExerciseLogicTest
     public void testExerciseListSearch()
     {
         ExerciseLogic list;
-        Exercise e1 = new Exercise("deadlift","back",2, "Deadlift is a weight training exercise that mainly uses the back muscles\ncan be performed using dumbbells, barbells, or kettlebells with one hand or two hands");
-        Exercise e2 = new Exercise("squat","leg", 1,"Description of squat");
-        Exercise e3 = new Exercise("plank","core",3,"Description of plank");
-        Exercise e4 = new Exercise("dumbbell curls","arm",1,"Description of dumbbell curl");
-        Exercise e5 = new Exercise("dumbbell lateral raises", "shoulder",2, "Description of dumbbell lateral raises");
+        Exercise e1 = new Exercise("deadlift","back",2);
+        Exercise e2 = new Exercise("squat","leg", 1);
+        Exercise e3 = new Exercise("plank","core",3);
+        Exercise e4 = new Exercise("dumbbell curls","arm",1);
+        Exercise e5 = new Exercise("dumbbell lateral raises", "shoulder",2);
 
         list = new ExerciseLogic();
         list.clearList();
@@ -106,10 +106,9 @@ public class ExerciseLogicTest
 
         //search keyword: dumbbell
         //three exercises should be found: dumbbell curls and dumbbell lateral raises,
-        //also deadlift, since the dumbbell is mentioned in description of deadlift
         searchResult1 = list.searchExercise("dumbbell");
         assertNotNull(searchResult1);
-        assertEquals(3, searchResult1.size());
+        assertEquals(2, searchResult1.size());
         System.out.println(searchResult1.toString());
 
         //search difficulty 2

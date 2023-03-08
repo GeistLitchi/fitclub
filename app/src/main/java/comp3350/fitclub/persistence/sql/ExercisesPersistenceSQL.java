@@ -17,22 +17,6 @@ public class ExercisesPersistenceSQL implements ExercisesPersistence {
 
     public ExercisesPersistenceSQL(String path) {
         this.path = path;
-
-        try (final Connection c = connect()) {
-
-            //temporary way to insert data into database
-            //final Statement st = c.createStatement();
-            //ResultSet result;
-            //result = st.executeQuery("CREATE MEMORY TABLE PUBLIC.exercises(exerciseName VARCHAR(64) NOT NULL PRIMARY KEY,muscleGroup VARCHAR(64),difficulty int,description VARCHAR(256))");
-            //result = st.executeQuery("INSERT INTO exercises VALUES('Deadlift','back',3, 'Deadlift is a weight training exercise that mainly uses the back muscles can be performed using dumbbells, barbells, or kettlebells with one hand or two hands')");
-            //result.close();
-            //st.close();
-
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-
     }
 
     private Connection connect() throws SQLException {
@@ -43,9 +27,8 @@ public class ExercisesPersistenceSQL implements ExercisesPersistence {
         String name = result.getString("exerciseName");
         String muscleGroup = result.getString("muscleGroup");
         int difficulty = result.getInt("difficulty");
-        String description = result.getString("description");
 
-        return new Exercise(name, muscleGroup, difficulty, description);
+        return new Exercise(name, muscleGroup, difficulty);
     }
 
     @Override
@@ -66,7 +49,7 @@ public class ExercisesPersistenceSQL implements ExercisesPersistence {
             statement.close();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new PersistenceException(e);
         }
 
         return exercises;
@@ -74,11 +57,36 @@ public class ExercisesPersistenceSQL implements ExercisesPersistence {
 
     @Override
     public Exercise insertExercise(Exercise currentExercise) {
-        return new Exercise("temp");
+
+        try (Connection c = connect()) {
+            PreparedStatement statement = c.prepareStatement("INSERT INTO Exercises VALUES(?, ?, ?)");
+            statement.setString(1, currentExercise.getExerciseName());
+            statement.setString(2, currentExercise.getBodyPart());
+            statement.setInt(3, currentExercise.getDifficulty());
+
+            statement.executeUpdate();
+
+            return currentExercise;
+        } catch (SQLException e) {
+            throw new PersistenceException(e);
+        }
+
     }
 
     @Override
     public void deleteExercise(Exercise currentExercise) {
+
+        try (Connection c = connect()) {
+            PreparedStatement statement = c.prepareStatement("DELETE FROM Exercises WHERE exerciseName = ?");
+            statement.setString(1, currentExercise.getExerciseName());
+            statement.executeUpdate();
+
+            statement = c.prepareStatement("DELETE FROM ExerciseTutorial WHERE exerciseName = ?");
+            statement.setString(1, currentExercise.getExerciseName());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new PersistenceException(e);
+        }
 
     }
 }

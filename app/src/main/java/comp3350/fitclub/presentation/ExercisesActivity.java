@@ -36,7 +36,6 @@ public class ExercisesActivity extends AppCompatActivity
                 TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 
                 text1.setText(exerciseData.getExercises().get(position).getExerciseName());
-                text2.setText(exerciseData.getExercises().get(position).getDescription());
 
                 return view;
             }
