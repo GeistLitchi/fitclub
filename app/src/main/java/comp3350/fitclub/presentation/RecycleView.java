@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import java.util.Objects;
 
 import comp3350.fitclub.R;
 import comp3350.fitclub.logic.ExerciseLogic;
+import comp3350.fitclub.logic.LikedLogic;
 import comp3350.fitclub.objects.Exercise;
 
 public class RecycleView extends AppCompatActivity implements RecyclerViewInterface {
@@ -24,6 +26,7 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
     TextView textView;
     RecyclerView recycleView;
     private final ExerciseLogic exercises = new ExerciseLogic();
+    private final LikedLogic liked = new LikedLogic();
 
     ArrayList<Exercise> doing = null;
 
@@ -104,6 +107,12 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
         Intent intent = new Intent(this, ExerciseTutorialActivity.class);
         intent.putExtra("exerciseName", doing.get(position).getExerciseName() );
         startActivity(intent);
+    }
+
+    @Override
+    public void onItemLongClick(int position) {
+
+        if(liked)
     }
 }
 

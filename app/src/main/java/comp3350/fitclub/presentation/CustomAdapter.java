@@ -66,7 +66,21 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             imgView = itemView.findViewById(R.id.image_exe);
 
 
-
+            itemView.setOnLongClickListener(new View.OnLongClickListener()
+            {
+                @Override
+                public boolean onLongClick(View view) {
+                    if(recyclerViewInterface != null)
+                    {
+                        int pos = getAdapterPosition();
+                        if(pos != RecyclerView.NO_POSITION)
+                        {
+                            recyclerViewInterface.onItemLongClick(pos);
+                        }
+                    }
+                    return true;
+                }
+            });
 
             // creating onClickListner for future use
             itemView.setOnClickListener(new View.OnClickListener() {
