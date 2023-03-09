@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -111,8 +112,16 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
 
     @Override
     public void onItemLongClick(int position) {
-
-        if(liked)
+        Exercise currExercise = doing.get(position);
+        if(liked.isContains(currExercise))
+        {
+            liked.addLiked(currExercise);
+            Toast.makeText(this,"Added to my Favorite",Toast.LENGTH_SHORT).show();
+        }else
+        {
+            liked.deleteLiked(currExercise);
+            Toast.makeText(this,"deleted from my Favorite",Toast.LENGTH_SHORT).show();
+        }
     }
 }
 

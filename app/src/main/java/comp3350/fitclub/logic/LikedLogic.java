@@ -29,7 +29,7 @@ public class LikedLogic {
         return likedPersistence.isContainsExercise(exercise);
     }
 
-    void deleteLiked(Exercise exercise)
+    public void deleteLiked(Exercise exercise)
     {
         if(likedPersistence.isContainsExercise(exercise))
         {

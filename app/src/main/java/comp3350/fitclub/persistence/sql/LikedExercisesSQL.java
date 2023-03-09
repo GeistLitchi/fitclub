@@ -57,7 +57,7 @@ public class LikedExercisesSQL implements LikedPersistence {
     @Override
     public Exercise insertLikedExercise(Exercise currentExercise) {
         try (Connection c = connect()) {
-            PreparedStatement statement = c.prepareStatement("INSERT INTO LikedExercises VALUES(?, ?, ?)");
+            PreparedStatement statement = c.prepareStatement("INSERT INTO LIKEDEXERCISES VALUES(?, ?, ?)");
             statement.setString(1, currentExercise.getExerciseName());
             statement.setString(2, currentExercise.getBodyPart());
             statement.setInt(3, currentExercise.getDifficulty());
@@ -73,7 +73,7 @@ public class LikedExercisesSQL implements LikedPersistence {
     @Override
     public void deleteLikedExercise(Exercise currentExercise) {
         try (Connection c = connect()) {
-            PreparedStatement statement = c.prepareStatement("DELETE FROM LikedExercises WHERE exerciseName = ?");
+            PreparedStatement statement = c.prepareStatement("DELETE FROM LIKEDEXERCISES WHERE exerciseName = ?");
             statement.setString(1, currentExercise.getExerciseName());
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -85,13 +85,16 @@ public class LikedExercisesSQL implements LikedPersistence {
     public boolean isContainsExercise(Exercise currentExercise) {
         boolean exists = false;
         try (Connection c = connect()) {
-            PreparedStatement statement = c.prepareStatement("SELECT EXISTS(SELECT * FROM LikedExercises WHERE exerciseName = ?)");
+            PreparedStatement statement = c.prepareStatement("SELECT COUNT(*) FROM LikedExercises WHERE exerciseName = ?");
             statement.setString(1,currentExercise.getExerciseName());
             ResultSet result = statement.executeQuery();
 
             if (result.next()) {
-                exists = result.getBoolean(1);
+                exists = (result.getInt(1)>0);
             }
+
+            result.close();
+            statement.close();
         } catch (SQLException e) {
             throw new PersistenceException(e);
         }
