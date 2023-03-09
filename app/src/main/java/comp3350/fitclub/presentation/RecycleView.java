@@ -115,12 +115,12 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
         Exercise currExercise = doing.get(position);
         if(liked.isContains(currExercise))
         {
-            liked.addLiked(currExercise);
-            Toast.makeText(this,"Added to my Favorite",Toast.LENGTH_SHORT).show();
-        }else
-        {
             liked.deleteLiked(currExercise);
             Toast.makeText(this,"deleted from my Favorite",Toast.LENGTH_SHORT).show();
+        }else
+        {
+            liked.addLiked(currExercise);
+            Toast.makeText(this,"Added to my Favorite",Toast.LENGTH_SHORT).show();
         }
     }
 }
