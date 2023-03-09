@@ -25,6 +25,13 @@ public class Workout implements Comparable{
         difficulty = 0;
     }
 
+    public Workout(String name, String type, int difficulty) {
+        workoutExercises = new ArrayList<Exercise>();
+        this.name = name;
+        this.type = type;
+        this.difficulty = difficulty;
+    }
+
     /*---------- instance methods ------------*/
     public String getName() {
         return name;

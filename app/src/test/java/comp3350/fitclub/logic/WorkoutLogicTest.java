@@ -1,15 +1,26 @@
 package comp3350.fitclub.logic;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import comp3350.fitclub.objects.Workout;
 import comp3350.fitclub.objects.Exercise;
+
+import comp3350.fitclub.logic.WorkoutLogic;
+import comp3350.fitclub.persistence.WorkoutDataStub;
+
 import static org.junit.Assert.*;
 import java.util.List;
 
 public class WorkoutLogicTest {
 
-    private WorkoutLogic logicTest = new WorkoutLogic();
+    private WorkoutLogic logicTest;
+    private Workout w1;
+
+    @Before
+    public void initializeData() {
+        logicTest = new WorkoutLogic(new WorkoutDataStub());
+    }
 
     @Test
     public void testGetWorkouts() {

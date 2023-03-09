@@ -12,14 +12,12 @@ public class Exercise
     /*difficulty from 1-3,which means simple, medium and difficult,
     * Maybe later we can use different color images to represent different degrees of difficulty*/
     private final int difficulty;
-    private final String description;
 
     public Exercise(final String name)
     {
         exerciseName = name;
         muscleGroup = null;
         difficulty = 0;
-        description = null;
     }
 
     public Exercise(final String name, final String group, final int difficulty)
@@ -27,15 +25,6 @@ public class Exercise
         exerciseName = name;
         muscleGroup = group;
         this.difficulty = difficulty;
-        description = null;
-    }
-
-    public Exercise(final String name, final String group, final int difficulty, final String description)
-    {
-        exerciseName = name;
-        muscleGroup = group;
-        this.difficulty = difficulty;
-        this.description = description;
     }
 
     public String getExerciseName(){return exerciseName;}
@@ -44,13 +33,9 @@ public class Exercise
 
     public int getDifficulty(){return difficulty;}
 
-    public String getDescription() {return description;}
-
-
-
     public String toString()
     {
-        return String.format("Exercise: %s Muscle Group: %s Difficulty: %d\nDescription: %s",exerciseName,muscleGroup,difficulty,description);
+        return String.format("Exercise: %s Muscle Group: %s Difficulty: %d",exerciseName,muscleGroup,difficulty);
     }
 
     public boolean equals(Object other)

@@ -3,7 +3,8 @@ package comp3350.fitclub.logic;
 import comp3350.fitclub.application.InitializePersistence;
 import comp3350.fitclub.objects.Workout;
 import comp3350.fitclub.objects.Exercise;
-import comp3350.fitclub.persistence.WorkoutDataStub;
+import comp3350.fitclub.persistence.ExerciseTutorialPersistence;
+import comp3350.fitclub.persistence.ExercisesPersistence;
 import comp3350.fitclub.persistence.WorkoutPersistence;
 
 import java.util.ArrayList;
@@ -13,19 +14,40 @@ import java.util.List;
 
 public class WorkoutLogic {
     private WorkoutPersistence workoutDB;
-    private List<Workout> workouts;
 
     public WorkoutLogic(){
+
         workoutDB = InitializePersistence.getWorkoutPersistence();
-        workouts = workoutDB.getAllWorkouts();
+    }
+
+    public WorkoutLogic(WorkoutPersistence workoutDB){
+        this.workoutDB = workoutDB;
     }
 
     public List<Workout> getWorkouts() {
-        return workouts;
+        return workoutDB.getAllWorkouts();
+    }
+
+    //calculate the difficulty of the workout based on average difficulty of exercises
+    public int calcDifficulty(Workout current) {
+        int difficulty = 0;
+
+        if(current != null && current.getSize() > 0) {
+            List<Exercise> currentExercises = current.getWorkoutExercises();
+
+            //sum difficulties of each exercise in workout
+            for(int i=0; i<currentExercises.size(); i++) {
+                difficulty += currentExercises.get(i).getDifficulty();
+            }
+            difficulty /= current.getSize();
+        }
+
+        return difficulty;
     }
 
     //search workout DB for workouts of a given type (UPPER, LOWER etc)
     public List<Workout> searchWorkoutType(String workoutType) {
+        List<Workout> workouts = workoutDB.getAllWorkouts();
         List<Workout> list = new ArrayList<Workout>();
 
         if(workoutType != null) {
@@ -44,6 +66,7 @@ public class WorkoutLogic {
 
     //search the workout db for workouts of a given difficulty
     public List<Workout> searchByDifficulty(int workoutDifficulty) {
+        List<Workout> workouts = workoutDB.getAllWorkouts();
         List<Workout> list = new ArrayList<Workout>();
 
         //search list of workouts for matching types
@@ -60,6 +83,7 @@ public class WorkoutLogic {
 
     //sort the workout by difficulty in descending order
     public List<Workout> sortByDifficulty() {
+        List<Workout> workouts = workoutDB.getAllWorkouts();
         Collections.sort(workouts);
 
         return workouts;

@@ -25,10 +25,9 @@ public class ExerciseTutorialStub implements ExerciseTutorialPersistence {
                         "Begin by standing behind the bar with it nearly touching your shins. Feet should be about shoulder " +
                         "width apart. Keep the back straight and bring the hips back, bending a at the knees. Make sure your" +
                         "knees do not come forward overtop of your toes. Grip the bar just outside the legs.\n\n" +
-                        "keep your back straight when lifting, driving through your legs, and bringing your hips forward." +
+                        "Keep your back straight when lifting, driving through your legs, and bringing your hips forward." +
                         "Lockout at the top by bringing your hips all the way forward to the bar.\n\n" +
-                        "Lower the weight by performing the steps above in reverse order.",
-                "https://exrx.net/WeightExercises/ErectorSpinae/BBDeadlift"));
+                        "Lower the weight by performing the steps above in reverse order."));
 
         List<Exercise> list = exerciseDB.getExercises();
 
@@ -50,6 +49,12 @@ public class ExerciseTutorialStub implements ExerciseTutorialPersistence {
         }
 
         return result;
+    }
+
+    @Override
+    public ExerciseTutorial insertExerciseTutorial (ExerciseTutorial exerciseTutorial) {
+        tutorials.add(exerciseTutorial);
+        return exerciseTutorial;
     }
 
     //helper function for stub

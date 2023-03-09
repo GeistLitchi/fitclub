@@ -1,0 +1,60 @@
+SET DATABASE UNIQUE NAME HSQLDB86BA7282E6
+SET DATABASE GC 0
+SET DATABASE DEFAULT RESULT MEMORY ROWS 0
+SET DATABASE EVENT LOG LEVEL 0
+SET DATABASE TRANSACTION CONTROL LOCKS
+SET DATABASE DEFAULT ISOLATION LEVEL READ COMMITTED
+SET DATABASE TRANSACTION ROLLBACK ON CONFLICT TRUE
+SET DATABASE TEXT TABLE DEFAULTS ''
+SET DATABASE SQL NAMES FALSE
+SET DATABASE SQL REFERENCES FALSE
+SET DATABASE SQL SIZE TRUE
+SET DATABASE SQL TYPES FALSE
+SET DATABASE SQL TDC DELETE TRUE
+SET DATABASE SQL TDC UPDATE TRUE
+SET DATABASE SQL CONCAT NULLS TRUE
+SET DATABASE SQL UNIQUE NULLS TRUE
+SET DATABASE SQL CONVERT TRUNCATE TRUE
+SET DATABASE SQL AVG SCALE 0
+SET DATABASE SQL DOUBLE NAN TRUE
+SET FILES WRITE DELAY 500 MILLIS
+SET FILES BACKUP INCREMENT TRUE
+SET FILES CACHE SIZE 10000
+SET FILES CACHE ROWS 50000
+SET FILES SCALE 32
+SET FILES LOB SCALE 32
+SET FILES DEFRAG 0
+SET FILES NIO TRUE
+SET FILES NIO SIZE 256
+SET FILES LOG TRUE
+SET FILES LOG SIZE 50
+CREATE USER SA PASSWORD DIGEST 'd41d8cd98f00b204e9800998ecf8427e'
+ALTER USER SA SET LOCAL TRUE
+CREATE SCHEMA PUBLIC AUTHORIZATION DBA
+SET SCHEMA PUBLIC
+CREATE MEMORY TABLE PUBLIC.EXERCISES(EXERCISENAME VARCHAR(64) NOT NULL PRIMARY KEY,MUSCLEGROUP VARCHAR(64),DIFFICULTY INTEGER)
+CREATE MEMORY TABLE PUBLIC.EXERCISETUTORIAL(EXERCISENAME VARCHAR(64) NOT NULL PRIMARY KEY,BODY VARCHAR(1024))
+CREATE MEMORY TABLE PUBLIC.WORKOUT(NAME VARCHAR(64) NOT NULL PRIMARY KEY,TYPE VARCHAR(64), DIFFICULTY INTEGER)
+ALTER SEQUENCE SYSTEM_LOBS.LOB_ID RESTART WITH 1
+SET DATABASE DEFAULT INITIAL SCHEMA PUBLIC
+GRANT USAGE ON DOMAIN INFORMATION_SCHEMA.SQL_IDENTIFIER TO PUBLIC
+GRANT USAGE ON DOMAIN INFORMATION_SCHEMA.YES_OR_NO TO PUBLIC
+GRANT USAGE ON DOMAIN INFORMATION_SCHEMA.TIME_STAMP TO PUBLIC
+GRANT USAGE ON DOMAIN INFORMATION_SCHEMA.CARDINAL_NUMBER TO PUBLIC
+GRANT USAGE ON DOMAIN INFORMATION_SCHEMA.CHARACTER_DATA TO PUBLIC
+GRANT DBA TO SA
+SET SCHEMA SYSTEM_LOBS
+INSERT INTO BLOCKS VALUES(0,2147483647,0)
+SET SCHEMA PUBLIC
+INSERT INTO EXERCISES VALUES('Deadlift','back',3)
+INSERT INTO EXERCISES VALUES('Dumbbell Curls','arms',1)
+INSERT INTO EXERCISES VALUES('Bench Press','chest',2)
+INSERT INTO EXERCISES VALUES('Squat','legs',3)
+INSERT INTO EXERCISES VALUES('Sit-ups','core',1)
+INSERT INTO EXERCISES VALUES('Shoulder Press','shoulder',1)
+INSERT INTO EXERCISETUTORIAL VALUES('Deadlift','Deadlifts are performed by lifting a barbell off the ground and locking out your hips. Begin by standing behind the bar with it nearly touching your shins. Feet should be about shoulder width apart. Keep the back straight and bring the hips back, bending a at the knees. Make sure your knees do not come forward overtop of your toes. Grip the bar just outside the legs. Keep your back straight when lifting, driving through your legs, and bringing your hips forward. Lockout at the top by bringing your hips all the way forward to the bar. Lower the weight by performing the steps above in reverse order.')
+INSERT INTO EXERCISETUTORIAL VALUES('Dumbbell Curls','With elbows to sides, raise one dumbbell and rotate forearm until forearm is vertical and palm faces shoulder. Lower to original position and repeat with opposite arm. Continue to alternate between sides.')
+INSERT INTO EXERCISETUTORIAL VALUES('Bench Press','While lying on a bench, remove barbell from rack and hold it above chest. Lower weight to chest. Press bar upward until arms are extended.')
+INSERT INTO EXERCISETUTORIAL VALUES('Squat','Stand upright with barbell on shoulders. Squat down by bending hips back while allowing knees to bend forward slightly, keeping back straight and knees pointed same direction as feet. Descend until thighs are just past parallel to floor. Squat up by extending knees and hips until legs are straight.')
+INSERT INTO EXERCISETUTORIAL VALUES('Sit-ups','While laying down, hook feet under something. Raise torso from ground by bending waist. Return to ground.')
+INSERT INTO EXERCISETUTORIAL VALUES('Shoulder Press','While seated upright, hold 2 dumbbells beside shoulders with wrists directly above elbows. Press dumbbells upward until arms are fully extended. Lower to original position.')

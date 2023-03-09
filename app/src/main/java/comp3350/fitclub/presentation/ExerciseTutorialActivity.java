@@ -54,8 +54,5 @@ public class ExerciseTutorialActivity extends AppCompatActivity {
             bodyText.setText("Exercise not found.");
             linkButton.setVisibility(View.GONE);
         }
-        linkButton.setOnClickListener(view -> {
-            Toast.makeText(this, exerciseTutorial.getLink(), Toast.LENGTH_SHORT).show();
-        });
     }
 }

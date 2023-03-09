@@ -14,24 +14,16 @@ public class ExerciseTutorial {
      */
     private final String body;
 
-    /*
-    If more information is needed, this will be a link to a webpage with a more detailed description,
-    images and/or a video.
-     */
-    private final String link;
-
     public ExerciseTutorial(final String newExerciseName)
     {
         exerciseName = newExerciseName;
         body = null;
-        link = null;
     }
 
-    public ExerciseTutorial(final String newExerciseName, final String newBody, final String newLink)
+    public ExerciseTutorial(final String newExerciseName, final String newBody)
     {
         exerciseName = newExerciseName;
         body = newBody;
-        link = newLink;
     }
 
     public String getExerciseName()
@@ -46,14 +38,6 @@ public class ExerciseTutorial {
                     "Please check the deadlift tutorial to view an exercise that has instructions.";
         }
         return (body);
-    }
-
-    public String getLink()
-    {
-        if (link == null) {
-            return "https://exrx.net/Lists/Directory"; //if no link is set, take them to the homepage
-        }
-        return (link);
     }
 
 }
