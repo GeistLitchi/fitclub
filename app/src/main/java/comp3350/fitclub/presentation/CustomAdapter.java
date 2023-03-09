@@ -13,13 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import comp3350.fitclub.R;
+import comp3350.fitclub.logic.LikedLogic;
 import comp3350.fitclub.objects.Exercise;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
     private final RecyclerViewInterface recyclerViewInterface;          // refrence to recyclerViewInterface
     private Context context;                                            // context to use from
-    private ArrayList<Exercise> list;                                   // list of all exercise
+    private ArrayList<Exercise> list;
+
+    private final LikedLogic liked = new LikedLogic();// list of all exercise
 
     //constructor
     CustomAdapter(Context context, ArrayList<Exercise> arr, RecyclerViewInterface recyclerViewInterface){
@@ -45,6 +48,18 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
         holder.exercise_name.setText(list.get(position).getExerciseName());
 
+        //check if exercise is liked, to decide the visibility of favorite icon
+        for(Exercise e : list)
+        {
+            if(liked.isContains(e))
+            {
+                holder.imgFavorite.setVisibility(View.VISIBLE);
+            }else
+            {
+                holder.imgFavorite.setVisibility(View.INVISIBLE);
+            }
+        }
+
     }
 
     // this method returns length/ size of list
@@ -58,18 +73,29 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
         TextView exercise_name;
         ImageView imgView;
+        ImageView imgFavorite;
 
         public ViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
 
             exercise_name = itemView.findViewById(R.id.exercise_name);
             imgView = itemView.findViewById(R.id.image_exe);
-
+            imgFavorite = itemView.findViewById(R.id.image_favorite);
 
             itemView.setOnLongClickListener(new View.OnLongClickListener()
             {
                 @Override
                 public boolean onLongClick(View view) {
+                    //change the status of favorite icon status
+                    if(imgFavorite.getVisibility() == View.VISIBLE)
+                    {
+                        imgFavorite.setVisibility(View.INVISIBLE);
+                    }else
+                    {
+                        imgFavorite.setVisibility(View.VISIBLE);
+                    }
+
+                    //call onItemLongClick function in activity file
                     if(recyclerViewInterface != null)
                     {
                         int pos = getAdapterPosition();
