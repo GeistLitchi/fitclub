@@ -12,7 +12,7 @@ sequenceDiagram
     Note over Presentation: WorkoutPage
     Note over Presentation: RecycleView
     Presentation->>+Logic: ExerciseLogic
-    Presentation-->+Logic: LikedLogic
+    Presentation->>+Logic: LikedLogic
     Note over Presentation: ExerciseActivity
     Presentation->>+Logic: ExerciseLogic
     Note over Presentation: ExerciseTutorialActivity
