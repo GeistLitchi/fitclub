@@ -39,19 +39,20 @@ public class WorkoutActivity extends AppCompatActivity implements RecyclerViewIn
         if(null != workoutType){
             workoutName.setText(workoutType);
             workoutList = workoutLogic.searchWorkoutType(workoutType);
+            System.out.println(workoutList);
         }
 
-//        if(null != workoutList) {
-//            CustomAdapter ca = new CustomAdapter(this, null, workoutList, this);                 //creating new customAdapter
-//            workoutView.setAdapter(ca);
-//        }
+        if(null != workoutList) {
+            WorkoutDisplayAdaptor ca = new WorkoutDisplayAdaptor(this, workoutList, this);                 //creating new customAdapter
+            workoutView.setAdapter(ca);
+        }
     }
 
     //on click of a workout go to page to display the exercises in that workout
     @Override
     public void onItemClick(int position) {
 
-        Intent intent = new Intent(this, ExercisesActivity.class);
+        Intent intent = new Intent(this, WorkoutActivity.class);
         intent.putExtra("workoutName", (ArrayList) workoutList.get(position).getWorkoutExercises());
         startActivity(intent);
     }

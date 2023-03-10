@@ -20,22 +20,22 @@ public class WorkoutDataStub implements WorkoutPersistence {
         /*
         create and add workouts to the workout db, call helper method to fill with exercises
         */
-        workouts.add(new Workout("UPPER BODY 1", "UPPER"));
+        workouts.add(new Workout("UPPER BODY 1", "UPPER BODY"));
         fillWorkout(workouts.get(workouts.size()-1));
 
-        workouts.add(new Workout("UPPER BODY 2", "UPPER"));
+        workouts.add(new Workout("UPPER BODY 2", "UPPER BODY"));
         fillWorkout(workouts.get(workouts.size()-1));
 
-        workouts.add(new Workout("UPPER BODY 3", "UPPER"));
+        workouts.add(new Workout("UPPER BODY 3", "UPPER BODY"));
         fillWorkout(workouts.get(workouts.size()-1));
 
-        workouts.add(new Workout("UPPER BODY 4", "UPPER"));
+        workouts.add(new Workout("UPPER BODY 4", "UPPER BODY"));
         fillWorkout(workouts.get(workouts.size()-1));
 
-        workouts.add(new Workout("UPPER BODY 5", "UPPER"));
+        workouts.add(new Workout("UPPER BODY 5", "UPPER BODY"));
         fillWorkout(workouts.get(workouts.size()-1));
 
-        workouts.add(new Workout("LOWER BODY 1", "LOWER"));
+        workouts.add(new Workout("LOWER BODY 1", "LOWER BODY"));
         fillWorkout(workouts.get(workouts.size()-1));
     }
 
