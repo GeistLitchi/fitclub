@@ -12,6 +12,7 @@ sequenceDiagram
     Note over Presentation: WorkoutPage
     Note over Presentation: RecycleView
     Presentation->>+Logic: ExerciseLogic
+    Presentation-->+Logic: LikedLogic
     Note over Presentation: ExerciseActivity
     Presentation->>+Logic: ExerciseLogic
     Note over Presentation: ExerciseTutorialActivity
@@ -20,11 +21,13 @@ sequenceDiagram
     Presentation->>+Logic: WorkoutLogic
 
     Note over Logic: ExerciseLogic
-    Logic->>+Persistence: Exercises Database
+    Logic->>+Persistence: Exercises Persistence
+    Note over Logic: LikedLogic
+    Logic->>+Persistence: Liked Persistence
     Note over Logic: ExerciseTutorialLogic
-    Logic->>+Persistence: ExerciseTutorial Database
+    Logic->>+Persistence: ExerciseTutorial Persistence
     Note over Logic: WorkoutLogic
-    Logic->>+Persistence: Workout Database
+    Logic->>+Persistence: Workout Persistence
 
     Note over Data Model: Exercise
     Note over Data Model: ExerciseTutorial
