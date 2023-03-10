@@ -1,31 +1,35 @@
-# FitClub Architecture - Iteration 1
+# FitClub Architecture - Iteration 2
 
 ```mermaid
-classDiagram
-    Data Model -- Presentation
-    Data Model -- Logic
-    Data Model -- Persistence
-    Data Model : Exercise
-    Data Model : Workout
-    Data Model : ExerciseTutorial
-    class Presentation{
-      MainActivity
-      MuscleGroupPage
-      ExercisesActivity
-      ExerciseTutorialActivity
-      WorkoutPage
-    }
-    class Logic{
-      WorkoutLogic
-      ExerciseLogic
-      ExerciseTutorialLogic
-    }
-    class Persistence{
-      WorkoutPersistence
-      ExercisePersistence
-      ExerciseTutorialPersistence
-    }
+sequenceDiagram
+    participant Presentation
+    participant Logic
+    participant Persistence
+    participant Data Model
+    
+    Note over Presentation: MainActivity
+    Note over Presentation: MuscleGroupPage
+    Note over Presentation: WorkoutPage
+    Note over Presentation: RecycleView
+    Presentation->>+Logic: ExerciseLogic
+    Note over Presentation: ExerciseActivity
+    Presentation->>+Logic: ExerciseLogic
+    Note over Presentation: ExerciseTutorialActivity
+    Presentation->>+Logic: ExerciseTutorialLogic
+    Note over Presentation: WorkoutActivity
+    Presentation->>+Logic: WorkoutLogic
 
-    Logic <--> Persistence
-    Presentation <--> Logic
+    Note over Logic: ExerciseLogic
+    Logic->>+Persistence: Exercises Database
+    Note over Logic: ExerciseTutorialLogic
+    Logic->>+Persistence: ExerciseTutorial Database
+    Note over Logic: WorkoutLogic
+    Logic->>+Persistence: Workout Database
+
+    Note over Data Model: Exercise
+    Note over Data Model: ExerciseTutorial
+    Note over Data Model: Workout
+    Data Model->>+Presentation: Data Model Objects used across all layers
+    Data Model->>+Logic: 
+    Data Model->>+Persistence:    
 ```

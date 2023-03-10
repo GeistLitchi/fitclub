@@ -27,11 +27,20 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_NAME_MAIN = "comp3350.fitclub.presentation.extra.NAME_MAIN";
 
+    //this flag will flip once the db file has been copied to device
+    //this fill prevent the db name from being set multiple times which appends it to current
+    //creating multiple nested directories
+    private static boolean copyFlag = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        copyDatabaseToDevice();
+
+        if (copyFlag) {
+            copyDatabaseToDevice();
+            copyFlag = false;
+        }
 
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button goToMuscleGroupBtn = (Button) findViewById(R.id.btn_go_to_muscle_group);
 //        Button goToExercisesBtn = (Button) findViewById(R.id.btn_go_to_exercises_activity);
@@ -69,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View view) {
-                String title = "favorite";
+                String title = "Favorite";
                 Intent intent = new Intent(MainActivity.this,RecycleView.class);
                 intent.putExtra(EXTRA_NAME_MAIN,title);
                 startActivity(intent);
@@ -94,7 +103,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             copyAssetsToDirectory(assetNames, dataDirectory);
-
+            String name = Main.getDbName();
+            String result = dataDirectory.toString() + "/" + Main.getDbName();
             Main.setDBPathName(dataDirectory.toString() + "/" + Main.getDbName());
 
         } catch (final IOException ioe) {

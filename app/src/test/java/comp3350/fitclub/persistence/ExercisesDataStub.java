@@ -12,6 +12,7 @@ public class ExercisesDataStub implements ExercisesPersistence
     public ExercisesDataStub()
     {
         exercises =new ArrayList<>();
+        populateList();
     }
 
     //test data for exercises stub
