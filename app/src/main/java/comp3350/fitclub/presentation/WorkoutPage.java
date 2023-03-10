@@ -32,7 +32,7 @@ public class WorkoutPage extends AppCompatActivity implements View.OnClickListen
     public void onClick(View view) {
         String workoutName;
         Button btnClicked;
-        Intent intent = new Intent(this, RecycleView.class);    // where we want to go from this activity
+        Intent intent = new Intent(this, WorkoutActivity.class);    // where we want to go from this activity
 
         switch (view.getId()){
             case R.id.upper_body:

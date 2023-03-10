@@ -1,34 +1,46 @@
 package comp3350.fitclub.persistence;
 
+import java.util.List;
 import java.util.ArrayList;
 
 import comp3350.fitclub.objects.Workout;
 import comp3350.fitclub.objects.Exercise;
-import comp3350.fitclub.persistence.WorkoutPersistence;
+import comp3350.fitclub.logic.ExerciseLogic;
 
 public class WorkoutDataStub implements WorkoutPersistence {
 
-    private ArrayList<Workout> workouts;
+    private List<Workout> workouts;
+    private ExerciseLogic exerciseLogic;
 
     //-------- constructor --------//
     public WorkoutDataStub() {
-        this.workouts = new ArrayList<Workout>();
+        this.workouts = new ArrayList<>();
+        exerciseLogic = new ExerciseLogic(new ExercisesDataStub(), new ExerciseTutorialStub());
 
+        /*
+        create and add workouts to the workout db, call helper method to fill with exercises
+        */
         workouts.add(new Workout("UPPER BODY 1", "UPPER"));
         fillWorkout(workouts.get(workouts.size()-1));
 
         workouts.add(new Workout("UPPER BODY 2", "UPPER"));
         fillWorkout(workouts.get(workouts.size()-1));
 
-        workouts.add(new Workout("LOWER BODY 1", "LOWER"));
+        workouts.add(new Workout("UPPER BODY 3", "UPPER"));
         fillWorkout(workouts.get(workouts.size()-1));
 
-        workouts.add(new Workout("LOWER BODY 2", "LOWER"));
+        workouts.add(new Workout("UPPER BODY 4", "UPPER"));
+        fillWorkout(workouts.get(workouts.size()-1));
+
+        workouts.add(new Workout("UPPER BODY 5", "UPPER"));
+        fillWorkout(workouts.get(workouts.size()-1));
+
+        workouts.add(new Workout("LOWER BODY 1", "LOWER"));
         fillWorkout(workouts.get(workouts.size()-1));
     }
 
     @Override //'query the DB' of workouts by type
-    public ArrayList<Workout> getAllWorkouts() {
+    public List<Workout> getAllWorkouts() {
         return workouts;
     }
 
@@ -50,33 +62,26 @@ public class WorkoutDataStub implements WorkoutPersistence {
         return current;
     }
 
-    @Override
-    public void deleteWorkout(Workout current) {
-        //future implementations
-    }
-
-    //To fill out made workouts for now
+    //Fill each workout based on subtype muscle group, calling Exercise DB via logic layer
     private void fillWorkout(Workout toFill) {
+        ArrayList<Exercise> temp = new ArrayList<>();
+
         if(workouts.size()-1 == 0) {
-            toFill.addExercise(new Exercise("e1", "arms", 2));
-            toFill.addExercise(new Exercise("e2", "arms", 2));
-            toFill.addExercise(new Exercise("e3", "arms", 2));
-            toFill.setDifficulty(2);
+            temp = exerciseLogic.searchExerciseByMuscleGroup("arms");
         } else if(workouts.size()-1 == 1) {
-            toFill.addExercise(new Exercise("e4", "back", 1));
-            toFill.addExercise(new Exercise("e5", "back", 2));
-            toFill.addExercise(new Exercise("e6", "back", 3));
-            toFill.setDifficulty(2);
+            temp = exerciseLogic.searchExerciseByMuscleGroup("back");
         } else if(workouts.size()-1 == 2) {
-            toFill.addExercise(new Exercise("e7", "legs", 3));
-            toFill.addExercise(new Exercise("e8", "legs", 3));
-            toFill.addExercise(new Exercise("e9", "legs", 3));
-            toFill.setDifficulty(3);
+            temp = exerciseLogic.searchExerciseByMuscleGroup("shoulder");
+        } else if(workouts.size()-1 == 3) {
+            temp = exerciseLogic.searchExerciseByMuscleGroup("chest");
+        } else if(workouts.size()-1 == 4) {
+            temp = exerciseLogic.searchExerciseByMuscleGroup("core");
         } else {
-            toFill.addExercise(new Exercise("e10", "legs", 3));
-            toFill.addExercise(new Exercise("e11", "legs", 1));
-            toFill.addExercise(new Exercise("e12", "legs", 1));
-            toFill.setDifficulty(1);
+            temp = exerciseLogic.searchExerciseByMuscleGroup("legs");
+        }
+
+        for(int i=0; i<temp.size(); i++) {
+            toFill.addExercise(temp.get(i));
         }
     }
 }

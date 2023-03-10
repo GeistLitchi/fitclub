@@ -26,11 +26,9 @@ public class WorkoutSQL implements WorkoutPersistence {
     private Workout extractData(ResultSet result) throws SQLException {
         String name = result.getString("name");
         String type = result.getString("type");
+        int difficulty = result.getInt("difficulty");
 
-        Workout workout = new Workout(name, type);
-        workout.setDifficulty(result.getInt("difficulty"));
-
-        return workout;
+        return new Workout(name, type, difficulty);
     }
 
     @Override
@@ -84,19 +82,6 @@ public class WorkoutSQL implements WorkoutPersistence {
             statement.executeUpdate();
 
             return current;
-        } catch (SQLException e) {
-            throw new PersistenceException(e);
-        }
-    }
-
-    @Override
-    public void deleteWorkout(Workout current) {
-        try (Connection c = connect()) {
-            PreparedStatement statement = c.prepareStatement("DELETE FROM Workout WHERE name = ?");
-            statement.setString(1, current.getName());
-
-            statement.executeUpdate();
-
         } catch (SQLException e) {
             throw new PersistenceException(e);
         }
