@@ -64,7 +64,7 @@ public class WorkoutDataStub implements WorkoutPersistence {
 
     //Fill each workout based on subtype muscle group, calling Exercise DB via logic layer
     private void fillWorkout(Workout toFill) {
-        ArrayList<Exercise> temp = new ArrayList<>();
+        List<Exercise> temp = new ArrayList<>();
 
         if(workouts.size()-1 == 0) {
             temp = exerciseLogic.searchExerciseByMuscleGroup("arms");

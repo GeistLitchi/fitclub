@@ -25,17 +25,27 @@ import comp3350.fitclub.application.Main;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String EXTRA_NAME_MAIN = "comp3350.fitclub.presentation.extra.NAME_MAIN";
 
+    //this flag will flip once the db file has been copied to device
+    //this fill prevent the db name from being set multiple times which appends it to current
+    //creating multiple nested directories
+    private static boolean copyFlag = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        copyDatabaseToDevice();
+
+        if (copyFlag) {
+            copyDatabaseToDevice();
+            copyFlag = false;
+        }
 
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button goToMuscleGroupBtn = (Button) findViewById(R.id.btn_go_to_muscle_group);
 //        Button goToExercisesBtn = (Button) findViewById(R.id.btn_go_to_exercises_activity);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button goToWorkout = findViewById(R.id.btn_go_to_find_workout);
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button goToFavorite = findViewById(R.id.btn_liked);
 //        goToExercisesBtn.setOnClickListener(new View.OnClickListener()
 //        {
 //            public void onClick(View view)
@@ -63,6 +73,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        goToFavorite.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                String title = "Favorite";
+                Intent intent = new Intent(MainActivity.this,RecycleView.class);
+                intent.putExtra(EXTRA_NAME_MAIN,title);
+                startActivity(intent);
+            }
+        });
     }
 
     //Iterate through the assets folder and add their path to an array to be copied to device files
@@ -82,7 +103,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             copyAssetsToDirectory(assetNames, dataDirectory);
-
+            String name = Main.getDbName();
+            String result = dataDirectory.toString() + "/" + Main.getDbName();
             Main.setDBPathName(dataDirectory.toString() + "/" + Main.getDbName());
 
         } catch (final IOException ioe) {

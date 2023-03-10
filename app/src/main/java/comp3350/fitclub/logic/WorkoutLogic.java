@@ -24,6 +24,23 @@ public class WorkoutLogic {
         this.workoutDB = workoutDB;
     }
 
+    //calculate the difficulty of the workout based on average difficulty of exercises
+    public int calcDifficulty(Workout current) {
+        int difficulty = 0;
+
+        if (current != null && current.getSize() > 0) {
+            List<Exercise> currentExercises = current.getWorkoutExercises();
+
+            //sum difficulties of each exercise in workout
+            for (int i = 0; i < currentExercises.size(); i++) {
+                difficulty += currentExercises.get(i).getDifficulty();
+            }
+            difficulty /= current.getSize();
+        }
+
+        return difficulty;
+    }
+
     public List<Workout> getWorkouts() {
         return workoutDB.getAllWorkouts();
     }
@@ -52,6 +69,7 @@ public class WorkoutLogic {
         List<Workout> workouts = this.workoutDB.getAllWorkouts();
         List<Workout> list = new ArrayList<Workout>();
 
+
         //search list of workouts for matching types
         for(int i=0; i<workouts.size(); i++) {
             int diff = ((workouts.get(i)).getDifficulty());
@@ -63,6 +81,7 @@ public class WorkoutLogic {
 
         return list;
     }
+
 
     //sort the workout by difficulty in descending order
     public List<Workout> sortByDifficulty() {

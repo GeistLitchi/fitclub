@@ -16,7 +16,7 @@ public class WorkoutSQL implements WorkoutPersistence {
     private String path;
 
     public WorkoutSQL(String path) {
-        this.path = path;
+        this.path = path;System.out.println("DB PATH IN WORKOUT: "+this.path);
     }
 
     private Connection connect() throws SQLException {

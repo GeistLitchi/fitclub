@@ -66,4 +66,15 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_go_to_muscle_group"
         app:layout_constraintVertical_bias="0.615" />
 
+    <Button
+        android:id="@+id/btn_liked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:text="My Favorite Exercises"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

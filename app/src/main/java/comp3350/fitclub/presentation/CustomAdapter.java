@@ -11,18 +11,21 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import comp3350.fitclub.R;
+import comp3350.fitclub.logic.LikedLogic;
 import comp3350.fitclub.objects.Exercise;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
     private final RecyclerViewInterface recyclerViewInterface;          // refrence to recyclerViewInterface
     private Context context;                                            // context to use from
-    private ArrayList<Exercise> list;                                   // list of all exercise
+    private List<Exercise> list;                                   // list of all exercise
+    private final LikedLogic liked = new LikedLogic();
 
     //constructor
-    CustomAdapter(Context context, ArrayList<Exercise> arr, RecyclerViewInterface recyclerViewInterface){
+    CustomAdapter(Context context, List<Exercise> arr, RecyclerViewInterface recyclerViewInterface){
         RecyclerViewInterface recyclerViewInterface1;
         this.context = context;
         list = arr;
@@ -45,6 +48,18 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
         holder.exercise_name.setText(list.get(position).getExerciseName());
 
+        //check if exercise is liked, to decide the visibility of favorite icon
+        for(Exercise e : list)
+        {
+            if(liked.isContains(e))
+            {
+                holder.imgFavorite.setVisibility(View.VISIBLE);
+            }else
+            {
+                holder.imgFavorite.setVisibility(View.INVISIBLE);
+            }
+        }
+
     }
 
     // this method returns length/ size of list
@@ -58,15 +73,40 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
         TextView exercise_name;
         ImageView imgView;
+        ImageView imgFavorite;
 
         public ViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
 
             exercise_name = itemView.findViewById(R.id.exercise_name);
             imgView = itemView.findViewById(R.id.image_exe);
+            imgFavorite = itemView.findViewById(R.id.image_favorite);
 
+            itemView.setOnLongClickListener(new View.OnLongClickListener()
+            {
+                @Override
+                public boolean onLongClick(View view) {
+                    //change the status of favorite icon status
+                    if(imgFavorite.getVisibility() == View.VISIBLE)
+                    {
+                        imgFavorite.setVisibility(View.INVISIBLE);
+                    }else
+                    {
+                        imgFavorite.setVisibility(View.VISIBLE);
+                    }
 
-
+                    //call onItemLongClick function in activity file
+                    if(recyclerViewInterface != null)
+                    {
+                        int pos = getAdapterPosition();
+                        if(pos != RecyclerView.NO_POSITION)
+                        {
+                            recyclerViewInterface.onItemLongClick(pos);
+                        }
+                    }
+                    return true;
+                }
+            });
 
             // creating onClickListner for future use
             itemView.setOnClickListener(new View.OnClickListener() {

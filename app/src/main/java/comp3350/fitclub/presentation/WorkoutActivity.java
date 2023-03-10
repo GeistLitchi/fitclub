@@ -3,6 +3,7 @@ package comp3350.fitclub.presentation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,10 +42,6 @@ public class WorkoutActivity extends AppCompatActivity implements RecyclerViewIn
             workoutList = workoutLogic.searchWorkoutType(workoutType);
         }
 
-//        if(null != workoutList) {
-//            CustomAdapter ca = new CustomAdapter(this, null, workoutList, this);                 //creating new customAdapter
-//            workoutView.setAdapter(ca);
-//        }
     }
 
     //on click of a workout go to page to display the exercises in that workout
@@ -54,5 +51,11 @@ public class WorkoutActivity extends AppCompatActivity implements RecyclerViewIn
         Intent intent = new Intent(this, ExercisesActivity.class);
         intent.putExtra("workoutName", (ArrayList) workoutList.get(position).getWorkoutExercises());
         startActivity(intent);
+    }
+
+    //this function will add the workout to the favorites list when implemented
+    @Override
+    public void onItemLongClick(int position) {
+        Toast.makeText(this,"Add to my favorites",Toast.LENGTH_SHORT);
     }
 }

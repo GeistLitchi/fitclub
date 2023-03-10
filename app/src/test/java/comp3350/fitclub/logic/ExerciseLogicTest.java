@@ -13,8 +13,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExerciseLogicTest
-{
+public class ExerciseLogicTest {
     ExerciseLogic logicTest;
 
     @Before
@@ -28,18 +27,16 @@ public class ExerciseLogicTest
     }
 
     @Test
-    public void testGetExercises()
-    {
+    public void testGetExercises() {
         List<Exercise> list = logicTest.getExercises();
         assertEquals(30, list.size());
     }
 
     @Test
-    public void testAddingExercise()
-    {
+    public void testAddingExercise() {
         System.out.println("\nStarting testAddingExercise");
 
-        logicTest.addExercise(new Exercise("test","back",2));
+        logicTest.addExercise(new Exercise("test", "back", 2));
         List<Exercise> list = logicTest.getExercises();
         assertEquals(31, list.size());
 
@@ -47,8 +44,7 @@ public class ExerciseLogicTest
     }
 
     @Test
-    public void testSortByDifficulty()
-    {
+    public void testSortByDifficulty() {
         logicTest.sortByDifficulty();
 
         //indexes 0-11 have difficulty of 1
@@ -62,7 +58,7 @@ public class ExerciseLogicTest
     @Test
     public void testSearchExerciseValid() {
 
-        ArrayList<Exercise> result = logicTest.searchExercise("Deadlift");
+        List<Exercise> result = logicTest.searchExercise("Deadlift");
 
         //search Deadlift
         assertNotNull(result);
@@ -76,53 +72,46 @@ public class ExerciseLogicTest
     }
 
     @Test
-    public void testSearchExerciseInvalid()
-    {
-        ArrayList<Exercise> result = logicTest.searchExercise("pizza");
+    public void testSearchExerciseInvalid() {
+        List<Exercise> result = logicTest.searchExercise("pizza");
         assertNotNull(result);
-        assertEquals(0,result.size());
+        assertEquals(0, result.size());
     }
 
     @Test
-    public void testSearchExerciseByDifficultyValid()
-    {
+    public void testSearchExerciseByDifficultyValid() {
         //search difficulty 1
-        ArrayList<Exercise> result = logicTest.searchExerciseByDifficulty(1);
+        List<Exercise> result = logicTest.searchExerciseByDifficulty(1);
         assertEquals(12, result.size());
     }
 
     @Test
-    public void testSearchExerciseByDifficultyInvalid()
-    {
-        ArrayList<Exercise> result = logicTest.searchExerciseByDifficulty(9);
-        assertEquals(0,result.size());
+    public void testSearchExerciseByDifficultyInvalid() {
+        List<Exercise> result = logicTest.searchExerciseByDifficulty(9);
+        assertEquals(0, result.size());
     }
 
     @Test
-    public void testSearchByMuscleGroupValid()
-    {
-        ArrayList<Exercise> result = logicTest.searchExerciseByMuscleGroup("back");
+    public void testSearchByMuscleGroupValid() {
+        List<Exercise> result = logicTest.searchExerciseByMuscleGroup("back");
         assertEquals(5, result.size());
     }
 
     @Test
-    public void testSearchByMuscleGroupInvalid()
-    {
-        ArrayList<Exercise> result = logicTest.searchExerciseByMuscleGroup("feet");
-        assertEquals(0,result.size());
+    public void testSearchByMuscleGroupInvalid() {
+        List<Exercise> result = logicTest.searchExerciseByMuscleGroup("feet");
+        assertEquals(0, result.size());
     }
 
     @Test
-    public void testSearchExerciseByBodyGroupValid()
-    {
-        ArrayList<Exercise> result = logicTest.searchExerciseByBodyGroup("upper body");
+    public void testSearchExerciseByBodyGroupValid() {
+        List<Exercise> result = logicTest.searchExerciseByBodyGroup("upper body");
         assertEquals(20, result.size());
     }
 
     @Test
-    public void testSearchExerciseByBodyGroupInValid()
-    {
-        ArrayList<Exercise> result = logicTest.searchExerciseByBodyGroup("stellar body");
+    public void testSearchExerciseByBodyGroupInValid() {
+        List<Exercise> result = logicTest.searchExerciseByBodyGroup("stellar body");
         assertEquals(0, result.size());
     }
 }
