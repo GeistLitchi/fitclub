@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.Objects;
 
 import comp3350.fitclub.R;
+import comp3350.fitclub.application.Main;
 import comp3350.fitclub.logic.ExerciseLogic;
 import comp3350.fitclub.logic.LikedLogic;
 import comp3350.fitclub.objects.Exercise;
@@ -41,6 +42,7 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
 
         String workoutTitle = intent.getStringExtra(WorkoutPage.EXTRA_NAME_WORKOUT);                //getting the value from intent key-value pair
         String muscleGroupTitle = intent.getStringExtra(MuscleGroupPage.EXTRA_NAME_MUSCLE);         //getting the value from intent key-value pair
+        String title = intent.getStringExtra(MainActivity.EXTRA_NAME_MAIN);
 
         textView = findViewById(R.id.workout_name);
 
@@ -61,6 +63,11 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
 
             doing = exercises.searchExerciseByMuscleGroup(muscleGroupTitle);    //this will return the exercises for a given muscle group
 
+        }else if(title != null)
+        {
+            textView.setText(title);
+
+            doing = (ArrayList<Exercise>) liked.getLikedExercises();
         }
         if (doing != null){
             ad = new CustomAdapter(this, doing, this);                 //creating new customAdapter

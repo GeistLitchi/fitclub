@@ -20,9 +20,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     private final RecyclerViewInterface recyclerViewInterface;          // refrence to recyclerViewInterface
     private Context context;                                            // context to use from
-    private ArrayList<Exercise> list;
-
-    private final LikedLogic liked = new LikedLogic();// list of all exercise
+    private ArrayList<Exercise> list;                                   // list of all exercise
+    private final LikedLogic liked = new LikedLogic();
 
     //constructor
     CustomAdapter(Context context, ArrayList<Exercise> arr, RecyclerViewInterface recyclerViewInterface){

@@ -25,7 +25,7 @@ import comp3350.fitclub.application.Main;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    public static final String EXTRA_NAME_MAIN = "comp3350.fitclub.presentation.extra.NAME_MAIN";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button goToMuscleGroupBtn = (Button) findViewById(R.id.btn_go_to_muscle_group);
 //        Button goToExercisesBtn = (Button) findViewById(R.id.btn_go_to_exercises_activity);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button goToWorkout = findViewById(R.id.btn_go_to_find_workout);
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button goToFavorite = findViewById(R.id.btn_liked);
 //        goToExercisesBtn.setOnClickListener(new View.OnClickListener()
 //        {
 //            public void onClick(View view)
@@ -60,6 +61,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view)
             {
                 Intent intent = new Intent(MainActivity.this, WorkoutPage.class);
+                startActivity(intent);
+            }
+        });
+
+        goToFavorite.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                String title = "favorite";
+                Intent intent = new Intent(MainActivity.this,RecycleView.class);
+                intent.putExtra(EXTRA_NAME_MAIN,title);
                 startActivity(intent);
             }
         });
