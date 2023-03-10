@@ -28,23 +28,6 @@ public class WorkoutLogic {
         return workoutDB.getAllWorkouts();
     }
 
-    //calculate the difficulty of the workout based on average difficulty of exercises
-    public int calcDifficulty(Workout current) {
-        int difficulty = 0;
-
-        if(current != null && current.getSize() > 0) {
-            List<Exercise> currentExercises = current.getWorkoutExercises();
-
-            //sum difficulties of each exercise in workout
-            for(int i=0; i<currentExercises.size(); i++) {
-                difficulty += currentExercises.get(i).getDifficulty();
-            }
-            difficulty /= current.getSize();
-        }
-
-        return difficulty;
-    }
-
     //search workout DB for workouts of a given type (UPPER, LOWER etc)
     public List<Workout> searchWorkoutType(String workoutType) {
         List<Workout> workouts = workoutDB.getAllWorkouts();
@@ -66,7 +49,7 @@ public class WorkoutLogic {
 
     //search the workout db for workouts of a given difficulty
     public List<Workout> searchByDifficulty(int workoutDifficulty) {
-        List<Workout> workouts = workoutDB.getAllWorkouts();
+        List<Workout> workouts = this.workoutDB.getAllWorkouts();
         List<Workout> list = new ArrayList<Workout>();
 
         //search list of workouts for matching types
