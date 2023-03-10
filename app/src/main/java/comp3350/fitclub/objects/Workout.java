@@ -1,6 +1,7 @@
 package comp3350.fitclub.objects;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Workout implements Comparable{
     /*--------- instance variables ------------*/
@@ -41,7 +42,7 @@ public class Workout implements Comparable{
         return workoutExercises.size();
     }
 
-    public ArrayList<Exercise> getWorkoutExercises() {
+    public List<Exercise> getWorkoutExercises() {
         return workoutExercises;
     }
 

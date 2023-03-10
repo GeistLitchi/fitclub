@@ -27,7 +27,7 @@ public class WorkoutLogic {
         int difficulty = 0;
 
         if(current != null && current.getSize() > 0) {
-            ArrayList<Exercise> currentExercises = current.getWorkoutExercises();
+            List<Exercise> currentExercises = current.getWorkoutExercises();
 
             //sum difficulties of each exercise in workout
             for(int i=0; i<currentExercises.size(); i++) {
@@ -43,7 +43,7 @@ public class WorkoutLogic {
     }
 
     //search workout DB for workouts of a given type (UPPER, LOWER etc)
-    public ArrayList<Workout> searchWorkoutType(String workoutType) {
+    public List<Workout> searchWorkoutType(String workoutType) {
         ArrayList<Workout> workouts = workoutDB.getAllWorkouts();
 
         ArrayList<Workout> list = new ArrayList<Workout>();
@@ -63,7 +63,7 @@ public class WorkoutLogic {
     }
 
     //search the workout db for workouts of a given difficulty
-    public ArrayList<Workout> searchByDifficulty(int workoutDifficulty) {
+    public List<Workout> searchByDifficulty(int workoutDifficulty) {
         ArrayList<Workout> workouts = workoutDB.getAllWorkouts();
 
         ArrayList<Workout> list = new ArrayList<Workout>();
@@ -81,7 +81,7 @@ public class WorkoutLogic {
     }
 
     //sort the workout by difficulty in ascending order
-    public ArrayList<Workout> sortByDifficulty() {
+    public List<Workout> sortByDifficulty() {
         ArrayList<Workout> workouts = workoutDB.getAllWorkouts();
 
         Collections.sort(workouts);

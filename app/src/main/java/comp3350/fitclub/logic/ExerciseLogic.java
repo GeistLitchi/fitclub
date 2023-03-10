@@ -49,7 +49,7 @@ public class ExerciseLogic
      * @return list of search result
      * */
     //Search for exercises if name and description of exercise contains key word;
-    public ArrayList<Exercise> searchExercise(String keyword)
+    public List<Exercise> searchExercise(String keyword)
     {
         List<Exercise> exercises = exercisesPersistence.getExercises();
 
@@ -63,7 +63,7 @@ public class ExerciseLogic
     }
 
     //Search for exercises by difficulty level
-    public ArrayList<Exercise> searchExerciseByDifficulty(int difficultyLevel)
+    public List<Exercise> searchExerciseByDifficulty(int difficultyLevel)
     {
         List<Exercise> exercises = exercisesPersistence.getExercises();
 
@@ -77,7 +77,7 @@ public class ExerciseLogic
     }
 
     //Search for exercises by muscle group
-    public ArrayList<Exercise> searchExerciseByMuscleGroup(String muscleGroup)
+    public List<Exercise> searchExerciseByMuscleGroup(String muscleGroup)
     {
         List<Exercise> exercises = exercisesPersistence.getExercises();
 
@@ -91,7 +91,7 @@ public class ExerciseLogic
     }
 
     //This will search for exercises by upper or lower body
-    public ArrayList<Exercise> searchExerciseByBodyGroup(String bodyGroup) {
+    public List<Exercise> searchExerciseByBodyGroup(String bodyGroup) {
         String[] validStrings;
 
         if (bodyGroup.equalsIgnoreCase("upper body")) {
@@ -107,20 +107,6 @@ public class ExerciseLogic
             result.addAll(searchExerciseByMuscleGroup(group));
         }
         return result;
-    }
-
-    public String toString()
-    {
-        List<Exercise> exercises = exercisesPersistence.getExercises();
-
-        StringBuilder sb = new StringBuilder();
-        for(Exercise exercise : exercises)
-        {
-            sb.append(exercise.getExerciseName()).append(", ")
-                    .append(exercise.getBodyPart()).append(", ")
-                    .append(exercise.getDifficulty()).append(".\n");
-        }
-        return sb.toString();
     }
 
     /**

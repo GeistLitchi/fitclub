@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import comp3350.fitclub.R;
 import comp3350.fitclub.logic.LikedLogic;
@@ -20,11 +21,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     private final RecyclerViewInterface recyclerViewInterface;          // refrence to recyclerViewInterface
     private Context context;                                            // context to use from
-    private ArrayList<Exercise> list;                                   // list of all exercise
+    private List<Exercise> list;                                   // list of all exercise
     private final LikedLogic liked = new LikedLogic();
 
     //constructor
-    CustomAdapter(Context context, ArrayList<Exercise> arr, RecyclerViewInterface recyclerViewInterface){
+    CustomAdapter(Context context, List<Exercise> arr, RecyclerViewInterface recyclerViewInterface){
         RecyclerViewInterface recyclerViewInterface1;
         this.context = context;
         list = arr;

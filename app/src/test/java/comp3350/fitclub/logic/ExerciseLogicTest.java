@@ -10,6 +10,7 @@ import comp3350.fitclub.persistence.ExercisesDataStub;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExerciseLogicTest
 {
@@ -88,7 +89,7 @@ public class ExerciseLogicTest
         logic.addExercise(e4);
         logic.addExercise(e5);
 
-        ArrayList<Exercise> searchResult1 = logic.searchExercise("deadlift");
+        List<Exercise> searchResult1 = logic.searchExercise("deadlift");
 
         //search deadlift
         //only one exercise should be found, that is deadlift

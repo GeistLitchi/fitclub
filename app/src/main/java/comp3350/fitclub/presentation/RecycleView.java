@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 import comp3350.fitclub.R;
@@ -30,7 +31,7 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
     private final ExerciseLogic exercises = new ExerciseLogic();
     private final LikedLogic liked = new LikedLogic();
 
-    ArrayList<Exercise> doing = null;
+    List<Exercise> doing = null;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -67,7 +68,7 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
         {
             textView.setText(title);
 
-            doing = (ArrayList<Exercise>) liked.getLikedExercises();
+            doing = liked.getLikedExercises();
         }
         if (doing != null){
             ad = new CustomAdapter(this, doing, this);                 //creating new customAdapter
