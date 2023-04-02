@@ -23,8 +23,10 @@ import comp3350.fitclub.application.Main;
 import comp3350.fitclub.logic.ExerciseLogic;
 import comp3350.fitclub.logic.LikedLogic;
 import comp3350.fitclub.objects.Exercise;
+import comp3350.fitclub.objects.Workout;
 
 public class RecycleView extends AppCompatActivity implements RecyclerViewInterface {
+
 
     TextView textView;
     RecyclerView recycleView;
