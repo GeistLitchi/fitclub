@@ -18,13 +18,13 @@ public class CustomWorkoutAdapter extends RecyclerView.Adapter<CustomWorkoutAdap
 
     Context context;
     List<Workout> list;
-    private final RecyclerViewInterface recyclerViewInterface;          // refrence to recyclerViewInterface
+    private final RecyclerViewInterface recyclerViewInterface;          // reference to recyclerViewInterface
 
-    CustomWorkoutAdapter(Context context, List<Workout> arr, RecyclerViewInterface rInterface){
+    CustomWorkoutAdapter(Context context, List<Workout> arr, RecyclerViewInterface recyclerViewInterface){
 
         this.context = context;
         list = arr;
-        recyclerViewInterface = rInterface;
+        this.recyclerViewInterface = recyclerViewInterface;
 
     }
 

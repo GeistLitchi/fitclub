@@ -7,6 +7,8 @@ public interface ExercisesPersistence
 {
     List<Exercise> getExercises();
 
+    List<Exercise> getExercisesInWorkout(String workoutName);
+
     Exercise insertExercise(Exercise currentExercise);
 
     void deleteExercise(Exercise currentExercise);

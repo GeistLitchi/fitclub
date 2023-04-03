@@ -67,8 +67,6 @@ public class MuscleGroupPage extends AppCompatActivity implements View.OnClickLi
                 buttonClicked = findViewById(R.id.shoulder_btn);
                 muscleName = buttonClicked.getText().toString();                            //getting the name of the text stored in buttonClicked
                 break;
-
-
             default:
                 throw new IllegalStateException("Unexpected value: " + view.getId());
         }

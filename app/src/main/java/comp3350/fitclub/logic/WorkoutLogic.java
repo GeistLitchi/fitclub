@@ -3,8 +3,10 @@ package comp3350.fitclub.logic;
 import comp3350.fitclub.application.InitializePersistence;
 import comp3350.fitclub.objects.Workout;
 import comp3350.fitclub.objects.Exercise;
+import comp3350.fitclub.objects.WorkoutExercise;
 import comp3350.fitclub.persistence.ExerciseTutorialPersistence;
 import comp3350.fitclub.persistence.ExercisesPersistence;
+import comp3350.fitclub.persistence.WorkoutExercisePersistence;
 import comp3350.fitclub.persistence.WorkoutPersistence;
 
 import java.util.ArrayList;
@@ -14,14 +16,22 @@ import java.util.List;
 
 public class WorkoutLogic {
     private WorkoutPersistence workoutDB;
+    private WorkoutExercisePersistence workoutExercisePersistence;
 
     public WorkoutLogic(){
 
         workoutDB = InitializePersistence.getWorkoutPersistence();
+        workoutExercisePersistence = InitializePersistence.getWorkoutExercisePersistence();
+
     }
 
+    //Next 2 constructors are used for testing
     public WorkoutLogic(WorkoutPersistence workoutDB){
         this.workoutDB = workoutDB;
+    }
+    public WorkoutLogic(WorkoutPersistence workoutDB, WorkoutExercisePersistence workoutExercisePersistence) {
+        this.workoutDB = workoutDB;
+        this.workoutExercisePersistence = workoutExercisePersistence;
     }
 
     //calculate the difficulty of the workout based on average difficulty of exercises
@@ -89,5 +99,13 @@ public class WorkoutLogic {
         Collections.sort(workouts);
 
         return workouts;
+    }
+
+    public WorkoutExercise addExercise(Workout workout, Exercise exercise) {
+        WorkoutExercise workoutExercise = new WorkoutExercise(workout.getName(), exercise.getExerciseName());
+
+        workoutExercisePersistence.insertWorkoutExercise(workoutExercise);
+
+        return workoutExercise;
     }
 }

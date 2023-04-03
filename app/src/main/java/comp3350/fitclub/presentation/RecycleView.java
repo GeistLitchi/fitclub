@@ -43,7 +43,7 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
 
         Intent intent = getIntent();
 
-        String workoutTitle = intent.getStringExtra(WorkoutPage.EXTRA_NAME_WORKOUT);                //getting the value from intent key-value pair
+        String workoutTitle = intent.getStringExtra("workoutName");                //getting the value from intent key-value pair
         String muscleGroupTitle = intent.getStringExtra(MuscleGroupPage.EXTRA_NAME_MUSCLE);         //getting the value from intent key-value pair
         String title = intent.getStringExtra(MainActivity.EXTRA_NAME_MAIN);
 
@@ -58,7 +58,7 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
         if(workoutTitle != null){                                               //checking for either we clicked on find Workout
             textView.setText(workoutTitle);                                     // setting the heading to workout name
 
-            doing = exercises.searchExerciseByBodyGroup(workoutTitle);          //This will return the exercises in either upper or lower body groups
+            doing = exercises.searchExerciseByWorkout(workoutTitle);          //This will return the exercises in either upper or lower body groups
 
 
         }else if(muscleGroupTitle != null){                                     //checking for either we clicked on muscle group
@@ -79,7 +79,6 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
             //for drag and drop item but not saving yet
             ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
             itemTouchHelper.attachToRecyclerView(recycleView);
-
 
         }else{
             System.out.println("ad is null");

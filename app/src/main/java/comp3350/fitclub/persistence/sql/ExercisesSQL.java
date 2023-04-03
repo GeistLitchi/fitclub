@@ -54,6 +54,32 @@ public class ExercisesSQL implements ExercisesPersistence {
         return exercises;
     }
 
+    @Override
+    public List<Exercise> getExercisesInWorkout(String workoutName) {
+        List<Exercise> exercises = new ArrayList<Exercise>();
+
+        try (Connection c = connect()) {
+
+            PreparedStatement statement = c.prepareStatement("SELECT * FROM Exercises " +
+                    "INNER JOIN WorkoutExercise ON Exercises.exerciseName = WorkoutExercise.exerciseName " +
+                    "WHERE WorkoutExercise.workoutName = ?");
+            statement.setString(1, workoutName);
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                exercises.add(extractData(result));
+            }
+
+            result.close();
+            statement.close();
+
+        } catch (SQLException e) {
+            throw new PersistenceException(e);
+        }
+
+        return exercises;
+    }
+
     //inserts the new exercise into the database
     @Override
     public Exercise insertExercise(Exercise currentExercise) {
