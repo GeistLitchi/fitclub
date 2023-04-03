@@ -43,7 +43,7 @@ public class RecycleViewWorkoutList extends AppCompatActivity implements Recycle
 
         String name = workoutList.get(position).getName();
         Intent intent = new Intent(this, RecycleView.class);
-        intent.putExtra("workoutName", name );
+        intent.putExtra("workoutTitle", name );
         startActivity(intent);
     }
 

@@ -43,7 +43,7 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
 
         Intent intent = getIntent();
 
-        String workoutTitle = intent.getStringExtra("workoutName");                //getting the value from intent key-value pair
+        String workoutTitle = intent.getStringExtra("workoutTitle");                //getting the value from intent key-value pair
         String muscleGroupTitle = intent.getStringExtra(MuscleGroupPage.EXTRA_NAME_MUSCLE);         //getting the value from intent key-value pair
         String title = intent.getStringExtra(MainActivity.EXTRA_NAME_MAIN);
 
