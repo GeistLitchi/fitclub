@@ -61,8 +61,8 @@ public class ExercisesSQL implements ExercisesPersistence {
         try (Connection c = connect()) {
 
             PreparedStatement statement = c.prepareStatement("SELECT * FROM Exercises " +
-                    "INNER JOIN WorkoutExercise ON Exercises.exerciseName = WorkoutExercise.exerciseName " +
-                    "WHERE WorkoutExercise.workoutName = ?");
+                    "INNER JOIN WorkoutExercise ON UPPER(Exercises.exerciseName) = UPPER(WorkoutExercise.exerciseName) " +
+                    "WHERE UPPER(WorkoutExercise.workoutName) = UPPER(?)");
             statement.setString(1, workoutName);
             ResultSet result = statement.executeQuery();
 

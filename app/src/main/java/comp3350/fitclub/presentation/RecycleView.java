@@ -83,9 +83,6 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
         }else{
             System.out.println("ad is null");
         }
-
-
-
     }
 
 
