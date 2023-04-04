@@ -8,8 +8,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +39,10 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
 
     List<Exercise> doing = null;
 
-    @SuppressLint("MissingInflatedId")
+    private FrameLayout guideLayout;
+    private boolean isFirstTime;
+
+    @SuppressLint({"MissingInflatedId", "ResourceType"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +92,18 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
             System.out.println("ad is null");
         }
 
+        //guide page
+        guideLayout = findViewById(R.id.guide_layout);
 
+        //only show the guide when users first enter the recycle page
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        isFirstTime = prefs.getBoolean("isFirstTime", true);
+        if (isFirstTime) {
+            showGuideLayer();
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("isFirstTime", false);
+            editor.apply();
+        }
 
     }
 
@@ -131,5 +151,19 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
             Toast.makeText(this,"Added to my Favorite",Toast.LENGTH_SHORT).show();
         }
     }
-}
 
+    private void showGuideLayer()
+    {
+        ImageView gestureImage = (ImageView) findViewById(R.id.gesture_image);
+
+        guideLayout.setVisibility(View.VISIBLE);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.gesture_anim);
+        gestureImage.startAnimation(animation);
+        guideLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                guideLayout.setVisibility(View.GONE);
+            }
+        });
+    }
+}
