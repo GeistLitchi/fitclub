@@ -39,6 +39,8 @@ public class InitializePersistence {
     public static synchronized WorkoutPersistence getWorkoutPersistence() {
         if (workoutPersistence == null) {
             workoutPersistence = new WorkoutSQL(Main.getDbName());
+
+            //----------------------------------------------------
         }
 
         return workoutPersistence;

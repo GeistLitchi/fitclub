@@ -13,6 +13,9 @@ public class Exercise
     * Maybe later we can use different color images to represent different degrees of difficulty*/
     private final int difficulty;
 
+    //variable to check weithe we selected the exercied or not
+    private boolean isChecked = false;
+
     public Exercise(final String name)
     {
         exerciseName = name;
@@ -48,6 +51,14 @@ public class Exercise
         }
 
         return equals;
+    }
+
+    public boolean isChecked(){
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked){
+        isChecked = checked;
     }
 
 }
