@@ -103,15 +103,5 @@ public class ExerciseLogicTest {
         assertEquals(0, result.size());
     }
 
-    @Test
-    public void testSearchExerciseByBodyGroupValid() {
-        List<Exercise> result = logicTest.searchExerciseByBodyGroup("upper body");
-        assertEquals(20, result.size());
-    }
 
-    @Test
-    public void testSearchExerciseByBodyGroupInValid() {
-        List<Exercise> result = logicTest.searchExerciseByBodyGroup("stellar body");
-        assertEquals(0, result.size());
-    }
 }

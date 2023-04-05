@@ -91,22 +91,8 @@ public class ExerciseLogic
     }
 
     //This will search for exercises by upper or lower body
-    public List<Exercise> searchExerciseByBodyGroup(String bodyGroup) {
-        String[] validStrings;
-
-        if (bodyGroup.equalsIgnoreCase("upper body")) {
-            validStrings = new String[] {"Arms", "Chest", "Back", "Shoulder"};
-        } else if (bodyGroup.equalsIgnoreCase("lower body")) {
-            validStrings = new String[] {"Legs", "Core"};
-        } else {
-            validStrings = new String[] {};
-        }
-
-        ArrayList<Exercise> result = new ArrayList<>();
-        for (String group : validStrings) {
-            result.addAll(searchExerciseByMuscleGroup(group));
-        }
-        return result;
+    public List<Exercise> searchExerciseByWorkout(String workoutName) {
+        return exercisesPersistence.getExercisesInWorkout(workoutName);
     }
 
     /**

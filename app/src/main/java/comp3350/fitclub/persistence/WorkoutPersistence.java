@@ -1,6 +1,7 @@
 package comp3350.fitclub.persistence;
 
 import comp3350.fitclub.objects.Workout;
+import comp3350.fitclub.objects.Exercise;
 import java.util.List;
 
 public interface WorkoutPersistence {
@@ -9,4 +10,5 @@ public interface WorkoutPersistence {
     Workout insertWorkout(Workout current);
 
     Workout updateWorkout(Workout current);
+
 }

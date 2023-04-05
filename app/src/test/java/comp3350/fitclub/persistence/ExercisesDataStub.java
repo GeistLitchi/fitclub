@@ -62,6 +62,11 @@ public class ExercisesDataStub implements ExercisesPersistence
     }
 
     @Override
+    public List<Exercise> getExercisesInWorkout(String workoutName) {
+        return exercises;
+    }
+
+    @Override
     public Exercise insertExercise(Exercise currentExercise)
     {
         exercises.add(currentExercise);

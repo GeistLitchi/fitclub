@@ -1,12 +1,15 @@
 package comp3350.fitclub.application;
 
+import comp3350.fitclub.objects.WorkoutExercise;
 import comp3350.fitclub.persistence.ExercisesPersistence;
 import comp3350.fitclub.persistence.LikedPersistence;
+import comp3350.fitclub.persistence.WorkoutExercisePersistence;
 import comp3350.fitclub.persistence.sql.ExerciseTutorialSQL;
 import comp3350.fitclub.persistence.sql.ExercisesSQL;
 import comp3350.fitclub.persistence.ExerciseTutorialPersistence;
 import comp3350.fitclub.persistence.WorkoutPersistence;
 import comp3350.fitclub.persistence.sql.LikedExercisesSQL;
+import comp3350.fitclub.persistence.sql.WorkoutExerciseSQL;
 import comp3350.fitclub.persistence.sql.WorkoutSQL;
 
 public class InitializePersistence {
@@ -15,6 +18,7 @@ public class InitializePersistence {
     private static ExerciseTutorialPersistence exerciseTutorialPersistence = null;
     private static WorkoutPersistence workoutPersistence = null;
     private static LikedPersistence likedPersistence = null;
+    private static WorkoutExercisePersistence workoutExercisePersistence = null;
 
     public static synchronized ExerciseTutorialPersistence getExerciseTutorialPersistence() {
         if (exerciseTutorialPersistence == null) {
@@ -46,5 +50,13 @@ public class InitializePersistence {
         }
 
         return likedPersistence;
+    }
+
+    public static synchronized WorkoutExercisePersistence getWorkoutExercisePersistence() {
+        if (workoutExercisePersistence == null) {
+            workoutExercisePersistence = new WorkoutExerciseSQL(Main.getDbName());
+        }
+
+        return workoutExercisePersistence;
     }
 }
