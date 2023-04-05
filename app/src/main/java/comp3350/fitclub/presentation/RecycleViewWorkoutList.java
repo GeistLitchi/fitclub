@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -20,12 +22,15 @@ public class RecycleViewWorkoutList extends AppCompatActivity implements Recycle
     private final WorkoutLogic workoutLogic = new WorkoutLogic();
 
     RecyclerView recycleView;
+    Button creatWorkout_btn;
     List<Workout> workoutList = new ArrayList<Workout>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle_view_workout_list);
+
+        creatWorkout_btn = findViewById(R.id.creatWorkout_btn);
 
         recycleView = findViewById(R.id.recycleView);
         recycleView.setLayoutManager(new LinearLayoutManager(this));
@@ -35,7 +40,27 @@ public class RecycleViewWorkoutList extends AppCompatActivity implements Recycle
         CustomWorkoutAdapter adapter = new CustomWorkoutAdapter(this, workoutList, this);
         recycleView.setAdapter(adapter);
 
+        creatWorkout_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RecycleViewWorkoutList.this, CreateWorkout.class);
+                startActivity(intent);
+            }
+        });
+
     }
+
+    /*
+    * goToWorkout.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View view)
+            {
+//                Intent intent = new Intent(MainActivity.this, WorkoutPage.class);
+                Intent intent = new Intent(MainActivity.this, RecycleViewWorkoutList.class);
+                startActivity(intent);
+            }
+        });
+    * */
 
 
     @Override
