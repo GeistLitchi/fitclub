@@ -24,17 +24,32 @@ public class WorkoutExerciseSQL implements WorkoutExercisePersistence {
     }
 
     @Override
-    public WorkoutExercise insertWorkoutExercise(WorkoutExercise workoutExercise) {
-        try (Connection c = connect()) {
-            PreparedStatement statement = c.prepareStatement("INSERT INTO WorkoutExercise VALUES(?, ?)");
-            statement.setString(1, workoutExercise.getWorkoutName());
-            statement.setString(2, workoutExercise.getExerciseName());
+    public void insertWorkoutExercises(List<WorkoutExercise> workoutExerciseList) {
+        if (workoutExerciseList.size() > 0) {
 
-            statement.executeUpdate();
+            try (Connection c = connect()) {
+                //setup the statement
+                String statementString = "INSERT INTO WorkoutExercise VALUES (?,?)";
 
-            return workoutExercise;
-        } catch (SQLException e) {
-            throw new PersistenceException(e);
+                for (int i = 1; i < workoutExerciseList.size(); i++) {
+                    statementString += ", (?,?)";
+                }
+
+                PreparedStatement statement = c.prepareStatement(statementString);
+
+                //set the variables in statement
+                int i = 1;
+                for (WorkoutExercise workoutExercise : workoutExerciseList) {
+                    statement.setString(i++, workoutExercise.getWorkoutName());
+                    statement.setString(i++, workoutExercise.getExerciseName());
+                }
+
+
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                throw new PersistenceException(e);
+            }
+
         }
     }
 

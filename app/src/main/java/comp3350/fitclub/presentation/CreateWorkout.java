@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,32 +23,24 @@ import comp3350.fitclub.R;
 import comp3350.fitclub.logic.ExerciseLogic;
 import comp3350.fitclub.logic.WorkoutLogic;
 import comp3350.fitclub.objects.Exercise;
+import comp3350.fitclub.objects.Workout;
 
 public class CreateWorkout extends AppCompatActivity {
 
     WorkoutLogic workoutLogic = new WorkoutLogic();
     ExerciseLogic exerciseLogic = new ExerciseLogic();
 
-    EditText workoutname;
-    String name;
+    EditText workout_name;
     Spinner spinner;
     Button submit_btn;
     RecyclerView recyclerView;
 
     MultiAdapter multiAdapter;
 
-    //-------------------------------------------------------------------------------------
-    Exercise e1 = new Exercise("e1");
-    Exercise e2 = new Exercise("e2");
-    Exercise e3 = new Exercise("e3");
-    Exercise e4 = new Exercise("e4");
-    Exercise e5 = new Exercise("e5");
-    Exercise e6 = new Exercise("e6");
-    Exercise e7 = new Exercise("e7");
-
     String[] muscleGroup = {"ALL", "ARMS", "BACK", "CHEST", "CORE", "LEGS", "SHOULDERS"};
     List<Exercise> exerciseList = new ArrayList<Exercise>();
 
+    Context context = this;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -54,7 +48,7 @@ public class CreateWorkout extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_workout);
 
-        workoutname = findViewById(R.id.your_workout_name);
+        workout_name = findViewById(R.id.your_workout_name);
         spinner = findViewById(R.id.spinner);
         submit_btn = findViewById(R.id.submit_btn);
         recyclerView = findViewById(R.id.recycleView);
@@ -69,10 +63,9 @@ public class CreateWorkout extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String value = adapterView.getItemAtPosition(i).toString();
-                Toast.makeText(CreateWorkout.this, "you selected "+value, Toast.LENGTH_SHORT).show();
+                String exerciseName = adapterView.getItemAtPosition(i).toString();
 
-                setExerciseList(value);
+                setExerciseList(exerciseName);
                 multiAdapter = setMultiAdapter();
             }
 
@@ -87,18 +80,20 @@ public class CreateWorkout extends AppCompatActivity {
         submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                name = workoutname.getText().toString();
+                String workoutName = workout_name.getText().toString();
+                String muscleGroup = spinner.getSelectedItem().toString();
 
                 List<Exercise> selectedList = multiAdapter.getSelected();
-                int size = selectedList.size();
-                System.out.println("the size of selected is "+ size);
-                if(size>0){
-                    System.out.println("this condition is true");
-                    Toast.makeText(CreateWorkout.this, "name of the workout is "+name+" size of selected sting is "+size, Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(CreateWorkout.this, "No Item was selected", Toast.LENGTH_SHORT).show();
+
+                Workout workout = workoutLogic.insertWorkout(new Workout(workoutName, muscleGroup));
+
+                if (selectedList.size() > 0) {
+                    workoutLogic.addExercises(workout, selectedList);
                 }
 
+                Toast.makeText(CreateWorkout.this, "New workout created", Toast.LENGTH_SHORT).show();
+
+                onBackPressed();
             }
         });
         //***************************************************************************************************************************************************

@@ -21,7 +21,7 @@ public class RecycleViewWorkoutList extends AppCompatActivity implements Recycle
     private final WorkoutLogic workoutLogic = new WorkoutLogic();
 
     RecyclerView recycleView;
-    Button creatWorkout_btn;
+    Button createWorkout_btn;
     List<Workout> workoutList = new ArrayList<Workout>();
 
     @Override
@@ -29,17 +29,15 @@ public class RecycleViewWorkoutList extends AppCompatActivity implements Recycle
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle_view_workout_list);
 
-        creatWorkout_btn = findViewById(R.id.createWorkout_btn);
+        createWorkout_btn = findViewById(R.id.createWorkout_btn);
 
         recycleView = findViewById(R.id.recycleView);
         recycleView.setLayoutManager(new LinearLayoutManager(this));
 
-        workoutList = workoutLogic.getWorkouts();
+        setWorkoutList();
+        setAdapter();
 
-        CustomWorkoutAdapter adapter = new CustomWorkoutAdapter(this, workoutList, this);
-        recycleView.setAdapter(adapter);
-
-        creatWorkout_btn.setOnClickListener(new View.OnClickListener() {
+        createWorkout_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RecycleViewWorkoutList.this, CreateWorkout.class);
@@ -48,19 +46,6 @@ public class RecycleViewWorkoutList extends AppCompatActivity implements Recycle
         });
 
     }
-
-    /*
-    * goToWorkout.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View view)
-            {
-//                Intent intent = new Intent(MainActivity.this, WorkoutPage.class);
-                Intent intent = new Intent(MainActivity.this, RecycleViewWorkoutList.class);
-                startActivity(intent);
-            }
-        });
-    * */
-
 
     @Override
     public void onItemClick(int position) {
@@ -74,5 +59,22 @@ public class RecycleViewWorkoutList extends AppCompatActivity implements Recycle
     @Override
     public void onItemLongClick(int position) {
 
+    }
+
+    @Override
+    public void onRestart() {
+        super.onRestart();
+
+        setWorkoutList();
+        setAdapter();
+    }
+
+    private void setWorkoutList() {
+        workoutList = workoutLogic.getWorkouts();
+    }
+
+    private void setAdapter() {
+        CustomWorkoutAdapter adapter = new CustomWorkoutAdapter(this, workoutList, this);
+        recycleView.setAdapter(adapter);
     }
 }
