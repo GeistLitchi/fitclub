@@ -25,7 +25,6 @@ import comp3350.fitclub.application.Main;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String EXTRA_NAME_MAIN = "comp3350.fitclub.presentation.extra.NAME_MAIN";
 
     //this flag will flip once the db file has been copied to device
     //this fill prevent the db name from being set multiple times which appends it to current
@@ -79,9 +78,8 @@ public class MainActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View view) {
-                String title = "Favorite";
                 Intent intent = new Intent(MainActivity.this,RecycleView.class);
-                intent.putExtra(EXTRA_NAME_MAIN,title);
+                intent.putExtra("likedExercises",true);
                 startActivity(intent);
             }
         });

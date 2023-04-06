@@ -75,8 +75,6 @@ public class CreateWorkout extends AppCompatActivity {
             }
         });
 
-        //*****************************************************************************************************************************************
-
         submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,7 +94,7 @@ public class CreateWorkout extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        //***************************************************************************************************************************************************
+
     }
 
     private void setExerciseList(String muscleGroupSelected) {

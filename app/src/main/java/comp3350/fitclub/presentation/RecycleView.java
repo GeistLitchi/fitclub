@@ -105,22 +105,24 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
     private void setExerciseList() {
         Intent intent = getIntent();
 
-        String workoutTitle = intent.getStringExtra("workoutTitle");                //getting the value from intent key-value pair
-        String muscleGroupTitle = intent.getStringExtra(MuscleGroupPage.EXTRA_NAME_MUSCLE);         //getting the value from intent key-value pair
-        String title = intent.getStringExtra(MainActivity.EXTRA_NAME_MAIN);
+        //get the values from the intents. Only one of these fields should be set
+        String workoutTitle = intent.getStringExtra("workoutTitle");
+        String muscleGroupTitle = intent.getStringExtra("muscleGroup");
+        Boolean likedExercises = intent.getBooleanExtra("likedExercises", false);
 
-        if(workoutTitle != null){                                               //checking for either we clicked on find Workout
-            textView.setText(workoutTitle);                                     // setting the heading to workout name
 
-            exerciseList = exercises.searchExerciseByWorkout(workoutTitle);          //This will return the exercises in either upper or lower body groups
+        if (workoutTitle != null) { //if a workout was selected, display the exercises in that workout
+            textView.setText(workoutTitle);
 
-        } else if(muscleGroupTitle != null) {                                     //checking for either we clicked on muscle group
-            textView.setText(muscleGroupTitle);                                 // setting the heading to muscle group name
+            exerciseList = exercises.searchExerciseByWorkout(workoutTitle);
 
-            exerciseList = exercises.searchExerciseByMuscleGroup(muscleGroupTitle);    //this will return the exercises for a given muscle group
+        } else if(muscleGroupTitle != null) { //if a muscle group was selected, display the exercises in that muscle group
+            textView.setText(muscleGroupTitle);
 
-        } else if(title != null) {
-            textView.setText(title);
+            exerciseList = exercises.searchExerciseByMuscleGroup(muscleGroupTitle);
+
+        } else if(likedExercises) { //if
+            textView.setText("Favourites");
 
             exerciseList = liked.getLikedExercises();
         }
