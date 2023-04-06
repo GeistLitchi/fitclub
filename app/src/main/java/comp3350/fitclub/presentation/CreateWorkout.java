@@ -15,18 +15,25 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import comp3350.fitclub.R;
+import comp3350.fitclub.logic.ExerciseLogic;
+import comp3350.fitclub.logic.WorkoutLogic;
 import comp3350.fitclub.objects.Exercise;
 
 public class CreateWorkout extends AppCompatActivity {
+
+    WorkoutLogic workoutLogic = new WorkoutLogic();
+    ExerciseLogic exerciseLogic = new ExerciseLogic();
 
     EditText workoutname;
     String name;
     Spinner spinner;
     Button submit_btn;
     RecyclerView recyclerView;
-    String[] muscleGroup = {"BICEPS", "SHOULDERS", "TRICEPS", "ABS", "LEGS", "BACK"};
+
+    MultiAdapter multiAdapter;
 
     //-------------------------------------------------------------------------------------
     Exercise e1 = new Exercise("e1");
@@ -37,9 +44,8 @@ public class CreateWorkout extends AppCompatActivity {
     Exercise e6 = new Exercise("e6");
     Exercise e7 = new Exercise("e7");
 
-    ArrayList<Exercise> temp = new ArrayList<Exercise>();
-
-    //----------------------------------------------------------------------------------------
+    String[] muscleGroup = {"ALL", "ARMS", "BACK", "CHEST", "CORE", "LEGS", "SHOULDERS"};
+    List<Exercise> exerciseList = new ArrayList<Exercise>();
 
 
     @SuppressLint("MissingInflatedId")
@@ -48,29 +54,14 @@ public class CreateWorkout extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_workout);
 
-        //-----------------------------------------------------------------------------------
-        temp.add(e1);
-        temp.add(e2);
-        temp.add(e3);
-        temp.add(e4);
-        temp.add(e5);
-        temp.add(e6);
-        temp.add(e7);
-        //-----------------------------------------------------------------------------------
-
         workoutname = findViewById(R.id.your_workout_name);
         spinner = findViewById(R.id.spinner);
         submit_btn = findViewById(R.id.submit_btn);
         recyclerView = findViewById(R.id.recycleView);
 
-        //*************************************************************************************************************************************
-
+        //Setup the spinner that will hold the muscle groups
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        recyclerView.addItemDecoration(new );
-         MultiAdapter multiAdapter= new MultiAdapter(this, temp);
-         recyclerView.setAdapter(multiAdapter);
 
-        //**************************************************************************************************************************************
         ArrayAdapter<String> adapter = new ArrayAdapter<>(CreateWorkout.this, android.R.layout.simple_spinner_item, muscleGroup);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -80,6 +71,9 @@ public class CreateWorkout extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String value = adapterView.getItemAtPosition(i).toString();
                 Toast.makeText(CreateWorkout.this, "you selected "+value, Toast.LENGTH_SHORT).show();
+
+                setExerciseList(value);
+                multiAdapter = setMultiAdapter();
             }
 
             @Override
@@ -87,14 +81,15 @@ public class CreateWorkout extends AppCompatActivity {
 
             }
         });
+
         //*****************************************************************************************************************************************
 
         submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 name = workoutname.getText().toString();
-//                Toast.makeText(CreateWorkout.this, "name of the workout is "+name, Toast.LENGTH_SHORT).show();
-                ArrayList<Exercise> selectedList = multiAdapter.getSelected();
+
+                List<Exercise> selectedList = multiAdapter.getSelected();
                 int size = selectedList.size();
                 System.out.println("the size of selected is "+ size);
                 if(size>0){
@@ -107,5 +102,20 @@ public class CreateWorkout extends AppCompatActivity {
             }
         });
         //***************************************************************************************************************************************************
+    }
+
+    private void setExerciseList(String muscleGroupSelected) {
+        if (muscleGroupSelected.equalsIgnoreCase("ALL")) {
+            exerciseList = exerciseLogic.getExercises();
+        } else {
+            exerciseList = exerciseLogic.searchExerciseByMuscleGroup(muscleGroupSelected);
+        }
+    }
+
+    private MultiAdapter setMultiAdapter() {
+        MultiAdapter multiAdapter = new MultiAdapter(this, exerciseList);
+        recyclerView.setAdapter(multiAdapter);
+
+        return multiAdapter;
     }
 }

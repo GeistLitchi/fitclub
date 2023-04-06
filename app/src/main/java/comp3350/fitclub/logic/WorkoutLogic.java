@@ -101,11 +101,15 @@ public class WorkoutLogic {
         return workouts;
     }
 
-    public WorkoutExercise addExercise(Workout workout, Exercise exercise) {
-        WorkoutExercise workoutExercise = new WorkoutExercise(workout.getName(), exercise.getExerciseName());
+    public void addExercises(Workout workout, List<Exercise> exerciseList) {
 
-        workoutExercisePersistence.insertWorkoutExercise(workoutExercise);
+        WorkoutExercise workoutExercise;
+        for (Exercise exercise : exerciseList) {
+            workoutExercise = new WorkoutExercise(workout.getName(), exercise.getExerciseName());
 
-        return workoutExercise;
+            workoutExercisePersistence.insertWorkoutExercise(workoutExercise);
+        }
+
     }
+
 }

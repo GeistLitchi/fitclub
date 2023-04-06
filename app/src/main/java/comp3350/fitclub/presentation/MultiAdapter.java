@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import comp3350.fitclub.R;
 import comp3350.fitclub.objects.Exercise;
@@ -20,9 +21,9 @@ import comp3350.fitclub.objects.Exercise;
 public class MultiAdapter extends RecyclerView.Adapter<MultiAdapter.MultiViewHolder> {
 
     private Context context;                                            // context to use from
-    private ArrayList<Exercise> list;
+    private List<Exercise> list;
 
-    MultiAdapter(Context context, ArrayList<Exercise> arr){
+    MultiAdapter(Context context, List<Exercise> arr){
         this.context = context;
         list = arr;
     }
@@ -73,11 +74,11 @@ public class MultiAdapter extends RecyclerView.Adapter<MultiAdapter.MultiViewHol
     }
 
     // getting all selected items
-    public ArrayList<Exercise> getAll(){return list;}
+    public List<Exercise> getAll(){return list;}
 
     // getting selected when button is clicked
-    public ArrayList<Exercise> getSelected(){
-        ArrayList<Exercise> selected = new ArrayList<>();
+    public List<Exercise> getSelected(){
+        List<Exercise> selected = new ArrayList<>();
 
         for (int i = 0; i < list.size(); i++){
             if(list.get(i).isChecked()){

@@ -20,10 +20,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/creatWorkout_btn"
+        android:id="@+id/createWorkout_btn"
         android:layout_width="258dp"
         android:layout_height="49dp"
-        android:text="Creat workout"
+        android:text="Create workout"
         app:layout_constraintBottom_toTopOf="@+id/recycleView"
         app:layout_constraintEnd_toEndOf="@+id/workout_name"
         app:layout_constraintHorizontal_bias="0.506"
