@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ public class RecycleViewWorkoutList extends AppCompatActivity implements Recycle
     private final WorkoutLogic workoutLogic = new WorkoutLogic();
 
     RecyclerView recycleView;
+    Button createWorkout_btn;
     List<Workout> workoutList = new ArrayList<Workout>();
 
     @Override
@@ -27,16 +29,23 @@ public class RecycleViewWorkoutList extends AppCompatActivity implements Recycle
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle_view_workout_list);
 
+        createWorkout_btn = findViewById(R.id.createWorkout_btn);
+
         recycleView = findViewById(R.id.recycleView);
         recycleView.setLayoutManager(new LinearLayoutManager(this));
 
-        workoutList = workoutLogic.getWorkouts();
+        setWorkoutList();
+        setAdapter();
 
-        CustomWorkoutAdapter adapter = new CustomWorkoutAdapter(this, workoutList, this);
-        recycleView.setAdapter(adapter);
+        createWorkout_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RecycleViewWorkoutList.this, CreateWorkout.class);
+                startActivity(intent);
+            }
+        });
 
     }
-
 
     @Override
     public void onItemClick(int position) {
@@ -50,5 +59,22 @@ public class RecycleViewWorkoutList extends AppCompatActivity implements Recycle
     @Override
     public void onItemLongClick(int position) {
 
+    }
+
+    @Override
+    public void onRestart() {
+        super.onRestart();
+
+        setWorkoutList();
+        setAdapter();
+    }
+
+    private void setWorkoutList() {
+        workoutList = workoutLogic.getWorkouts();
+    }
+
+    private void setAdapter() {
+        CustomWorkoutAdapter adapter = new CustomWorkoutAdapter(this, workoutList, this);
+        recycleView.setAdapter(adapter);
     }
 }

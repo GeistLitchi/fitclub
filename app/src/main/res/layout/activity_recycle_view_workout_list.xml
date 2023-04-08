@@ -19,10 +19,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/createWorkout_btn"
+        android:layout_width="258dp"
+        android:layout_height="49dp"
+        android:text="Create workout"
+        app:layout_constraintBottom_toTopOf="@+id/recycleView"
+        app:layout_constraintEnd_toEndOf="@+id/workout_name"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="@+id/workout_name"
+        app:layout_constraintTop_toBottomOf="@+id/workout_name"
+        app:layout_constraintVertical_bias="0.083" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="140dp"
         app:layout_constraintTop_toBottomOf="@+id/workout_name" />
 </androidx.constraintlayout.widget.ConstraintLayout>

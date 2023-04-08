@@ -11,8 +11,6 @@ import comp3350.fitclub.R;
 
 public class MuscleGroupPage extends AppCompatActivity implements View.OnClickListener{
 
-    public static final String EXTRA_NAME_MUSCLE = "comp3350.fitclub.presentation.extar.NAME_MUSCLE";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +68,7 @@ public class MuscleGroupPage extends AppCompatActivity implements View.OnClickLi
             default:
                 throw new IllegalStateException("Unexpected value: " + view.getId());
         }
-        intent.putExtra(EXTRA_NAME_MUSCLE,muscleName);                                      //setting the key and value pair so that we can use that in other activity
+        intent.putExtra("muscleGroup",muscleName);                                      //setting the key and value pair so that we can use that in other activity
         startActivity(intent);                                                              // starting new activity
     }
 }

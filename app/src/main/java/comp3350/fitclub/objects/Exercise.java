@@ -9,9 +9,12 @@ public class Exercise
     private final String exerciseName;
     private final String muscleGroup;
 
-    /*difficulty from 1-3,which means simple, medium and difficult,
-    * Maybe later we can use different color images to represent different degrees of difficulty*/
+    //difficulty from 1-3,which means simple, medium and difficult,
+    //Maybe later we can use different color images to represent different degrees of difficulty
     private final int difficulty;
+
+    //variable to check whether or not we selected the exercise
+    private boolean isChecked = false;
 
     public Exercise(final String name)
     {
@@ -48,6 +51,14 @@ public class Exercise
         }
 
         return equals;
+    }
+
+    public boolean isChecked(){
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked){
+        isChecked = checked;
     }
 
 }

@@ -33,7 +33,7 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
     private final ExerciseLogic exercises = new ExerciseLogic();
     private final LikedLogic liked = new LikedLogic();
 
-    List<Exercise> doing = null;
+    List<Exercise> exerciseList = null;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -41,48 +41,13 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle_view);
 
-        Intent intent = getIntent();
-
-        String workoutTitle = intent.getStringExtra("workoutTitle");                //getting the value from intent key-value pair
-        String muscleGroupTitle = intent.getStringExtra(MuscleGroupPage.EXTRA_NAME_MUSCLE);         //getting the value from intent key-value pair
-        String title = intent.getStringExtra(MainActivity.EXTRA_NAME_MAIN);
-
         textView = findViewById(R.id.workout_name);
 
         recycleView = findViewById(R.id.recycleView);
         recycleView.setLayoutManager(new LinearLayoutManager(this));                        // layout manager
 
-        CustomAdapter ad;
-
-
-        if(workoutTitle != null){                                               //checking for either we clicked on find Workout
-            textView.setText(workoutTitle);                                     // setting the heading to workout name
-
-            doing = exercises.searchExerciseByWorkout(workoutTitle);          //This will return the exercises in either upper or lower body groups
-
-
-        }else if(muscleGroupTitle != null){                                     //checking for either we clicked on muscle group
-            textView.setText(muscleGroupTitle);                                 // setting the heading to muscle group name
-
-            doing = exercises.searchExerciseByMuscleGroup(muscleGroupTitle);    //this will return the exercises for a given muscle group
-
-        }else if(title != null)
-        {
-            textView.setText(title);
-
-            doing = liked.getLikedExercises();
-        }
-        if (doing != null){
-            ad = new CustomAdapter(this, doing, this);                 //creating new customAdapter
-            recycleView.setAdapter(ad);                                                         //setting that adapter for recycler view
-
-            //for drag and drop item but not saving yet
-            ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
-            itemTouchHelper.attachToRecyclerView(recycleView);
-
-        }else{
-            System.out.println("ad is null");
-        }
+        setExerciseList();
+        setAdapter();
     }
 
 
@@ -93,10 +58,9 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
             int fromPosition = viewHolder.getAdapterPosition();
             int toPosition = target.getAdapterPosition();
 
-            Collections.swap(doing, fromPosition, toPosition);
+            Collections.swap(exerciseList, fromPosition, toPosition);
 
             Objects.requireNonNull(recyclerView.getAdapter()).notifyItemMoved(fromPosition, toPosition);
-            //recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
 
             return false;
         }
@@ -112,13 +76,13 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
     public void onItemClick(int position) {
 
         Intent intent = new Intent(this, ExerciseTutorialActivity.class);
-        intent.putExtra("exerciseName", doing.get(position).getExerciseName() );
+        intent.putExtra("exerciseName", exerciseList.get(position).getExerciseName() );
         startActivity(intent);
     }
 
     @Override
     public void onItemLongClick(int position) {
-        Exercise currExercise = doing.get(position);
+        Exercise currExercise = exerciseList.get(position);
         if(liked.isContains(currExercise))
         {
             liked.deleteLiked(currExercise);
@@ -127,6 +91,56 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
         {
             liked.addLiked(currExercise);
             Toast.makeText(this,"Added to my Favorite",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onRestart() {
+        super.onRestart();
+
+        setExerciseList();
+        setAdapter();
+    }
+
+    private void setExerciseList() {
+        Intent intent = getIntent();
+
+        //get the values from the intents. Only one of these fields should be set
+        String workoutTitle = intent.getStringExtra("workoutTitle");
+        String muscleGroupTitle = intent.getStringExtra("muscleGroup");
+        Boolean likedExercises = intent.getBooleanExtra("likedExercises", false);
+
+
+        if (workoutTitle != null) { //if a workout was selected, display the exercises in that workout
+            textView.setText(workoutTitle);
+
+            exerciseList = exercises.searchExerciseByWorkout(workoutTitle);
+
+        } else if(muscleGroupTitle != null) { //if a muscle group was selected, display the exercises in that muscle group
+            textView.setText(muscleGroupTitle);
+
+            exerciseList = exercises.searchExerciseByMuscleGroup(muscleGroupTitle);
+
+        } else if(likedExercises) { //if
+            textView.setText("Favourites");
+
+            exerciseList = liked.getLikedExercises();
+        }
+    }
+
+    private void setAdapter() {
+        CustomAdapter ad;
+
+        if (exerciseList != null){
+            ad = new CustomAdapter(this, exerciseList, this);                 //creating new customAdapter
+            recycleView.setAdapter(ad);                                                         //setting that adapter for recycler view
+
+            //for drag and drop item but not saving yet
+            ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+            itemTouchHelper.attachToRecyclerView(recycleView);
+
+        }else{
+            System.out.println("adapter is null");
         }
     }
 }

@@ -8,7 +8,7 @@ import comp3350.fitclub.objects.WorkoutExercise;
 
 public interface WorkoutExercisePersistence {
 
-    WorkoutExercise insertWorkoutExercise(WorkoutExercise workoutExercise);
+    void insertWorkoutExercises(List<WorkoutExercise> workoutExerciseList);
 
     void deleteWorkoutExercisesByWorkoutName(String workoutName);
 }

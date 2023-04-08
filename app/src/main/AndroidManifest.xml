@@ -12,15 +12,18 @@
         android:theme="@style/Theme.Fitclub"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.CreateWorkout"
+            android:exported="false"
+            android:label="Create your workout"
+            android:parentActivityName=".presentation.RecycleViewWorkoutList"/>
+        <activity
             android:name=".presentation.RecycleViewWorkoutList"
             android:exported="false"
-            android:parentActivityName=".presentation.MainActivity"/>
-
-<!--        <activity-->
-<!--            android:name=".RecyclerVIewWorkoutList"-->
-<!--            android:exported="false"-->
-<!--            android:label="@string/title_activity_recycler_view_workout_list"-->
-<!--            android:theme="@style/Theme.Fitclub.NoActionBar" />-->
+            android:parentActivityName=".presentation.MainActivity" /> <!-- <activity -->
+        <!-- android:name=".RecyclerVIewWorkoutList" -->
+        <!-- android:exported="false" -->
+        <!-- android:label="@string/title_activity_recycler_view_workout_list" -->
+        <!-- android:theme="@style/Theme.Fitclub.NoActionBar" /> -->
         <activity
             android:name=".presentation.ExerciseTutorialActivity"
             android:exported="false"
