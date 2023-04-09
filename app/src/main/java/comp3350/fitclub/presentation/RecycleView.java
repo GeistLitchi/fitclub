@@ -9,21 +9,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 import comp3350.fitclub.R;
-import comp3350.fitclub.application.Main;
 import comp3350.fitclub.logic.ExerciseLogic;
 import comp3350.fitclub.logic.LikedLogic;
 import comp3350.fitclub.objects.Exercise;
-import comp3350.fitclub.objects.Workout;
 
 public class RecycleView extends AppCompatActivity implements RecyclerViewInterface {
 

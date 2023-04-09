@@ -6,11 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -21,7 +17,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import comp3350.fitclub.R;
-import comp3350.fitclub.application.Main;
+import comp3350.fitclub.application.InitializePersistence;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -102,9 +98,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
             copyAssetsToDirectory(assetNames, dataDirectory);
-            String name = Main.getDbName();
-            String result = dataDirectory.toString() + "/" + Main.getDbName();
-            Main.setDBPathName(dataDirectory.toString() + "/" + Main.getDbName());
+            String name = InitializePersistence.getDbName();
+            String result = dataDirectory.toString() + "/" + InitializePersistence.getDbName();
+            InitializePersistence.setDBPathName(dataDirectory.toString() + "/" + InitializePersistence.getDbName());
 
         } catch (final IOException ioe) {
             Toast.makeText(this, "Unable to access application data: " + ioe.getMessage(), Toast.LENGTH_SHORT).show();

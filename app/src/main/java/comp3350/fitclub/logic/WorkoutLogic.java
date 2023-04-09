@@ -25,20 +25,29 @@ public class WorkoutLogic {
 
     }
 
-    //Next 2 constructors are used for testing
+    /**
+     * These constructors are used for testing
+     * */
     public WorkoutLogic(WorkoutPersistence workoutDB){
         this.workoutPersistence = workoutDB;
     }
+
     public WorkoutLogic(WorkoutPersistence workoutDB, WorkoutExercisePersistence workoutExercisePersistence) {
         this.workoutPersistence = workoutDB;
         this.workoutExercisePersistence = workoutExercisePersistence;
     }
 
+    /**
+     * Creates a new workout
+     * */
     public Workout insertWorkout (Workout workout) {
         return workoutPersistence.insertWorkout(workout);
     }
 
-    //calculate the difficulty of the workout based on average difficulty of exercises
+    /**
+     * Calculates the difficulty of the current workout. If it is different than what was stored
+     * previously, update it.
+     * */
     public int calcDifficulty(Workout current) {
         int difficulty = 0;
 
@@ -55,11 +64,16 @@ public class WorkoutLogic {
         return difficulty;
     }
 
+    /**
+     * Fetches all workouts
+     * */
     public List<Workout> getWorkouts() {
         return workoutPersistence.getAllWorkouts();
     }
 
-    //search workout DB for workouts of a given type (UPPER, LOWER etc)
+    /**
+     * Searches for workouts based on a given type (Arms, Legs, Chest, etc)
+     * */
     public List<Workout> searchWorkoutType(String workoutType) {
         List<Workout> workouts = workoutPersistence.getAllWorkouts();
         List<Workout> list = new ArrayList<Workout>();
@@ -78,11 +92,12 @@ public class WorkoutLogic {
         return list;
     }
 
-    //search the workout db for workouts of a given difficulty
+    /**
+     * Fetches all workouts of a certain difficulty
+     * */
     public List<Workout> searchByDifficulty(int workoutDifficulty) {
         List<Workout> workouts = this.workoutPersistence.getAllWorkouts();
         List<Workout> list = new ArrayList<>();
-
 
         //search list of workouts for matching types
         for(int i=0; i<workouts.size(); i++) {
@@ -97,7 +112,9 @@ public class WorkoutLogic {
     }
 
 
-    //sort the workout by difficulty in descending order
+    /**
+     * Sorts a workout list by difficulty
+     * */
     public List<Workout> sortByDifficulty() {
         List<Workout> workouts = workoutPersistence.getAllWorkouts();
         Collections.sort(workouts);
@@ -105,7 +122,9 @@ public class WorkoutLogic {
         return workouts;
     }
 
-    //adds all of the exercises in the list provided to the workout
+    /**
+     * Adds a list of exercises to the given workout
+     * */
     public void addExercises(Workout workout, List<Exercise> exerciseList) {
         List<WorkoutExercise> workoutExerciseList = new ArrayList<>();
 

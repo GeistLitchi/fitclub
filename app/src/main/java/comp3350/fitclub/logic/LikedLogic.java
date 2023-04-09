@@ -17,18 +17,30 @@ public class LikedLogic {
         likedPersistence = InitializePersistence.getLikedPersistence();
     }
 
+    /**
+     * Fetches all of the liked exercises
+     * */
     public List<Exercise> getLikedExercises(){return likedPersistence.getLikedExercises();}
 
+    /**
+     * Add a new exercise to the liked list
+     * */
     public void addLiked(Exercise exercise)
     {
         likedPersistence.insertLikedExercise(exercise);
     }
 
+    /**
+     * Checks if the exercise is in the liked list
+     * */
     public boolean isContains(Exercise exercise)
     {
         return likedPersistence.isContainsExercise(exercise);
     }
 
+    /**
+     * Removes an exercise from a liked list
+     * */
     public void deleteLiked(Exercise exercise)
     {
         if(likedPersistence.isContainsExercise(exercise))

@@ -12,16 +12,24 @@ public class ExerciseTutorialLogic {
         exerciseTutorialPersistence = InitializePersistence.getExerciseTutorialPersistence();
     }
 
+    /**
+     * This constructor is used for testing
+     * */
     public ExerciseTutorialLogic(ExerciseTutorialPersistence exerciseTutorialPersistence) {
         this.exerciseTutorialPersistence = exerciseTutorialPersistence;
     }
 
+    /**
+     * This method returns a result Arraylist of all exerciseTutorials
+     * */
     public ExerciseTutorial getExerciseTutorial(String exerciseName) {
 
         return exerciseTutorialPersistence.getExerciseTutorial(exerciseName);
     }
 
-    //inserts an exerciseTutorial with default body
+    /**
+     * Inserts a new tutorial with the given exercise name
+     * */
     public void insertExerciseTutorial (String exerciseName) {
         ExerciseTutorial exerciseTutorial = new ExerciseTutorial(exerciseName,
                 "This exercise is new and doesn't have a tutorial yet");
