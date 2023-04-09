@@ -18,20 +18,17 @@ import comp3350.fitclub.persistence.ExerciseTutorialPersistence;
 public class ExerciseLogic
 {
     private ExercisesPersistence exercisesPersistence;
-    private ExerciseTutorialLogic exerciseTutorialLogic;
 
     public ExerciseLogic()
     {
         exercisesPersistence = InitializePersistence.getExercisesPersistence();
-        exerciseTutorialLogic = new ExerciseTutorialLogic();
     }
 
     /**
      * This constructor is used for testing
      * */
-    public ExerciseLogic(ExercisesPersistence exercisesPersistence, ExerciseTutorialPersistence exerciseTutorialPersistence) {
+    public ExerciseLogic(ExercisesPersistence exercisesPersistence) {
         this.exercisesPersistence = exercisesPersistence;
-        exerciseTutorialLogic = new ExerciseTutorialLogic(exerciseTutorialPersistence);
     }
 
     /**
@@ -48,7 +45,6 @@ public class ExerciseLogic
     public void addExercise(Exercise exercise)
     {
         exercisesPersistence.insertExercise(exercise);
-        exerciseTutorialLogic.insertExerciseTutorial(exercise.getExerciseName());
     }
 
     /**

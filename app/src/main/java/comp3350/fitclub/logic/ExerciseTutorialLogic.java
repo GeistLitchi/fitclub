@@ -23,8 +23,14 @@ public class ExerciseTutorialLogic {
      * This method returns a result Arraylist of all exerciseTutorials
      * */
     public ExerciseTutorial getExerciseTutorial(String exerciseName) {
+        ExerciseTutorial exerciseTutorial = exerciseTutorialPersistence.getExerciseTutorial(exerciseName);
 
-        return exerciseTutorialPersistence.getExerciseTutorial(exerciseName);
+        //if the exercise tutorial doesn't exist, create a new one
+        if (exerciseTutorial == null) {
+            exerciseTutorial = exerciseTutorialPersistence.insertExerciseTutorial(new ExerciseTutorial(exerciseName, null));
+        }
+
+        return exerciseTutorial;
     }
 
     /**
