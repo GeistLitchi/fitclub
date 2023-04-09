@@ -45,7 +45,8 @@ public class ExerciseTutorialActivity extends AppCompatActivity {
         //if we have a valid tutorial, display the information
         if (exerciseTutorial != null) {
             exerciseNameText.setText(exerciseName);
-            bodyText.setText(exerciseTutorial.getBody());
+            bodyText.setText(exerciseTutorial.getBody() == null ? exerciseTutorial.getBody()
+                    : "This exercise is new and doesn't have a tutorial yet");
             linkButton.setText("Learn More Here");
 
 

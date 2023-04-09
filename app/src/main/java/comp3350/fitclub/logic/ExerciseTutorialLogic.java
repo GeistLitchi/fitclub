@@ -31,8 +31,7 @@ public class ExerciseTutorialLogic {
      * Inserts a new tutorial with the given exercise name
      * */
     public void insertExerciseTutorial (String exerciseName) {
-        ExerciseTutorial exerciseTutorial = new ExerciseTutorial(exerciseName,
-                "This exercise is new and doesn't have a tutorial yet");
+        ExerciseTutorial exerciseTutorial = new ExerciseTutorial(exerciseName, null);
 
         exerciseTutorialPersistence.insertExerciseTutorial(exerciseTutorial);
     }
