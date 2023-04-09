@@ -35,16 +35,16 @@ public class FavFunctionTest {
     }
 
     @Test
-    public void exploreTest(){
-        String EXE_TEST_NAME = "Leg Raises";
+    public void favFunctionTest(){
+        String EXE_TEST_NAME = "Barbell Curl";
         // adding exercice named EXE_TEST_NAME to fav
         onView(withId(R.id.btn_go_to_muscle_group)).perform(click());
-        onView(withId(R.id.core_btn)).perform(click());
-        onView(withId(R.id.recycleView)).perform(actionOnItemAtPosition(1, click()));
+        onView(withId(R.id.arms_btn)).perform(click());
+        onView(withId(R.id.recycleView)).perform(actionOnItemAtPosition(0, click()));
         //checking if we clciked onn right exercise
         onView(withId(R.id.tutorial_exercise_name)).check(matches(withText(EXE_TEST_NAME)));
         pressBack();
-        onView(withId(R.id.recycleView)).perform(actionOnItemAtPosition(1, longClick()));
+        onView(withId(R.id.recycleView)).perform(actionOnItemAtPosition(0, longClick()));
 
         //checking weither exercice added to fav
         pressBack();
