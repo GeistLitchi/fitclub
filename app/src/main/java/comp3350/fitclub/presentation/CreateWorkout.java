@@ -37,7 +37,7 @@ public class CreateWorkout extends AppCompatActivity {
 
     MultiAdapter multiAdapter;
 
-    String[] muscleGroup = {"ALL", "ARMS", "BACK", "CHEST", "CORE", "LEGS", "SHOULDERS"};
+    String[] muscleGroup = {"ALL", "ARMS", "BACK", "CHEST", "CORE", "LEGS", "SHOULDER"};
     List<Exercise> exerciseList = new ArrayList<Exercise>();
 
     Context context = this;
