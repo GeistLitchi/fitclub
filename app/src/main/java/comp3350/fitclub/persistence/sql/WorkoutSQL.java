@@ -23,6 +23,9 @@ public class WorkoutSQL implements WorkoutPersistence {
         return DriverManager.getConnection("jdbc:hsqldb:file:" + path + ";shutdown=true", "SA", "");
     }
 
+    /**
+     * Extracts the data from the ResultSet into a new Workout Object
+     * */
     private Workout extractData(ResultSet result) throws SQLException {
         String name = result.getString("name");
         String type = result.getString("type");
@@ -31,6 +34,9 @@ public class WorkoutSQL implements WorkoutPersistence {
         return new Workout(name, type, difficulty);
     }
 
+    /**
+     * Fetches all of the workouts
+     * */
     @Override
     public ArrayList<Workout> getAllWorkouts() {
         ArrayList<Workout> workouts = new ArrayList<Workout>();
@@ -54,6 +60,9 @@ public class WorkoutSQL implements WorkoutPersistence {
         return workouts;
     }
 
+    /**
+     * Inserts a new workout into the database
+     * */
     @Override
     public Workout insertWorkout(Workout current) {
         try (Connection c = connect()) {
@@ -61,23 +70,6 @@ public class WorkoutSQL implements WorkoutPersistence {
             statement.setString(1, current.getName());
             statement.setString(2, current.getType());
             statement.setInt(3, current.getDifficulty());
-
-            statement.executeUpdate();
-
-            return current;
-        } catch (SQLException e) {
-            throw new PersistenceException(e);
-        }
-    }
-
-    @Override
-    public Workout updateWorkout(Workout current) {
-        try (Connection c = connect()) {
-            PreparedStatement statement = c.prepareStatement("UPDATE Workout SET name = ?, type = ?, difficulty = ? WHERE name = ?");
-            statement.setString(1, current.getName());
-            statement.setString(2, current.getType());
-            statement.setInt(3, current.getDifficulty());
-            statement.setString(4, current.getName());
 
             statement.executeUpdate();
 
