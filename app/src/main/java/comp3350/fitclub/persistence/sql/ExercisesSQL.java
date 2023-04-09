@@ -22,6 +22,9 @@ public class ExercisesSQL implements ExercisesPersistence {
         return DriverManager.getConnection("jdbc:hsqldb:file:" + path + ";shutdown=true", "SA", "");
     }
 
+    /**
+     * Extracts the data from the ResultSet into a new Exercise Object
+     * */
     private Exercise extractData(ResultSet result) throws SQLException {
         String exerciseName = result.getString("exerciseName");
         String muscleGroup = result.getString("muscleGroup");
@@ -30,8 +33,10 @@ public class ExercisesSQL implements ExercisesPersistence {
         return new Exercise(exerciseName, muscleGroup, difficulty);
     }
 
+    /**
+     * Fetches all of the exercises
+     * */
     @Override
-    //returns a list of the exercises
     public List<Exercise> getExercises() {
         List<Exercise> exercises = new ArrayList<Exercise>();
 
@@ -54,6 +59,9 @@ public class ExercisesSQL implements ExercisesPersistence {
         return exercises;
     }
 
+    /**
+     * Fetches all of the exercises in a given workout
+     * */
     @Override
     public List<Exercise> getExercisesInWorkout(String workoutName) {
         List<Exercise> exercises = new ArrayList<Exercise>();
@@ -80,7 +88,9 @@ public class ExercisesSQL implements ExercisesPersistence {
         return exercises;
     }
 
-    //inserts the new exercise into the database
+    /**
+     * Inserts a new exercise into the database
+     * */
     @Override
     public Exercise insertExercise(Exercise currentExercise) {
 
@@ -101,7 +111,9 @@ public class ExercisesSQL implements ExercisesPersistence {
 
     }
 
-    //removes the selected exercise from the database
+    /**
+     * Removes an exercise from the database
+     * */
     @Override
     public void deleteExercise(Exercise currentExercise) {
 
@@ -116,6 +128,5 @@ public class ExercisesSQL implements ExercisesPersistence {
         } catch (SQLException e) {
             throw new PersistenceException(e);
         }
-
     }
 }

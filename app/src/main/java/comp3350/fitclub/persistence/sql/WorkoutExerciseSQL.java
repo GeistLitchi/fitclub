@@ -23,6 +23,9 @@ public class WorkoutExerciseSQL implements WorkoutExercisePersistence {
         return DriverManager.getConnection("jdbc:hsqldb:file:" + path + ";shutdown=true", "SA", "");
     }
 
+    /**
+     * Inserts all of the workoutExercises from the list into the database
+     * */
     @Override
     public void insertWorkoutExercises(List<WorkoutExercise> workoutExerciseList) {
         if (workoutExerciseList.size() > 0) {
@@ -53,6 +56,9 @@ public class WorkoutExerciseSQL implements WorkoutExercisePersistence {
         }
     }
 
+    /**
+     * Deletes a workout exercise from the database
+     * */
     @Override
     public void deleteWorkoutExercisesByWorkoutName(String workoutName) {
         try (Connection c = connect()) {

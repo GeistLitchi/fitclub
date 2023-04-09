@@ -5,10 +5,14 @@ import comp3350.fitclub.objects.Exercise;
 import java.util.List;
 
 public interface WorkoutPersistence {
+    /**
+     * Fetches all of the workouts
+     * */
     List<Workout> getAllWorkouts();
 
+    /**
+     * Inserts a new workout into the database
+     * */
     Workout insertWorkout(Workout current);
-
-    Workout updateWorkout(Workout current);
 
 }

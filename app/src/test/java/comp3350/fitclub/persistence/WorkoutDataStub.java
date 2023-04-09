@@ -50,18 +50,6 @@ public class WorkoutDataStub implements WorkoutPersistence {
         return current;
     }
 
-    @Override
-    public Workout updateWorkout(Workout current) {
-        int index;
-        index = workouts.indexOf(current);
-        if (index >= 0)
-        {
-            workouts.set(index, current);
-        }
-
-        return current;
-    }
-
     //Fill each workout based on subtype muscle group, calling Exercise DB via logic layer
     private void fillWorkout(Workout toFill) {
         List<Exercise> temp = new ArrayList<>();
