@@ -2,6 +2,7 @@ package comp3350.fitclub.presentation;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +44,7 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
         recycleView = findViewById(R.id.recycleView);
         recycleView.setLayoutManager(new LinearLayoutManager(this));                        // layout manager
 
-        setExerciseList();
+        setExerciseList(savedInstanceState);
         setAdapter();
     }
 
@@ -89,22 +91,33 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
             Toast.makeText(this,"Added to my Favorite",Toast.LENGTH_SHORT).show();
         }
     }
-
     @Override
-    public void onRestart() {
-        super.onRestart();
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Intent intent = getIntent();
+        outState.putString("workoutTitle", intent.getStringExtra("workoutTitle"));
+        outState.putString("muscleGroup", intent.getStringExtra("muscleGroup"));
+        outState.putBoolean("likedExercises", intent.getBooleanExtra("likedExercises", false));
 
-        setExerciseList();
-        setAdapter();
     }
 
-    private void setExerciseList() {
+    private void setExerciseList(Bundle savedInstanceState) {
         Intent intent = getIntent();
 
         //get the values from the intents. Only one of these fields should be set
-        String workoutTitle = intent.getStringExtra("workoutTitle");
-        String muscleGroupTitle = intent.getStringExtra("muscleGroup");
-        Boolean likedExercises = intent.getBooleanExtra("likedExercises", false);
+        String workoutTitle = null;
+        String muscleGroupTitle = null;
+        Boolean likedExercises = false;
+
+        if (intent.getExtras() != null) {
+            workoutTitle = intent.getStringExtra("workoutTitle");
+            muscleGroupTitle = intent.getStringExtra("muscleGroup");
+            likedExercises = intent.getBooleanExtra("likedExercises", false);
+        } else if (savedInstanceState != null) {
+            workoutTitle = savedInstanceState.getString("workoutTitle");
+            muscleGroupTitle = savedInstanceState.getString("muscleGroup");
+            likedExercises = savedInstanceState.getBoolean("likedExercises");
+        }
 
 
         if (workoutTitle != null) { //if a workout was selected, display the exercises in that workout
@@ -117,7 +130,7 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
 
             exerciseList = exercises.searchExerciseByMuscleGroup(muscleGroupTitle);
 
-        } else if(likedExercises) { //if
+        } else if(likedExercises) { //if liked exercises is true, show the liked exercises
             textView.setText("Favourites");
 
             exerciseList = liked.getLikedExercises();
@@ -127,7 +140,7 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
     private void setAdapter() {
         CustomAdapter ad;
 
-        if (exerciseList != null){
+        if (exerciseList != null) {
             ad = new CustomAdapter(this, exerciseList, this);                 //creating new customAdapter
             recycleView.setAdapter(ad);                                                         //setting that adapter for recycler view
 
@@ -135,7 +148,7 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
             ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
             itemTouchHelper.attachToRecyclerView(recycleView);
 
-        }else{
+        } else {
             System.out.println("adapter is null");
         }
     }
