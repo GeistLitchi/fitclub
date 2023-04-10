@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -78,6 +79,12 @@ public class CreateWorkout extends AppCompatActivity {
         submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if(TextUtils.isEmpty(workout_name.getText().toString())){
+                    workout_name.setError("Please enter workout name");
+                    return;
+                }
+
                 String workoutName = workout_name.getText().toString();
                 String muscleGroup = spinner.getSelectedItem().toString();
 
