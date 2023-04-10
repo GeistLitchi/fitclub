@@ -51,9 +51,11 @@ public class CreatWokoutTest {
         onView(withId(R.id.recycleView)).perform(actionOnItemAtPosition(7, click()));
         onView(withId(R.id.recycleView)).perform(actionOnItemAtPosition(4, click()));
 
+
         //trying to creat workout without name
         //checking if we can creat workout without name
         onView(withId(R.id.submit_btn)).perform(click());
+        closeSoftKeyboard();
         //we cannot do that
         onView(withId(R.id.your_workout_name)).perform(typeText(WORKOUT_TEST_NAME));
         closeSoftKeyboard();
