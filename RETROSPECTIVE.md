@@ -7,4 +7,4 @@ Moving forward into the development stages of iteration 3 we've decided to break
 
 ## Project Velocity
 
-<img src="fc_vel_chart.png" alt="Velocity Chart" width="300" height="250">
+<img src="fc_vel_chart.png" alt="Velocity Chart" width="700" height="400">
