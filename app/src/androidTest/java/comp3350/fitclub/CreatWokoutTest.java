@@ -40,7 +40,7 @@ public class CreatWokoutTest {
 
     @Test
     public void createWorkoutTest() throws InterruptedException {
-        String WORKOUT_TEST_NAME = "Workout 1";
+        String WORKOUT_TEST_NAME = "AA";
 
         //creating new workout
         onView(withId(R.id.btn_go_to_find_workout)).perform(click());
@@ -60,11 +60,12 @@ public class CreatWokoutTest {
         onView(withId(R.id.submit_btn)).perform(click());
 
         //checking if our workout was created
-        onView(withId(R.id.recycleView)).perform(actionOnItemAtPosition(1, click()));
+        onView(withId(R.id.recycleView)).perform(actionOnItemAtPosition(0, click()));
         onView(withId(R.id.workout_name)).check(matches(withText(WORKOUT_TEST_NAME)));
-        Thread.sleep(20);
+        onView(withId(R.id.delete_button)).perform(click());
+        Thread.sleep(200);
         pressBack();
-        pressBack();
+
 
 
     }
