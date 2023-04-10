@@ -41,7 +41,20 @@ public class WorkoutLogic {
      * Creates a new workout
      * */
     public Workout insertWorkout (Workout workout) {
-        return workoutPersistence.insertWorkout(workout);
+
+        //if name is not set, cannot insert
+        if (workout.getName().equals("")) {
+            return null;
+        }
+
+        List<Workout> workoutList = workoutPersistence.getAllWorkouts();
+
+        //if workout already exists in the database, cannot insert
+        if (workoutList.contains(workout)) {
+            return null;
+        } else {
+            return workoutPersistence.insertWorkout(workout);
+        }
     }
 
     /**
@@ -133,6 +146,14 @@ public class WorkoutLogic {
         }
 
         workoutExercisePersistence.insertWorkoutExercises(workoutExerciseList);
+    }
+
+    /**
+     * Deletes a workout with a given name and all associated WorkoutExercise entries
+     * */
+    public void deleteWorkout(String workoutName) {
+        workoutPersistence.deleteWorkout(workoutName);
+        workoutExercisePersistence.deleteWorkoutExercisesByWorkoutName(workoutName);
     }
 
 }

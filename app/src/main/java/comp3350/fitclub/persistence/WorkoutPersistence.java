@@ -15,4 +15,9 @@ public interface WorkoutPersistence {
      * */
     Workout insertWorkout(Workout current);
 
+    /**
+     * Deletes a workout with a given name and all associated WorkoutExercise entries
+     * */
+    void deleteWorkout(String workoutName);
+
 }
