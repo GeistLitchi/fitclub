@@ -50,6 +50,11 @@ public class WorkoutDataStub implements WorkoutPersistence {
         return current;
     }
 
+    @Override
+    public void deleteWorkout(String workoutName) {
+        workouts.remove(new Workout(workoutName));
+    }
+
     //Fill each workout based on subtype muscle group, calling Exercise DB via logic layer
     private void fillWorkout(Workout toFill) {
         List<Exercise> temp = new ArrayList<>();

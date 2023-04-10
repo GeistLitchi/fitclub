@@ -79,6 +79,9 @@ public class WorkoutSQL implements WorkoutPersistence {
         }
     }
 
+    /**
+     * Deletes a workout with a given name and all associated WorkoutExercise entries
+     * */
     @Override
     public void deleteWorkout(String workoutName) {
         try (Connection c = connect()) {
