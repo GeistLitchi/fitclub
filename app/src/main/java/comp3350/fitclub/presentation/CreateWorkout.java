@@ -92,13 +92,20 @@ public class CreateWorkout extends AppCompatActivity {
 
                 Workout workout = workoutLogic.insertWorkout(new Workout(workoutName, muscleGroup));
 
-                if (selectedList.size() > 0) {
-                    workoutLogic.addExercises(workout, selectedList);
+                //check that the object was created properly, if not, it is likely that the workout
+                //name is already used or is invalid
+                if (workout != null) {
+
+                    if (selectedList.size() > 0) {
+                        workoutLogic.addExercises(workout, selectedList);
+                    }
+
+                    Toast.makeText(CreateWorkout.this, "New workout created", Toast.LENGTH_SHORT).show();
+
+                    onBackPressed();
+                } else {
+                    Toast.makeText(CreateWorkout.this, "Error creating workout. Check that the workout name is not already in use and that it is not empty", Toast.LENGTH_SHORT).show();
                 }
-
-                Toast.makeText(CreateWorkout.this, "New workout created", Toast.LENGTH_SHORT).show();
-
-                onBackPressed();
             }
         });
 

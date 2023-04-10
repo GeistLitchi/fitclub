@@ -78,4 +78,19 @@ public class WorkoutSQL implements WorkoutPersistence {
             throw new PersistenceException(e);
         }
     }
+
+    /**
+     * Deletes a workout with a given name and all associated WorkoutExercise entries
+     * */
+    @Override
+    public void deleteWorkout(String workoutName) {
+        try (Connection c = connect()) {
+            PreparedStatement statement = c.prepareStatement("DELETE FROM Workout WHERE UPPER(name) = UPPER(?)");
+            statement.setString(1, workoutName);
+
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new PersistenceException(e);
+        }
+    }
 }

@@ -76,6 +76,10 @@ public class Workout implements Comparable{
         return isEqual;
     }
 
+    public boolean equals(Workout otherWorkout) {
+        return otherWorkout.getName().equalsIgnoreCase(name);
+    }
+
     public int compareTo(Object other) {
         int compare = 0;
 
