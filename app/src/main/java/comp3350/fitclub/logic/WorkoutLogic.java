@@ -96,7 +96,7 @@ public class WorkoutLogic {
             for(int i=0; i<workouts.size(); i++) {
                 String type = ((workouts.get(i)).getType());
 
-                if(type.equals(workoutType.toUpperCase())) {
+                if(type.equalsIgnoreCase(workoutType)) {
                     list.add(workouts.get(i));
                 }
             }
