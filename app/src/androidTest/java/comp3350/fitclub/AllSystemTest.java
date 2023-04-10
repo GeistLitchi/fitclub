@@ -8,7 +8,7 @@ import org.junit.runners.Suite;
         {
                 ExploreExercisesTest.class,
                 FavFunctionTest.class,
-                CreatWokoutTest.class
+                CreateWokoutTest.class
         })
 
 public class AllSystemTest {
