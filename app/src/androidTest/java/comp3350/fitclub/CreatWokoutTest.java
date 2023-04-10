@@ -39,7 +39,7 @@ public class CreatWokoutTest {
     }
 
     @Test
-    public void favFunctionTest() throws InterruptedException {
+    public void createWorkoutTest() throws InterruptedException {
         String WORKOUT_TEST_NAME = "Workout 1";
 
         //creating new workout
