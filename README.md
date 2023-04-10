@@ -1,14 +1,21 @@
-# FitClub Vision Statement
-FitClub will be an app used to plan or build workout routines, learn gym exercises and track fitness progress. It will provide a selection of pre-built workout plans, allow for workout plan customization, and provide guides for performing various exercises.
+# README
 
-FitClub is designed for gym goers, of all skill levels, who are seeking a structured workout experience. The app will permit gym goers to plan their workout routines before starting a workout to increase overall gym time efficiency and enhance the quality of the workout. The app will promote more time spent working out and less time spent on deciding which exercises to do.
+## Purpose
+Check out our website - [FitClub](https://tc3040.github.io/FitClub/)
 
-For gym goers with little or no gym experience, this app will provide a structured workout regimen through the availability of pre-built workout plans. Users will be able to select a pre-built workout from a menu based on the muscle group or area of the body they want to work on. It will also feature guides on how to perform different gym exercises so less experienced gym goers learn proper techniques in order to avoid injury. This structure and guidance will enhance the user's gym experience and allow them to maximize their fitness goals. 
+The purpose of this project is to create a workout app, called FitClub, in Android Studio for gym goers with all levels of gym experience. FitClub offers user the ability to create a custom workout, as well as select excerises from a wide variety of exercises pre-loaded into the app. Additionally users can favourite these exercises to be able to quickly view them again. Check out the [FitClub Vision Statement](https://code.cs.umanitoba.ca/comp3350-winter2023/a02-g08-fitclub/-/blob/main/VISION.md) for more details.
 
-The app is also designed for more experienced gym goers, by providing options for workout plan customization. It will allow users to create workout plans by selecting exercises from a comprehensive menu of exercises. Furthermore, users will be able to save their custom made workout routines for use again in the future.
+This project uses a 3-tiered architecture (Presentation, Logic and Persistence) outlined in [FitClub Architecture](https://code.cs.umanitoba.ca/comp3350-winter2023/a02-g08-fitclub/-/blob/main/ARCHITECTURE.md)
 
-In addition to individual workout planning, users will also be able to create workout schedules for the upcoming days and weeks to pre-plan rest days and days that will focus on a specific muscle group. Users can utilize this feature in order to track long-term progress and monitor fitness goals over periods of time.
+Throughout development of this project the team has learned and adapted our workflow and development process. More details available in [FitClub Retrospective](https://code.cs.umanitoba.ca/comp3350-winter2023/a02-g08-fitclub/-/blob/main/RETROSPECTIVE.md) which describes some of the prject challenges and how we tried to overcome them.
 
-Along with the workout planning aspects of the app, it will also be used for progress tracking. Gym goers can keep track of their time spent exercising, which exercises/muscle groups they spend the most time on, and the weights they are using for each exercise. This information will help users ensure they are performing a wide range of exercises and assist in their fitness progression. Additionally, the app will be able to estimate how many calories are burnt during each workout. This will allow gym goers who are focused on weight loss to select the workouts that burn the most calories.
+## How to run
+The most recent stable release of the FitClub app is available here - [Stable Releases](https://code.cs.umanitoba.ca/comp3350-winter2023/a02-g08-fitclub/-/releases)
 
-The main goal of this project is to optimize user engagement by enabling them to view personalized and engaging content which helps them to achieve their desired set of goals while simultaneously boosting their motivation, therefore empowering them to keep it consistent throughout their entire fitness journey. This project will be considered successful if the FitClub is able to achieve satisfactory rating, 3+ stars out of 5, through surveys from at least 70% of the users after a continuous 3-month usage period.
+Download the apk file and build it in Android Studio. 
+
+## Collaborators
+ - Tripp Wylde
+ - Jay Kanakkumar Dodhiawala
+ - William Sutherland
+ - Hanqing Ma
