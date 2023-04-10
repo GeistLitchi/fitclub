@@ -63,7 +63,7 @@ public class CreatWokoutTest {
         onView(withId(R.id.recycleView)).perform(actionOnItemAtPosition(0, click()));
         onView(withId(R.id.workout_name)).check(matches(withText(WORKOUT_TEST_NAME)));
         onView(withId(R.id.delete_button)).perform(click());
-        Thread.sleep(200);
+        Thread.sleep(500);
         pressBack();
 
 
