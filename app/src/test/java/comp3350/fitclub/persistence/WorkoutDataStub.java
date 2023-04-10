@@ -15,7 +15,7 @@ public class WorkoutDataStub implements WorkoutPersistence {
     //-------- constructor --------//
     public WorkoutDataStub() {
         this.workouts = new ArrayList<>();
-        exerciseLogic = new ExerciseLogic(new ExercisesDataStub(), new ExerciseTutorialStub());
+        exerciseLogic = new ExerciseLogic(new ExercisesDataStub());
 
         /*
         create and add workouts to the workout db, call helper method to fill with exercises

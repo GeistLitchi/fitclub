@@ -38,17 +38,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button goToMuscleGroupBtn = (Button) findViewById(R.id.btn_go_to_muscle_group);
-//        Button goToExercisesBtn = (Button) findViewById(R.id.btn_go_to_exercises_activity);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button goToWorkout = findViewById(R.id.btn_go_to_find_workout);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button goToFavorite = findViewById(R.id.btn_liked);
-//        goToExercisesBtn.setOnClickListener(new View.OnClickListener()
-//        {
-//            public void onClick(View view)
-//            {
-//                Intent intent = new Intent(MainActivity.this, ExercisesActivity.class);
-//                startActivity(intent);
-//            }
-//        });
 
         goToMuscleGroupBtn.setOnClickListener(new View.OnClickListener()
         {
@@ -64,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         {
             public void onClick(View view)
             {
-//                Intent intent = new Intent(MainActivity.this, WorkoutPage.class);
                 Intent intent = new Intent(MainActivity.this, RecycleViewWorkoutList.class);
                 startActivity(intent);
             }
