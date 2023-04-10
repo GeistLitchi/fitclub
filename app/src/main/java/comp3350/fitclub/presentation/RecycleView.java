@@ -11,6 +11,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,14 +23,19 @@ import java.util.Objects;
 import comp3350.fitclub.R;
 import comp3350.fitclub.logic.ExerciseLogic;
 import comp3350.fitclub.logic.LikedLogic;
+import comp3350.fitclub.logic.WorkoutLogic;
 import comp3350.fitclub.objects.Exercise;
 
 public class RecycleView extends AppCompatActivity implements RecyclerViewInterface {
 
 
+
     TextView textView;
     RecyclerView recycleView;
+    Button deleteWorkout_btn;
+
     private final ExerciseLogic exercises = new ExerciseLogic();
+    private final WorkoutLogic workoutLogic = new WorkoutLogic();
     private final LikedLogic liked = new LikedLogic();
 
     List<Exercise> exerciseList = null;
@@ -40,9 +47,12 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
         setContentView(R.layout.activity_recycle_view);
 
         textView = findViewById(R.id.workout_name);
+        deleteWorkout_btn = findViewById(R.id.delete_button);
+        //hide this button for now, only show if we are on a workout list
+        deleteWorkout_btn.setVisibility(View.GONE);
 
         recycleView = findViewById(R.id.recycleView);
-        recycleView.setLayoutManager(new LinearLayoutManager(this));                        // layout manager
+        recycleView.setLayoutManager(new LinearLayoutManager(this));
 
         setExerciseList(savedInstanceState);
         setAdapter();
@@ -124,6 +134,19 @@ public class RecycleView extends AppCompatActivity implements RecyclerViewInterf
             textView.setText(workoutTitle);
 
             exerciseList = exercises.searchExerciseByWorkout(workoutTitle);
+
+            deleteWorkout_btn.setVisibility(View.VISIBLE);
+
+            //setup the deleteWorkout_btn
+            String finalWorkoutTitle = workoutTitle;
+            deleteWorkout_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //delete the workout
+                    workoutLogic.deleteWorkout(finalWorkoutTitle);
+                    onBackPressed();
+                }
+            });
 
         } else if(muscleGroupTitle != null) { //if a muscle group was selected, display the exercises in that muscle group
             textView.setText(muscleGroupTitle);

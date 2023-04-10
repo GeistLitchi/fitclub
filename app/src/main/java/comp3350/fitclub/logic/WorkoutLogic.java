@@ -148,4 +148,8 @@ public class WorkoutLogic {
         workoutExercisePersistence.insertWorkoutExercises(workoutExerciseList);
     }
 
+    public void deleteWorkout(String workoutName) {
+        workoutPersistence.deleteWorkout(workoutName);
+    }
+
 }

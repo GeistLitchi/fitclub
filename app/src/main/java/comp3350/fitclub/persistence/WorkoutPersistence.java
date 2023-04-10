@@ -15,4 +15,6 @@ public interface WorkoutPersistence {
      * */
     Workout insertWorkout(Workout current);
 
+    void deleteWorkout(String workoutName);
+
 }
