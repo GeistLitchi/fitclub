@@ -45,11 +45,13 @@ public class CreatWokoutTest {
         //creating new workout
         onView(withId(R.id.btn_go_to_find_workout)).perform(click());
         onView(withId(R.id.createWorkout_btn)).perform(click());
-        onView(withId(R.id.recycleView)).perform(actionOnItemAtPosition(4, click()));
-        onView(withId(R.id.recycleView)).perform(actionOnItemAtPosition(5, click()));
-        onView(withId(R.id.recycleView)).perform(actionOnItemAtPosition(6, click()));
-        onView(withId(R.id.recycleView)).perform(actionOnItemAtPosition(7, click()));
-        onView(withId(R.id.recycleView)).perform(actionOnItemAtPosition(4, click()));
+        onView(withId(R.id.recycleView)).perform(actionOnItemAtPosition(0, click()));
+        onView(withId(R.id.recycleView)).perform(actionOnItemAtPosition(1, click()));
+        onView(withId(R.id.recycleView)).perform(actionOnItemAtPosition(2, click()));
+        onView(withId(R.id.recycleView)).perform(actionOnItemAtPosition(2, click()));
+
+        //close the soft keyboard otherwise cannot click the submit button
+        closeSoftKeyboard();
 
 
         //trying to creat workout without name
