@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import comp3350.fitclub.objects.Exercise;
-import comp3350.fitclub.persistence.ExerciseTutorialStub;
 import comp3350.fitclub.persistence.ExercisesDataStub;
 
 import static org.junit.Assert.*;
@@ -18,7 +17,7 @@ public class ExerciseLogicTest {
 
     @Before
     public void initializeData() {
-        logicTest = new ExerciseLogic(new ExercisesDataStub(), new ExerciseTutorialStub());
+        logicTest = new ExerciseLogic(new ExercisesDataStub());
     }
 
     @After

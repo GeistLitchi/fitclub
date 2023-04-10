@@ -20,6 +20,9 @@ public class ExerciseTutorialSQL implements ExerciseTutorialPersistence {
         return DriverManager.getConnection("jdbc:hsqldb:file:" + path + ";shutdown=true", "SA", "");
     }
 
+    /**
+     * Extracts the data from the ResultSet into a new ExerciseTutorial Object
+     * */
     private ExerciseTutorial extractData(ResultSet result) throws SQLException {
         String exerciseName = result.getString("exerciseName");
         String body = result.getString("body");
@@ -27,6 +30,9 @@ public class ExerciseTutorialSQL implements ExerciseTutorialPersistence {
         return new ExerciseTutorial(exerciseName, body);
     }
 
+    /**
+     * Fetches all of the exerciseTutorials
+     * */
     @Override
     //returns a list of the exercises
     public ExerciseTutorial getExerciseTutorial(String exerciseName) {
@@ -51,6 +57,9 @@ public class ExerciseTutorialSQL implements ExerciseTutorialPersistence {
         }
     }
 
+    /**
+     * Inserts a new exerciseTutorial into the database
+     * */
     @Override
     public ExerciseTutorial insertExerciseTutorial(ExerciseTutorial exerciseTutorial) {
         try (Connection c = connect()) {

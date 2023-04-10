@@ -19,31 +19,17 @@
         <activity
             android:name=".presentation.RecycleViewWorkoutList"
             android:exported="false"
-            android:parentActivityName=".presentation.MainActivity" /> <!-- <activity -->
-        <!-- android:name=".RecyclerVIewWorkoutList" -->
-        <!-- android:exported="false" -->
-        <!-- android:label="@string/title_activity_recycler_view_workout_list" -->
-        <!-- android:theme="@style/Theme.Fitclub.NoActionBar" /> -->
+            android:parentActivityName=".presentation.MainActivity" />
         <activity
             android:name=".presentation.ExerciseTutorialActivity"
             android:exported="false"
             android:label="View Tutorial"
-            android:parentActivityName=".presentation.WorkoutPage" />
+            android:parentActivityName=".presentation.RecycleView" />
         <activity
             android:name=".presentation.RecycleView"
             android:exported="false"
             android:label="Exercises"
-            android:parentActivityName=".presentation.WorkoutPage" />
-        <activity
-            android:name=".presentation.WorkoutPage"
-            android:exported="false"
-            android:label="Find Workouts"
-            android:parentActivityName=".presentation.MainActivity" />
-        <activity
-            android:name=".presentation.WorkoutActivity"
-            android:exported="false"
-            android:label="Workouts"
-            android:parentActivityName=".presentation.WorkoutPage" />
+            android:parentActivityName=".presentation.MuscleGroupPage" />
         <activity
             android:name=".presentation.MuscleGroupPage"
             android:exported="false"

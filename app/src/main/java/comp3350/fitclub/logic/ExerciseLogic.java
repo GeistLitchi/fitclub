@@ -18,37 +18,39 @@ import comp3350.fitclub.persistence.ExerciseTutorialPersistence;
 public class ExerciseLogic
 {
     private ExercisesPersistence exercisesPersistence;
-    private ExerciseTutorialLogic exerciseTutorialLogic;
 
     public ExerciseLogic()
     {
         exercisesPersistence = InitializePersistence.getExercisesPersistence();
-        exerciseTutorialLogic = new ExerciseTutorialLogic();
     }
 
-    public ExerciseLogic(ExercisesPersistence exercisesPersistence, ExerciseTutorialPersistence exerciseTutorialPersistence) {
+    /**
+     * This constructor is used for testing
+     * */
+    public ExerciseLogic(ExercisesPersistence exercisesPersistence) {
         this.exercisesPersistence = exercisesPersistence;
-        exerciseTutorialLogic = new ExerciseTutorialLogic(exerciseTutorialPersistence);
     }
 
+    /**
+     * This method returns a result Arraylist of all exercises
+     * */
     public List<Exercise> getExercises()
     {
         return exercisesPersistence.getExercises();
     }
 
+    /**
+     * Adds the specified exercise to the db
+     * */
     public void addExercise(Exercise exercise)
     {
         exercisesPersistence.insertExercise(exercise);
-        exerciseTutorialLogic.insertExerciseTutorial(exercise.getExerciseName());
     }
 
     /**
      * This method returns a result Arraylist of all exercises
      * that have keyword in name.
-     * @parm string the keyword
-     * @return list of search result
      * */
-    //Search for exercises if name and description of exercise contains key word;
     public List<Exercise> searchExercise(String keyword)
     {
         List<Exercise> exercises = exercisesPersistence.getExercises();
@@ -62,7 +64,9 @@ public class ExerciseLogic
         return results;
     }
 
-    //Search for exercises by difficulty level
+    /**
+     * this method will search for all exercises in a given difficulty level
+     * */
     public List<Exercise> searchExerciseByDifficulty(int difficultyLevel)
     {
         List<Exercise> exercises = exercisesPersistence.getExercises();
@@ -76,7 +80,9 @@ public class ExerciseLogic
         return result;
     }
 
-    //Search for exercises by muscle group
+    /**
+     * this method will search for all exercises in a given muscle group
+     * */
     public List<Exercise> searchExerciseByMuscleGroup(String muscleGroup)
     {
         List<Exercise> exercises = exercisesPersistence.getExercises();
@@ -90,7 +96,9 @@ public class ExerciseLogic
         return result;
     }
 
-    //This will search for exercises by upper or lower body
+    /**
+     * this method will search for all exercises in a given workout
+     * */
     public List<Exercise> searchExerciseByWorkout(String workoutName) {
         return exercisesPersistence.getExercisesInWorkout(workoutName);
     }
@@ -107,6 +115,9 @@ public class ExerciseLogic
         return exercises;
     }
 
+    /**
+     * comparator for sort function
+     * */
     private static class DifficultyLevelComparator implements Comparator<Exercise> {
         @Override
         public int compare(Exercise exercise1, Exercise exercise2) {

@@ -15,7 +15,7 @@ public class WorkoutDataStub implements WorkoutPersistence {
     //-------- constructor --------//
     public WorkoutDataStub() {
         this.workouts = new ArrayList<>();
-        exerciseLogic = new ExerciseLogic(new ExercisesDataStub(), new ExerciseTutorialStub());
+        exerciseLogic = new ExerciseLogic(new ExercisesDataStub());
 
         /*
         create and add workouts to the workout db, call helper method to fill with exercises
@@ -47,18 +47,6 @@ public class WorkoutDataStub implements WorkoutPersistence {
     @Override
     public Workout insertWorkout(Workout current) {
         workouts.add(current);
-        return current;
-    }
-
-    @Override
-    public Workout updateWorkout(Workout current) {
-        int index;
-        index = workouts.indexOf(current);
-        if (index >= 0)
-        {
-            workouts.set(index, current);
-        }
-
         return current;
     }
 

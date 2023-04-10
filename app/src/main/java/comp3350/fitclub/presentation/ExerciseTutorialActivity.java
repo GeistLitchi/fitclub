@@ -1,12 +1,14 @@
 package comp3350.fitclub.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import comp3350.fitclub.R;
 import android.content.Intent;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
@@ -45,7 +47,8 @@ public class ExerciseTutorialActivity extends AppCompatActivity {
         //if we have a valid tutorial, display the information
         if (exerciseTutorial != null) {
             exerciseNameText.setText(exerciseName);
-            bodyText.setText(exerciseTutorial.getBody());
+            bodyText.setText(exerciseTutorial.getBody() == null ? exerciseTutorial.getBody()
+                    : "This exercise is new and doesn't have a tutorial yet");
             linkButton.setText("Learn More Here");
 
 
@@ -54,5 +57,22 @@ public class ExerciseTutorialActivity extends AppCompatActivity {
             bodyText.setText("Exercise not found.");
             linkButton.setVisibility(View.GONE);
         }
+    }
+
+    /**
+     * This override is necessary as there seems to be a known bug with the back button in the top
+     * menu. This override ensures that the class we are returning to (RecycleView) will not have
+     * its savedInstanceState wiped
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem backButton) {
+        if (backButton.getItemId() == android.R.id.home) {
+            Intent intent = NavUtils.getParentActivityIntent(this);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            NavUtils.navigateUpTo(this, intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(backButton);
     }
 }

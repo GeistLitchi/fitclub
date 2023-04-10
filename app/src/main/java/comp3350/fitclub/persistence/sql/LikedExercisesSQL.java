@@ -23,6 +23,9 @@ public class LikedExercisesSQL implements LikedPersistence {
         return DriverManager.getConnection("jdbc:hsqldb:file:" + path + ";shutdown=true", "SA", "");
     }
 
+    /**
+     * Extracts the data from the ResultSet into a new Exercise Object
+     * */
     private Exercise extractData(ResultSet result) throws SQLException {
         String exerciseName = result.getString("exerciseName");
         String muscleGroup = result.getString("muscleGroup");
@@ -31,6 +34,9 @@ public class LikedExercisesSQL implements LikedPersistence {
         return new Exercise(exerciseName, muscleGroup, difficulty);
     }
 
+    /**
+     * Fetches all of the liked exercises
+     * */
     @Override
     public List<Exercise> getLikedExercises() {
         List<Exercise> exercises = new ArrayList<Exercise>();
@@ -54,6 +60,9 @@ public class LikedExercisesSQL implements LikedPersistence {
         return exercises;
     }
 
+    /**
+     * Inserts a new exercise into the liked list
+     * */
     @Override
     public Exercise insertLikedExercise(Exercise currentExercise) {
         try (Connection c = connect()) {
@@ -70,6 +79,9 @@ public class LikedExercisesSQL implements LikedPersistence {
         }
     }
 
+    /**
+     * Removes an exercise from the like list
+     * */
     @Override
     public void deleteLikedExercise(Exercise currentExercise) {
         try (Connection c = connect()) {
@@ -81,6 +93,9 @@ public class LikedExercisesSQL implements LikedPersistence {
         }
     }
 
+    /**
+     * Checks if the exercise is in the liked list
+     * */
     @Override
     public boolean isContainsExercise(Exercise currentExercise) {
         boolean exists = false;

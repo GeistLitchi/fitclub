@@ -49,15 +49,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         holder.exercise_name.setText(list.get(position).getExerciseName());
 
         //check if exercise is liked, to decide the visibility of favorite icon
-        for(Exercise e : list)
-        {
-            if(liked.isContains(e))
-            {
-                holder.imgFavorite.setVisibility(View.VISIBLE);
-            }else
-            {
-                holder.imgFavorite.setVisibility(View.INVISIBLE);
-            }
+        if (liked.isContains(list.get(position))) {
+            holder.imgFavorite.setVisibility(View.VISIBLE);
+        } else {
+            holder.imgFavorite.setVisibility(View.INVISIBLE);
         }
 
     }
